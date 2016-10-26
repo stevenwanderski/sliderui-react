@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -12,7 +13,7 @@ var config = {
   ],
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: 'index_bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss']
@@ -31,6 +32,11 @@ var config = {
 
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'my-index.ejs'
+    })
+  ],
 
   devServer: {
     historyApiFallback: true

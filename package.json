@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline",
-    "build": "webpack -p"
+    "build": "node ./node_modules/.bin/webpack -p --progress --colors"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.25.0",
+    "html-webpack-plugin": "^2.24.0",
     "node-sass": "^3.10.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1"
