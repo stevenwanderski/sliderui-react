@@ -7,10 +7,7 @@ var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
   context: APP_DIR,
-  entry: [
-    'webpack/hot/only-dev-server',
-    './index.jsx',
-  ],
+  entry: './index.jsx',
   output: {
     path: BUILD_DIR,
     filename: 'index_bundle.js'
