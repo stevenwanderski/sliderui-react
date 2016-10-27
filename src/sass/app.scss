@@ -1,3 +1,6 @@
+$purple: #a239a2;
+$gray-dark: #666;
+
 * {
   margin: 0;
   padding: 0;
@@ -17,26 +20,49 @@ p {
   margin-bottom: 20px;
 }
 
-input {
+input,
+textarea {
   display: block;
   padding: 10px;
   border: solid #ccc 1px;
   width: 100%;
-  margin-bottom: 20px;
-  font-size: 22px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 button {
-  background: #a239a2;
   color: #fff;
   padding: 10px 16px;
   border: 0;
   cursor: pointer;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.button--large {
+  font-size: 16px;
+}
+
+.button--small {
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.button--gray {
+  background: $gray-dark;
+}
+
+.button--purple {
+  background: $purple;
 }
 
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 0 20px;
   margin: 20px auto;
+}
+
+.slide {
+  margin-bottom: 20px;
 }

@@ -43,6 +43,7 @@ var config = {
       }
     }),
   ],
+  devtool: 'source-map',
 
   devServer: {
     historyApiFallback: true
