@@ -1,11 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 
-import App from './containers/app';
-import SliderNew from './containers/slider-new';
+import App from 'containers/app';
+import SliderNew from 'containers/slider-new';
+import Slider from 'containers/slider';
 
-import AppCSS from './sass/app';
+import AppCSS from 'sass/app';
 
 class Home extends React.Component {
   render () {
@@ -16,8 +17,9 @@ class Home extends React.Component {
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <Route path="home" component={Home}/>
-      <Route path="new" component={SliderNew}/>
+      <IndexRoute component={Home} />
+      <Route path="/new" component={SliderNew}/>
+      <Route path="/slider/:id" component={Slider}/>
     </Route>
   </Router>
 ), document.getElementById('app'));

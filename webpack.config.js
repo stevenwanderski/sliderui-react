@@ -10,9 +10,11 @@ var config = {
   entry: './index.jsx',
   output: {
     path: BUILD_DIR,
+    publicPath: '/',
     filename: 'index_bundle.js'
   },
   resolve: {
+    root: APP_DIR,
     extensions: ['', '.js', '.jsx', '.scss']
   },
   module : {
@@ -32,7 +34,14 @@ var config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'my-index.ejs'
-    })
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        'API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:3000')
+      }
+    }),
   ],
 
   devServer: {
