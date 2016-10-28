@@ -109,7 +109,7 @@ class Slider extends React.Component {
     document.querySelector('#script-container').innerHTML = '';
 
     const script = document.createElement('script');
-    script.src = `http://localhost:3000/sliders/${this.props.params.id}`;
+    script.src = `${process.env.API_URL}/sliders/${this.props.params.id}`;
     document.querySelector('#script-container').appendChild(script);
   }
 
