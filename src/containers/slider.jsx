@@ -1,6 +1,7 @@
 import React from 'react';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
+import SliderPreview from 'components/slider-preview';
 
 class Slider extends React.Component {
   constructor() {
@@ -9,12 +10,13 @@ class Slider extends React.Component {
       slider: null,
       slides: [],
       sliderLoading: true,
-      slidesLoading: true
+      slidesLoading: true,
     };
     this.addSlide = this.addSlide.bind(this);
     this.saveSlide = this.saveSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
     this.deleteSlide = this.deleteSlide.bind(this);
+    this.onSliderPreviewMounted = this.onSliderPreviewMounted.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +43,8 @@ class Slider extends React.Component {
     // Add the slide to state only once we
     // have the ID back from the server.
     ajax.post(`/slides`, {
-      slider_id: this.props.params.id
+      slider_id: this.props.params.id,
+      weight: this.state.slides.length
     })
     .then((response) => {
       let slides = this.state.slides;
@@ -68,6 +71,9 @@ class Slider extends React.Component {
         content: content
       }
     })
+    .then((response) => {
+      this.loadSliderPreview();
+    })
     .catch((error) => {
       console.log(error);
     });
@@ -86,9 +92,25 @@ class Slider extends React.Component {
     this.setState({ slides: slides });
 
     ajax.delete(`/slides/${id}`)
+      .then((response) => {
+        this.loadSliderPreview();
+      })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  onSliderPreviewMounted() {
+    this.loadSliderPreview();
+  }
+
+  loadSliderPreview() {
+    document.querySelector(`[data-slider-id=${this.props.params.id}]`).innerHTML = '';
+    document.querySelector('#script-container').innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = `http://localhost:3000/sliders/${this.props.params.id}`;
+    document.querySelector('#script-container').appendChild(script);
   }
 
   render() {
@@ -99,12 +121,22 @@ class Slider extends React.Component {
     return (
       <div>
         <h1>Slider: {this.state.slider.title}</h1>
-        <Slides slides={this.state.slides}
-                loading={this.state.slidesLoading}
-                onClickAddSlide={this.addSlide}
-                onClickSaveSlide={this.saveSlide}
-                onClickEditSlide={this.editSlide}
-                onClickDeleteSlide={this.deleteSlide} />
+        <div className="slider__layout">
+          <div className="slider__layout-child">
+            <Slides slides={this.state.slides}
+                    loading={this.state.slidesLoading}
+                    onClickAddSlide={this.addSlide}
+                    onClickSaveSlide={this.saveSlide}
+                    onClickEditSlide={this.editSlide}
+                    onClickDeleteSlide={this.deleteSlide} />
+          </div>
+
+          <div className="slider__layout-child">
+            <SliderPreview sliderId={this.props.params.id}
+                           loaded={this.state.sliderPreviewLoaded}
+                           onSliderPreviewMounted={this.onSliderPreviewMounted} />
+          </div>
+        </div>
       </div>
     );
   }

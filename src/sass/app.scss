@@ -66,3 +66,16 @@ button {
 .slide {
   margin-bottom: 20px;
 }
+
+.slider__layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider__layout-child {
+  width: 100%;
+}
+
+.slider-preview {
+  padding: 0 20px;
+}
