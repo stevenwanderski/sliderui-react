@@ -105,7 +105,7 @@ class Slider extends React.Component {
   }
 
   loadSliderPreview() {
-    document.querySelector(`[data-slider-id=${this.props.params.id}]`).innerHTML = '';
+    document.querySelector(`[data-slider-id="${this.props.params.id}"]`).innerHTML = '';
     document.querySelector('#script-container').innerHTML = '';
 
     const script = document.createElement('script');
