@@ -12,7 +12,7 @@ $gray-dark: #666;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -37,6 +37,10 @@ button {
   cursor: pointer;
   border-radius: 2px;
   margin-right: 10px;
+
+  &[disabled] {
+    cursor: wait;
+  }
 }
 
 .button--large {
@@ -56,6 +60,10 @@ button {
   background: $purple;
 }
 
+.button--full-width {
+  width: 100%;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -70,6 +78,11 @@ button {
 
 .slider__layout-child {
   width: 100%;
+}
+
+.slider__slides {
+  flex: 0 0 300px;
+  margin-right: 50px;
 }
 
 .slider-preview {

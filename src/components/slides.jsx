@@ -26,6 +26,13 @@ class Slides extends React.Component {
       return <div>LOADING...</div>;
     }
 
+    let button;
+    if (this.props.addLoading) {
+      button = <button className="button--purple button--full-width" disabled>Loading...</button>;
+    } else {
+      button = <button onClick={this.props.onClickAddSlide} className="button--purple button--full-width">Add Slide</button>;
+    }
+
     const slides = this.props.slides.map((slide, index) => {
       return <Slide
                 slide={slide}
@@ -43,7 +50,7 @@ class Slides extends React.Component {
                       onSortEnd={this.onSortEnd.bind(this)}
                       lockAxis='y'
                       useDragHandle={true} />
-        <button onClick={this.props.onClickAddSlide} className="button--purple">Add Slide</button>
+        {button}
       </div>
     )
   }

@@ -28,8 +28,18 @@ class Slide extends React.Component {
 
   render() {
     if (this.props.slide.editing) {
-      let cancelButton;
 
+      if (this.props.slide.loading) {
+        return (
+          <div className="slide-item slide-item--editing">
+            <div className="slide-item__content">
+              LOADING...
+            </div>
+          </div>
+        )
+      }
+
+      let cancelButton;
       if (this.props.slide.image_url) {
         cancelButton = <button onClick={this.onClickCancel.bind(this)} className="button--small">Cancel</button>;
       }

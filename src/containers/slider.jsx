@@ -42,7 +42,7 @@ class Slider extends React.Component {
   }
 
   addSlide() {
-    this.setState({ slidesLoading: true });
+    this.setState({ slidesAddLoading: true });
 
     // Add the slide to state only once we
     // have the ID back from the server.
@@ -55,7 +55,7 @@ class Slider extends React.Component {
       let slide = response.data;
       slide.editing = true;
       slides.push(slide);
-      this.setState({ slides: slides, slidesLoading: false });
+      this.setState({ slides: slides, slidesAddLoading: false });
     })
     .catch((error) => {
       console.log(error);
@@ -126,6 +126,7 @@ class Slider extends React.Component {
     .then((response) => {
       slides[slideIndex].image_url = response.data.image_url;
       slides[slideIndex].editing = false;
+      slides[slideIndex].loading = false;
       this.setState({ slides: slides });
 
       this.loadSliderPreview();
@@ -175,9 +176,10 @@ class Slider extends React.Component {
       <div>
         <h1>Slider: {this.state.slider.title}</h1>
         <div className="slider__layout">
-          <div className="slider__layout-child">
+          <div className="slider__layout-child slider__slides">
             <Slides slides={this.state.slides}
                     loading={this.state.slidesLoading}
+                    addLoading={this.state.slidesAddLoading}
                     onClickAddSlide={this.addSlide}
                     onClickSaveSlide={this.saveSlide}
                     onClickEditSlide={this.editSlide}
