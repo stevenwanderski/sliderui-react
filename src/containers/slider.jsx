@@ -2,6 +2,7 @@ import React from 'react';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
 import SliderPreview from 'components/slider-preview';
+import { arrayMove } from 'react-sortable-hoc';
 
 class Slider extends React.Component {
   constructor() {
@@ -16,7 +17,10 @@ class Slider extends React.Component {
     this.saveSlide = this.saveSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
     this.deleteSlide = this.deleteSlide.bind(this);
+    this.cancelSlide = this.cancelSlide.bind(this);
     this.onSliderPreviewMounted = this.onSliderPreviewMounted.bind(this);
+    this.saveSlideImage = this.saveSlideImage.bind(this);
+    this.sortSlides = this.sortSlides.bind(this);
   }
 
   componentDidMount() {
@@ -87,6 +91,14 @@ class Slider extends React.Component {
     this.setState({ slides: slides });
   }
 
+  cancelSlide(id) {
+    let slides = this.state.slides;
+    const slide = slides.find((slide) => slide.id === id);
+    const slideIndex = slides.indexOf(slide);
+    slides[slideIndex].editing = false
+    this.setState({ slides: slides });
+  }
+
   deleteSlide(id) {
     const slides = this.state.slides.filter((slide) => slide.id != id);
     this.setState({ slides: slides });
@@ -100,6 +112,30 @@ class Slider extends React.Component {
       });
   }
 
+  saveSlideImage(id, file) {
+    const formData = new FormData()
+    formData.append('slide[image]', file);
+
+    let slides = this.state.slides;
+    const slide = slides.find((slide) => slide.id === id);
+    const slideIndex = slides.indexOf(slide);
+    slides[slideIndex].loading = true;
+    this.setState({ slides: slides });
+
+    ajax.put(`/slides/${id}`, formData)
+    .then((response) => {
+      slides[slideIndex].image_url = response.data.image_url;
+      slides[slideIndex].editing = false;
+      this.setState({ slides: slides });
+
+      this.loadSliderPreview();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  }
+
   onSliderPreviewMounted() {
     this.loadSliderPreview();
   }
@@ -111,6 +147,23 @@ class Slider extends React.Component {
     const script = document.createElement('script');
     script.src = `${process.env.API_URL}/sliders/${this.props.params.id}`;
     document.querySelector('#script-container').appendChild(script);
+  }
+
+  sortSlides(oldIndex, newIndex) {
+    const slides = arrayMove(this.state.slides, oldIndex, newIndex);
+    this.setState({ slides: slides });
+
+    const data = slides.map((slide, index) => {
+      return { id: slide.id, weight: index };
+    });
+
+    ajax.put(`/slides/collection`, { slides: data })
+    .then((response) => {
+      this.loadSliderPreview();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
 
   render() {
@@ -128,7 +181,10 @@ class Slider extends React.Component {
                     onClickAddSlide={this.addSlide}
                     onClickSaveSlide={this.saveSlide}
                     onClickEditSlide={this.editSlide}
-                    onClickDeleteSlide={this.deleteSlide} />
+                    onClickDeleteSlide={this.deleteSlide}
+                    onClickCancelSlide={this.cancelSlide}
+                    onImageChange={this.saveSlideImage}
+                    onSortEnd={this.sortSlides} />
           </div>
 
           <div className="slider__layout-child">

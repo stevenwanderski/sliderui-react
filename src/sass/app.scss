@@ -63,10 +63,6 @@ button {
   margin: 20px auto;
 }
 
-.slide {
-  margin-bottom: 20px;
-}
-
 .slider__layout {
   display: flex;
   justify-content: space-between;
@@ -78,4 +74,26 @@ button {
 
 .slider-preview {
   padding: 0 20px;
+}
+
+.slide-item {
+  border: solid #ddd 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+
+  &--showing {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.slide-item__preview {
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+}
+
+.slide-item__handle {
+  cursor: move;
 }
