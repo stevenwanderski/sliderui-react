@@ -1,18 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Imprima');
+$primary: rgb(151, 152, 205);
+$white: #fff;
+$black: #333;
 $purple: #a239a2;
 $gray-dark: #666;
+$gray-medium: #999;
+$gray-light: #ddd;
+
+$primary-border-width: 1px;
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica';
+  font-family: 'Poppins';
   font-size: 16px;
   font-weight: normal;
   box-sizing: border-box;
   outline: 0;
 }
 
+body {
+  color: $gray-dark;
+}
+
 h1 {
-  font-size: 20px;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: $gray-dark;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 14px;
+  color: $gray-dark;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
@@ -20,14 +48,19 @@ p {
   margin-bottom: 20px;
 }
 
-input,
+input:not([type="file"]),
 textarea {
   display: block;
-  padding: 10px;
-  border: solid #ccc 1px;
+  padding: 18px;
+  border: solid $gray-light 1px;
   width: 100%;
-  margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 20px;
+  border-radius: 5px;
+  color: $gray-dark;
+}
+
+input[type="file"] {
+  font-size: 14px;
 }
 
 button {
@@ -37,10 +70,38 @@ button {
   cursor: pointer;
   border-radius: 2px;
   margin-right: 10px;
+  background: lighten($primary, 27%);
+  border: solid $primary-border-width lighten($primary, 20%);
+  color: $primary;
 
   &[disabled] {
-    cursor: wait;
+    border-color: $gray-light;
+    color: $gray-light;
+    background: $white;
+    cursor: auto;
   }
+
+  &.loading {
+    cursor: wait;
+    border-color: $gray-light;
+    color: $gray-light;
+  }
+
+  &:not([disabled]):hover {
+    background: lighten($primary, 24%);
+  }
+}
+
+pre {
+  padding: 20px;
+  background: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+code {
+  font-family: 'Monaco';
+  line-height: 24px;
+  font-size: 15px;
 }
 
 .button--large {
@@ -71,29 +132,64 @@ button {
   margin: 20px auto;
 }
 
+.form-row {
+  margin-bottom: 30px;
+}
+
 .slider__layout {
   display: flex;
   justify-content: space-between;
 }
 
-.slider__layout-child {
+.slider__layout-child--full-width {
   width: 100%;
 }
 
+.slider__layout--margin-bottom {
+  margin-bottom: 20px;
+}
+
 .slider__slides {
+  width: 300px;
   flex: 0 0 300px;
   margin-right: 50px;
 }
 
+.slider-new {
+  width: 500px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
 .slider-preview {
   padding: 0 20px;
+  width: 700px;
+  position: relative;
+
+  .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $white;
+    text-align: center;
+    z-index: 99;
+  }
+}
+
+.slider-preview__placeholder {
+  padding: 50px;
+  border: dashed $primary-border-width $gray-light;
+  text-align: center;
 }
 
 .slide-item {
-  border: solid #ddd 1px;
+  border: solid $primary-border-width $gray-light;
   padding: 10px;
   margin-bottom: 10px;
   background: #fff;
+  border-radius: 2px;
 
   &--showing {
     display: flex;
@@ -105,8 +201,22 @@ button {
   width: 70px;
   height: 70px;
   background-size: cover;
+  margin-right: 10px;
+}
+
+.slide-item__content {
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .slide-item__handle {
   cursor: move;
+}
+
+
+.slider-code__callout {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+  margin-bottom: 10px;
 }

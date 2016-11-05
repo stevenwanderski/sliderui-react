@@ -3,14 +3,9 @@ import ImageUploader from 'components/image-uploader';
 import ImagePreview from 'components/image-preview';
 import { SortableHandle } from 'react-sortable-hoc';
 
-const DragHandle = SortableHandle(() => <span className="slide-item__handle">MOVE</span>);
+const DragHandle = SortableHandle(() => <button className="slide-item__handle button--small">&#8597;</button>);
 
 class Slide extends React.Component {
-  onClickSave(e) {
-    e.preventDefault();
-    this.props.onClickSaveSlide(this.props.slide.id, this.refs.content.value);
-  }
-
   onClickEdit(e) {
     e.preventDefault();
     this.props.onClickEditSlide(this.props.slide.id);
@@ -53,7 +48,6 @@ class Slide extends React.Component {
                            slideId={this.props.slide.id} />
           </div>
 
-          <button onClick={this.onClickSave.bind(this)} className="button--small">Save</button>
           <button onClick={this.onClickDelete.bind(this)} className="button--small">Delete</button>
           {cancelButton}
         </div>

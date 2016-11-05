@@ -1,21 +1,22 @@
 import React from 'react';
 import ajax from 'utils/ajax';
 import { browserHistory } from 'react-router'
+import SliderForm from 'components/slider-form';
 const { Component } = React;
 
 class SliderNew extends Component {
   constructor() {
     super();
     this.state = { loading: false };
+    this.saveSlider = this.saveSlider.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  saveSlider(title) {
     this.setState({ loading: true });
 
     const data = {
       slider: {
-        title: this.refs.title.value,
+        title: title,
       }
     }
     ajax.post('/sliders', data)
@@ -29,17 +30,12 @@ class SliderNew extends Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <div>LOADING...</div>;
-    }
-
     return (
-      <form onSubmit={this.onSubmit.bind(this)}>
-        <h1>Give the slider a name:</h1>
-        <input type="text" ref="title" />
-        <button>Create Slider and Add Slides</button>
-      </form>
-    );
+      <div className="slider-new">
+        <SliderForm loading={this.state.loading}
+                    onSubmit={this.saveSlider} />
+      </div>
+    )
   }
 }
 
