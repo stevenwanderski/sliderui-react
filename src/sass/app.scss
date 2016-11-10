@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400|Imprima');
-$primary: rgb(151, 152, 205);
-$white: #fff;
-$black: #333;
-$purple: #a239a2;
-$gray-dark: #666;
-$gray-medium: #999;
-$gray-light: #ddd;
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
 
-$primary-border-width: 1px;
+@import 'variables';
+@import 'button';
+@import 'form';
+@import 'input';
+@import 'label';
+@import 'error';
+@import 'user-toolbar';
 
 * {
   margin: 0;
@@ -48,50 +47,6 @@ p {
   margin-bottom: 20px;
 }
 
-input:not([type="file"]),
-textarea {
-  display: block;
-  padding: 18px;
-  border: solid $gray-light 1px;
-  width: 100%;
-  font-size: 20px;
-  border-radius: 5px;
-  color: $gray-dark;
-}
-
-input[type="file"] {
-  font-size: 14px;
-}
-
-button {
-  color: #fff;
-  padding: 10px 16px;
-  border: 0;
-  cursor: pointer;
-  border-radius: 2px;
-  margin-right: 10px;
-  background: lighten($primary, 27%);
-  border: solid $primary-border-width lighten($primary, 20%);
-  color: $primary;
-
-  &[disabled] {
-    border-color: $gray-light;
-    color: $gray-light;
-    background: $white;
-    cursor: auto;
-  }
-
-  &.loading {
-    cursor: wait;
-    border-color: $gray-light;
-    color: $gray-light;
-  }
-
-  &:not([disabled]):hover {
-    background: lighten($primary, 24%);
-  }
-}
-
 pre {
   padding: 20px;
   background: #f9f9f9;
@@ -104,36 +59,11 @@ code {
   font-size: 15px;
 }
 
-.button--large {
-  font-size: 16px;
-}
-
-.button--small {
-  font-size: 14px;
-  padding: 6px 10px;
-}
-
-.button--gray {
-  background: $gray-dark;
-}
-
-.button--purple {
-  background: $purple;
-}
-
-.button--full-width {
-  width: 100%;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
   padding: 0 20px;
   margin: 20px auto;
-}
-
-.form-row {
-  margin-bottom: 30px;
 }
 
 .slider__layout {

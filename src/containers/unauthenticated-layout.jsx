@@ -1,10 +1,9 @@
 import React from 'react';
-const { Component } = React;
 
-class App extends Component {
+class UnauthenticatedLayout extends React.Component {
   render() {
     return <div className="container">{this.props.children}</div>;
   }
 }
 
-export default App;
+export default UnauthenticatedLayout;

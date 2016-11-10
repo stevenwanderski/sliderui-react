@@ -1,0 +1,23 @@
+input:not([type="file"]):not([type="radio"]),
+textarea {
+  display: block;
+  padding: 10px;
+  border: solid $gray-light 1px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  color: $gray-dark;
+}
+
+input[type="file"] {
+  font-size: 14px;
+}
+
+input[type="radio"] {
+  margin-right: 2px;
+}
+
+.input--large {
+  padding: 18px;
+  font-size: 20px;
+}

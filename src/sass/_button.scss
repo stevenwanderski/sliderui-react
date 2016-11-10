@@ -1,0 +1,49 @@
+.button {
+  color: #fff;
+  padding: 10px 16px;
+  border: 0;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-right: 10px;
+  background: lighten($primary, 27%);
+  border: solid $primary-border-width lighten($primary, 20%);
+  color: $primary;
+
+  &[disabled] {
+    border-color: $gray-light;
+    color: $gray-light;
+    background: $white;
+    cursor: auto;
+  }
+
+  &.loading {
+    cursor: wait;
+    border-color: $gray-light;
+    color: $gray-light;
+  }
+
+  &:not([disabled]):hover {
+    background: lighten($primary, 24%);
+  }
+}
+
+.button--large {
+  font-size: 16px;
+}
+
+.button--small {
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.button--gray {
+  background: $gray-dark;
+}
+
+.button--purple {
+  background: $purple;
+}
+
+.button--full-width {
+  width: 100%;
+}

@@ -33,7 +33,7 @@ var config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'my-index.ejs'
+      template: 'index-template.ejs'
     }),
     new webpack.DefinePlugin({
       'process.env':{

@@ -162,14 +162,14 @@ class Slider extends React.Component {
             <h1>Slider: {this.state.slider.title}</h1>
           </div>
           <div className="slider__layout-child">
-            <Link to={`/slider/${this.props.params.id}/code`}>Save and Get Code</Link>
+            <Link to={`/slider/${this.props.params.id}/${this.props.params.temp_user_id}/code`}>Save and Get Code</Link>
           </div>
         </div>
         <div className="slider__layout">
           <div className="slider__layout-child slider__slides">
             <h3>Slides</h3>
             <Slides slides={this.state.slides}
-                    loading={this.state.slidesLoading}
+              loading={this.state.slidesLoading}
                     addLoading={this.state.slidesAddLoading}
                     onClickAddSlide={this.addSlide}
                     onClickEditSlide={this.editSlide}

@@ -21,7 +21,7 @@ class SliderNew extends Component {
     }
     ajax.post('/sliders', data)
       .then((response) => {
-        browserHistory.push(`/slider/${response.data.id}`);
+        browserHistory.push(`/slider/${response.data.id}/${response.data.temp_user_id}`);
       })
       .catch((error) => {
         this.setState({ loading: false });
