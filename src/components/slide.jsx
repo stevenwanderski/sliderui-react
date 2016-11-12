@@ -3,7 +3,7 @@ import ImageUploader from 'components/image-uploader';
 import ImagePreview from 'components/image-preview';
 import { SortableHandle } from 'react-sortable-hoc';
 
-const DragHandle = SortableHandle(() => <button className="slide-item__handle button--small">&#8597;</button>);
+const DragHandle = SortableHandle(() => <div className="slide-item__handle button--small">&#8597;</div>);
 
 class Slide extends React.Component {
   onClickEdit(e) {
@@ -36,7 +36,7 @@ class Slide extends React.Component {
 
       let cancelButton;
       if (this.props.slide.image_url) {
-        cancelButton = <button onClick={this.onClickCancel.bind(this)} className="button--small">Cancel</button>;
+        cancelButton = <a href="" onClick={this.onClickCancel.bind(this)} className="button--small">Cancel</a>;
       }
 
       return (
@@ -48,7 +48,7 @@ class Slide extends React.Component {
                            slideId={this.props.slide.id} />
           </div>
 
-          <button onClick={this.onClickDelete.bind(this)} className="button--small">Delete</button>
+          <a href="" onClick={this.onClickDelete.bind(this)} className="button--small">Delete</a>
           {cancelButton}
         </div>
       );
@@ -61,7 +61,7 @@ class Slide extends React.Component {
         </div>
 
         <div className="slide-item__child slide-item__controls">
-          <button onClick={this.onClickEdit.bind(this)} className="button--small">Edit</button>
+          <a href="" onClick={this.onClickEdit.bind(this)} className="button--small">Edit</a>
           <DragHandle />
         </div>
       </div>

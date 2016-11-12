@@ -23,7 +23,7 @@ class Authentication extends React.Component {
     ajax.post(url, formValues)
     .then((response) => {
       localStorage.setItem('token', response.data.token);
-      browserHistory.push('/user/sliders');
+      browserHistory.push('/app/sliders');
     })
     .catch((error) => {
       this.setState({ authenticationLoading: false });

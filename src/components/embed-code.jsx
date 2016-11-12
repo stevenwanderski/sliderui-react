@@ -15,4 +15,8 @@ class EmbedCode extends React.Component {
   }
 }
 
+EmbedCode.propTypes = {
+  sliderId: React.PropTypes.string.isRequired
+}
+
 export default EmbedCode;

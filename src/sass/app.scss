@@ -7,6 +7,7 @@
 @import 'label';
 @import 'error';
 @import 'user-toolbar';
+@import 'container';
 
 * {
   margin: 0;
@@ -18,8 +19,18 @@
   outline: 0;
 }
 
+hr {
+  border: 0;
+  border-bottom: solid 1px #eee;
+  margin: 10px 0;
+}
+
 body {
   color: $gray-dark;
+
+  &.ReactModal__Body--open {
+    overflow: hidden;
+  }
 }
 
 h1 {
@@ -57,13 +68,6 @@ code {
   font-family: 'Monaco';
   line-height: 24px;
   font-size: 15px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-  margin: 20px auto;
 }
 
 .slider__layout {

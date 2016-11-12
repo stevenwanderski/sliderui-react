@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+
+  &--app {
+    display: flex;
+  }
+
+  &__child--main {
+    padding: 20px 40px;
+  }
+
+  &__child--toolbar {
+    flex: 0 0 200px;
+    background: #f9f9f9;
+    padding: 20px;
+  }
+}

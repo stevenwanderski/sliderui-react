@@ -30,13 +30,17 @@ class AuthenticatedLayout extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <UserToolbar
-          email={this.state.user.email}
-          loading={this.state.userLoading}
-          onClickLogout={this.logout} />
+      <div className="container container--app">
+        <div className="container__child container__child--toolbar">
+          <UserToolbar
+            email={this.state.user.email}
+            loading={this.state.userLoading}
+            onClickLogout={this.logout} />
+        </div>
 
-        {this.props.children}
+        <div className="container__child container__child--main">
+          {this.props.children}
+        </div>
       </div>
     );
   }

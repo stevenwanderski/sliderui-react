@@ -1,5 +1,6 @@
 import React from 'react';
 import md5 from 'js-md5';
+import { Link } from 'react-router';
 
 class UserToolbar extends React.Component {
   constructor() {
@@ -19,12 +20,18 @@ class UserToolbar extends React.Component {
 
     return (
       <div className='user-toolbar'>
-        <div className='user-toolbar__email'>
+        <div className="user-toolbar__row">
           {/* <img src={`https://www.gravatar.com/avatar/${md5('this.props.email')}`} /> {this.props.email} */}
           {this.props.email}
         </div>
-        <div className='user-toolbar__logout'>
+        <div className="user-toolbar__row user-toolbar__row--logout">
           <a href='' onClick={this.onClickLogout}>Logout</a>
+        </div>
+
+        <hr />
+
+        <div className="user-toolbar__row">
+          <Link to='/app/sliders'>Sliders</Link>
         </div>
       </div>
     )

@@ -13,6 +13,7 @@ import SliderNew from 'containers/slider-new';
 import Slider from 'containers/slider';
 import SliderCode from 'containers/slider-code';
 import SliderListContainer from 'containers/slider-list-container';
+import EditSliderContainer from 'containers/app/edit-slider-container';
 import Authentication from 'containers/authentication';
 
 // SASS
@@ -33,7 +34,7 @@ render((
 
     <Route path="/app" component={AppLayout}>
       <Route path="sliders" component={SliderListContainer}/>
-      <Route path="slider/:id/edit" component={SliderListContainer}/>
+      <Route path="slider/:id/edit" component={EditSliderContainer}/>
     </Route>
   </Router>
 ), document.getElementById('app'));

@@ -5,6 +5,7 @@ import SliderPreview from 'components/slider-preview';
 import EmbedCode from 'components/embed-code';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
+import Modal from 'react-modal';
 
 class EditSliderContainer extends React.Component {
   constructor() {
@@ -14,7 +15,8 @@ class EditSliderContainer extends React.Component {
       slides: [],
       sliderLoading: true,
       slidesLoading: true,
-      sliderPreviewLoading: true
+      sliderPreviewLoading: true,
+      embedCodeShowing: false
     };
     this.addSlide = this.addSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
@@ -141,17 +143,19 @@ class EditSliderContainer extends React.Component {
     });
   }
 
-  showEmbedCode() {
+  showEmbedCode(e) {
+    e.preventDefault();
     this.setState({ embedCodeShowing: true });
   }
 
-  hideEmbedCode() {
+  hideEmbedCode(e) {
+    e.preventDefault();
     this.setState({ embedCodeShowing: false });
   }
 
   render() {
     if (this.state.sliderLoading) {
-      return <div>LOADING...</div>;
+      return <div>Loading...</div>;
     }
 
     return (
@@ -161,7 +165,7 @@ class EditSliderContainer extends React.Component {
             <h1>Slider: {this.state.slider.title}</h1>
           </div>
           <div className="slider__layout-child">
-            <Link to={`/temp/slider/${this.props.params.id}/${this.props.params.temp_user_id}/code`}>Save and Get Code</Link>
+            <a href="" onClick={this.showEmbedCode}>Get Code</a>
           </div>
         </div>
         <div className="slider__layout">
@@ -186,6 +190,11 @@ class EditSliderContainer extends React.Component {
                            onSliderPreviewMounted={this.loadSliderPreview} />
           </div>
         </div>
+
+        <Modal isOpen={this.state.embedCodeShowing}>
+          <div><a href="" onClick={this.hideEmbedCode}>Close</a></div>
+          <EmbedCode sliderId={this.props.params.id} />
+        </Modal>
       </div>
     );
   }
