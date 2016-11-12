@@ -26,9 +26,9 @@ class SliderForm extends React.Component {
   render() {
     let button;
     if (this.props.loading) {
-      button = <button disabled className="loading">Creating...</button>;
+      button = <button disabled className="button loading">Creating...</button>;
     } else {
-      button = <button disabled={this.state.disabled}>Create Slider and Add Slides</button>
+      button = <button disabled={this.state.disabled} className="button">Create Slider and Add Slides</button>
     }
 
     return (

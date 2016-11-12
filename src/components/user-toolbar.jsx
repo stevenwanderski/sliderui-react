@@ -20,7 +20,8 @@ class UserToolbar extends React.Component {
     return (
       <div className='user-toolbar'>
         <div className='user-toolbar__email'>
-          <img src={`https://www.gravatar.com/avatar/${md5('this.props.email')}`} /> {this.props.email}
+          {/* <img src={`https://www.gravatar.com/avatar/${md5('this.props.email')}`} /> {this.props.email} */}
+          {this.props.email}
         </div>
         <div className='user-toolbar__logout'>
           <a href='' onClick={this.onClickLogout}>Logout</a>

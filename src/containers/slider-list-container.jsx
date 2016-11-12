@@ -10,7 +10,10 @@ class SliderListContainer extends React.Component {
   }
 
   componentDidMount() {
-
+    ajax.get('/user_sliders')
+    .then((response) => {
+      this.setState({ sliders: response.data });
+    });
   }
 
   render() {

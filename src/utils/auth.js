@@ -1,15 +1,17 @@
 import ajax from 'utils/ajax';
 
-export default {
-  loggedIn() {
-    return !!localStorage.getItem('token');
-  },
+export function loggedIn() {
+  return !!localStorage.getItem('token');
+}
 
-  currentUser() {
-    return ajax.get('/user');
-  },
+export function currentUser() {
+  return ajax.get('/user');
+}
 
-  logout() {
-    localStorage.removeItem('token');
-  }
+export function login(token) {
+  localStorage.setItem('token', token);
+}
+
+export function logout() {
+  localStorage.removeItem('token');
 }

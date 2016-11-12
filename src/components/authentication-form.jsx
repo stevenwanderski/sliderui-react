@@ -49,10 +49,9 @@ class AuthenticationForm extends React.Component {
       submitText = 'Loading...';
     }
 
-    return (
-      <form className="form--auth" onSubmit={this.onSubmit}>
-        {error}
-
+    let authTypeControls;
+    if (!this.props.hideAuthType) {
+      authTypeControls = (
         <div className="form-row">
           <label className="label--radio">
             <input type="radio" name="authType" value="existing" onChange={this.onInputChange} defaultChecked={true} /> Existing User
@@ -61,6 +60,13 @@ class AuthenticationForm extends React.Component {
             <input type="radio" name="authType" value="new" onChange={this.onInputChange} /> New User
           </label>
         </div>
+      )
+    }
+
+    return (
+      <form className="form--auth" onSubmit={this.onSubmit}>
+        {error}
+        {authTypeControls}
 
         <div className="form-row">
           <input type="text" name="email" placeholder="email" onChange={this.onInputChange} />
@@ -81,6 +87,7 @@ class AuthenticationForm extends React.Component {
 AuthenticationForm.propTypes = {
   onSubmit: React.PropTypes.func.isRequired,
   loading: React.PropTypes.bool,
+  hideAuthType: React.PropTypes.bool,
   errorMessage: React.PropTypes.string
 }
 

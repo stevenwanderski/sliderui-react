@@ -6,7 +6,7 @@ import EmbedCode from 'components/embed-code';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
 
-class Slider extends React.Component {
+class EditSliderContainer extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,8 +14,7 @@ class Slider extends React.Component {
       slides: [],
       sliderLoading: true,
       slidesLoading: true,
-      sliderPreviewLoading: true,
-      embedCodeShowing: false
+      sliderPreviewLoading: true
     };
     this.addSlide = this.addSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
@@ -152,7 +151,7 @@ class Slider extends React.Component {
 
   render() {
     if (this.state.sliderLoading) {
-      return <div>Loading...</div>;
+      return <div>LOADING...</div>;
     }
 
     return (
@@ -162,31 +161,29 @@ class Slider extends React.Component {
             <h1>Slider: {this.state.slider.title}</h1>
           </div>
           <div className="slider__layout-child">
-            <Link to={`/temp/slider/${this.props.params.id}/code`}>Save and Get Code</Link>
+            <Link to={`/temp/slider/${this.props.params.id}/${this.props.params.temp_user_id}/code`}>Save and Get Code</Link>
           </div>
         </div>
         <div className="slider__layout">
           <div className="slider__layout-child slider__slides">
             <h3>Slides</h3>
-            <Slides
-              slides={this.state.slides}
+            <Slides slides={this.state.slides}
               loading={this.state.slidesLoading}
-              addLoading={this.state.slidesAddLoading}
-              onClickAddSlide={this.addSlide}
-              onClickEditSlide={this.editSlide}
-              onClickDeleteSlide={this.deleteSlide}
-              onClickCancelSlide={this.cancelSlide}
-              onImageChange={this.saveSlideImage}
-              onSortEnd={this.sortSlides} />
+                    addLoading={this.state.slidesAddLoading}
+                    onClickAddSlide={this.addSlide}
+                    onClickEditSlide={this.editSlide}
+                    onClickDeleteSlide={this.deleteSlide}
+                    onClickCancelSlide={this.cancelSlide}
+                    onImageChange={this.saveSlideImage}
+                    onSortEnd={this.sortSlides} />
           </div>
 
           <div className="slider__layout-child slider__layout-child--full-width">
             <h3>Preview</h3>
-            <SliderPreview
-              sliderId={this.props.params.id}
-              slides={this.state.slides}
-              loading={this.state.sliderPreviewLoading}
-              onSliderPreviewMounted={this.loadSliderPreview} />
+            <SliderPreview sliderId={this.props.params.id}
+                           slides={this.state.slides}
+                           loading={this.state.sliderPreviewLoading}
+                           onSliderPreviewMounted={this.loadSliderPreview} />
           </div>
         </div>
       </div>
@@ -194,4 +191,4 @@ class Slider extends React.Component {
   }
 }
 
-export default Slider;
+export default EditSliderContainer;

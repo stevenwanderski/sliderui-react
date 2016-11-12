@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import ajax from 'utils/ajax';
-import auth from 'utils/auth';
+import { logout } from 'utils/auth';
 import UserToolbar from 'components/user-toolbar';
 
 class AuthenticatedLayout extends React.Component {
@@ -24,7 +24,7 @@ class AuthenticatedLayout extends React.Component {
   }
 
   logout() {
-    auth.logout();
+    logout();
     browserHistory.push('/auth');
   }
 
