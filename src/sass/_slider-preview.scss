@@ -1,0 +1,22 @@
+.slider-preview {
+  padding: 0 20px;
+  width: 800px;
+  position: relative;
+
+  .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $white;
+    text-align: center;
+    z-index: 99;
+  }
+}
+
+.slider-preview__placeholder {
+  padding: 50px;
+  border: dashed $primary-border-width $gray-light;
+  text-align: center;
+}

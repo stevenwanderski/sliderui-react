@@ -7,16 +7,13 @@ import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 
-class EditSliderContainer extends React.Component {
+class SliderSettingsContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      slider: null,
       slides: [],
-      sliderLoading: true,
       slidesLoading: true,
       sliderPreviewLoading: true,
-      embedCodeShowing: false
     };
     this.addSlide = this.addSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
@@ -24,25 +21,15 @@ class EditSliderContainer extends React.Component {
     this.cancelSlide = this.cancelSlide.bind(this);
     this.saveSlideImage = this.saveSlideImage.bind(this);
     this.sortSlides = this.sortSlides.bind(this);
-    this.showEmbedCode = this.showEmbedCode.bind(this);
-    this.hideEmbedCode = this.hideEmbedCode.bind(this);
-    this.loadSliderPreview = this.loadSliderPreview.bind(this);
   }
 
   componentDidMount() {
-    ajax.get(`/sliders/${this.props.params.id}`)
-      .then((response) => {
-        this.setState({ slider: response.data, sliderLoading: false });
-      });
-
-    ajax.get(`/sliders/${this.props.params.id}/slides`)
+    ajax.get(`/sliders/${this.props.slider.id}/slides`)
       .then((response) => {
         this.setState({
           slides: response.data,
           slidesLoading: false,
-          sliderPreviewLoading: false
         });
-        this.loadSliderPreview();
       });
   }
 
@@ -52,7 +39,7 @@ class EditSliderContainer extends React.Component {
     // Add the slide to state only once we
     // have the ID back from the server.
     ajax.post(`/slides`, {
-      slider_id: this.props.params.id,
+      slider_id: this.props.slider.id,
       weight: this.state.slides.length
     })
     .then((response) => {
@@ -106,27 +93,7 @@ class EditSliderContainer extends React.Component {
       slides[slideIndex].editing = false;
       slides[slideIndex].loading = false;
       this.setState({ slides: slides });
-
-      this.loadSliderPreview();
     });
-  }
-
-  loadSliderPreview() {
-    if (!document.querySelector(`[data-slider-id="${this.props.params.id}"]`)) {
-      return;
-    }
-
-    this.setState({ sliderPreviewLoading: true });
-
-    document.querySelector(`[data-slider-id="${this.props.params.id}"]`).innerHTML = '';
-    document.querySelector('#script-container').innerHTML = '';
-
-    const script = document.createElement('script');
-    script.src = `${process.env.API_URL}/sliders/${this.props.params.id}`;
-    script.onload = () => {
-      this.setState({ sliderPreviewLoading: false });
-    }
-    document.querySelector('#script-container').appendChild(script);
   }
 
   sortSlides(oldIndex, newIndex) {
@@ -137,67 +104,38 @@ class EditSliderContainer extends React.Component {
       return { id: slide.id, weight: index };
     });
 
-    ajax.put(`/slides/collection`, { slides: data })
-    .then((response) => {
-      this.loadSliderPreview();
-    });
-  }
-
-  showEmbedCode(e) {
-    e.preventDefault();
-    this.setState({ embedCodeShowing: true });
-  }
-
-  hideEmbedCode(e) {
-    e.preventDefault();
-    this.setState({ embedCodeShowing: false });
+    ajax.put(`/slides/collection`, { slides: data });
   }
 
   render() {
-    if (this.state.sliderLoading) {
+    if (this.state.slidesLoading) {
       return <div>Loading...</div>;
     }
 
     return (
       <div>
-        <div className="slider__layout slider__layout--margin-bottom">
-          <div className="slider__layout-child">
-            <h1>Slider: {this.state.slider.title}</h1>
-          </div>
-          <div className="slider__layout-child">
-            <a href="" onClick={this.showEmbedCode}>Get Code</a>
-          </div>
-        </div>
         <div className="slider__layout">
           <div className="slider__layout-child slider__slides">
             <h3>Slides</h3>
-            <Slides slides={this.state.slides}
+            <Slides
+              slides={this.state.slides}
               loading={this.state.slidesLoading}
-                    addLoading={this.state.slidesAddLoading}
-                    onClickAddSlide={this.addSlide}
-                    onClickEditSlide={this.editSlide}
-                    onClickDeleteSlide={this.deleteSlide}
-                    onClickCancelSlide={this.cancelSlide}
-                    onImageChange={this.saveSlideImage}
-                    onSortEnd={this.sortSlides} />
+              addLoading={this.state.slidesAddLoading}
+              onClickAddSlide={this.addSlide}
+              onClickEditSlide={this.editSlide}
+              onClickDeleteSlide={this.deleteSlide}
+              onClickCancelSlide={this.cancelSlide}
+              onImageChange={this.saveSlideImage}
+              onSortEnd={this.sortSlides} />
           </div>
 
           <div className="slider__layout-child slider__layout-child--full-width">
-            <h3>Preview</h3>
-            <SliderPreview sliderId={this.props.params.id}
-                           slides={this.state.slides}
-                           loading={this.state.sliderPreviewLoading}
-                           onSliderPreviewMounted={this.loadSliderPreview} />
+            <h3>Settings</h3>
           </div>
         </div>
-
-        <Modal isOpen={this.state.embedCodeShowing}>
-          <div><a href="" onClick={this.hideEmbedCode}>Close</a></div>
-          <EmbedCode sliderId={this.props.params.id} />
-        </Modal>
       </div>
     );
   }
 }
 
-export default EditSliderContainer;
+export default SliderSettingsContainer;

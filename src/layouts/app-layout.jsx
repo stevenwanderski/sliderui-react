@@ -4,7 +4,7 @@ import ajax from 'utils/ajax';
 import { logout } from 'utils/auth';
 import UserToolbar from 'components/user-toolbar';
 
-class AuthenticatedLayout extends React.Component {
+class AppLayout extends React.Component {
   constructor() {
     super();
 
@@ -46,4 +46,4 @@ class AuthenticatedLayout extends React.Component {
   }
 }
 
-export default AuthenticatedLayout;
+export default AppLayout;

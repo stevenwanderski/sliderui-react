@@ -1,0 +1,57 @@
+.progress-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px 0;
+  margin: 0 auto;
+  // border-bottom: solid 1px $gray-lightest;
+
+  &__steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__step {
+    width: 33%;
+    font-size: 12px;
+    color: $gray-medium;
+    text-align: center;
+  }
+
+  &__track {
+    margin: 0 auto;
+    width: 70%;
+    height: 7px;
+    border-radius: 40px;
+    background: $gray-lightest;
+  }
+
+  &__status {
+    height: 100%;
+    border-radius: 40px;
+    background: $primary;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: -8px;
+      height: 20px;
+      width: 20px;
+      border: solid $white 2px;
+      background: $primary;
+      border-radius: 20px;
+    }
+  }
+
+  .completed {
+    color: lighten($primary, 10%);
+  }
+  .active {
+    color: $primary;
+  }
+  .not-completed {
+    color: $gray-light;
+  }
+}

@@ -3,9 +3,9 @@ import ajax from 'utils/ajax';
 import { loggedIn, login } from 'utils/auth';
 import { browserHistory } from 'react-router'
 import SliderForm from 'components/slider-form';
-const { Component } = React;
+import ProgressBar from 'components/progress-bar';
 
-class SliderNew extends Component {
+class SliderNew extends React.Component {
   constructor() {
     super();
     this.state = { loading: false };
@@ -47,8 +47,10 @@ class SliderNew extends Component {
   render() {
     return (
       <div className="slider-new">
-        <SliderForm loading={this.state.loading}
-                    onSubmit={this.saveSlider} />
+        <ProgressBar activeStep={0} />
+        <SliderForm
+          loading={this.state.loading}
+          onSubmit={this.saveSlider} />
       </div>
     )
   }

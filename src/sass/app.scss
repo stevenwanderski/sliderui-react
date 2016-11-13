@@ -8,6 +8,11 @@
 @import 'error';
 @import 'user-toolbar';
 @import 'container';
+@import 'nav';
+@import 'slider-layout';
+@import 'slider-preview';
+@import 'authentication';
+@import 'progress-bar';
 
 * {
   margin: 0;
@@ -34,7 +39,7 @@ body {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 300;
   margin-bottom: 20px;
   color: $gray-dark;
@@ -52,6 +57,15 @@ h3 {
   color: $gray-dark;
   text-transform: uppercase;
   margin-bottom: 20px;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 p {
@@ -83,6 +97,10 @@ code {
   margin-bottom: 20px;
 }
 
+.slider__layout--center {
+  justify-content: center;
+}
+
 .slider__slides {
   width: 300px;
   flex: 0 0 300px;
@@ -91,30 +109,7 @@ code {
 
 .slider-new {
   width: 500px;
-  margin: 40px auto 0;
-  text-align: center;
-}
-
-.slider-preview {
-  padding: 0 20px;
-  width: 700px;
-  position: relative;
-
-  .loading {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: $white;
-    text-align: center;
-    z-index: 99;
-  }
-}
-
-.slider-preview__placeholder {
-  padding: 50px;
-  border: dashed $primary-border-width $gray-light;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -146,7 +141,6 @@ code {
 .slide-item__handle {
   cursor: move;
 }
-
 
 .slider-code__callout {
   font-size: 24px;

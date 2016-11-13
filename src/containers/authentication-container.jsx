@@ -3,7 +3,7 @@ import AuthenticationForm from 'components/authentication-form';
 import { browserHistory } from 'react-router'
 import ajax from 'utils/ajax';
 
-class Authentication extends React.Component {
+class AuthenticationContainer extends React.Component {
   constructor() {
     super();
 
@@ -26,12 +26,12 @@ class Authentication extends React.Component {
       browserHistory.push('/app/sliders');
     })
     .catch((error) => {
-      this.setState({ authenticationLoading: false });
+      this.setState({ loading: false });
 
       if (error.response) {
-        this.setState({ authenticationError: error.response.data.errors });
+        this.setState({ errorMessage: error.response.data.errors });
       } else {
-        this.setState({ authenticationError: error.message });
+        this.setState({ errorMessage: error.message });
       }
     });
   }
@@ -49,4 +49,4 @@ class Authentication extends React.Component {
   }
 }
 
-export default Authentication;
+export default AuthenticationContainer;

@@ -6,15 +6,19 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 import HomeLayout from 'layouts/home-layout';
 import TempLayout from 'layouts/temp-layout';
 import AppLayout from 'layouts/app-layout';
+import SliderLayout from 'layouts/slider-layout';
 
 // Containers
 import HomeContainer from 'containers/home-container';
+import AuthenticationContainer from 'containers/authentication-container';
 import SliderNew from 'containers/slider-new';
 import Slider from 'containers/slider';
 import SliderCode from 'containers/slider-code';
 import SliderListContainer from 'containers/slider-list-container';
-import EditSliderContainer from 'containers/app/edit-slider-container';
-import Authentication from 'containers/authentication';
+
+import SliderSettingsContainer from 'containers/app/slider-settings-container';
+import SliderPreviewContainer from 'containers/app/slider-preview-container';
+import SliderCodeContainer from 'containers/app/slider-code-container';
 
 // SASS
 import AppCSS from 'sass/app';
@@ -23,7 +27,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={HomeLayout}>
       <IndexRoute component={HomeContainer} />
-      <Route path="/auth" component={Authentication}/>
+      <Route path="/auth" component={AuthenticationContainer}/>
     </Route>
 
     <Route path="/temp" component={TempLayout}>
@@ -34,7 +38,11 @@ render((
 
     <Route path="/app" component={AppLayout}>
       <Route path="sliders" component={SliderListContainer}/>
-      <Route path="slider/:id/edit" component={EditSliderContainer}/>
+      <Route path="slider/:id" component={SliderLayout}>
+        <Route path="settings" component={SliderSettingsContainer}/>
+        <Route path="preview" component={SliderPreviewContainer}/>
+        <Route path="code" component={SliderCodeContainer}/>
+      </Route>
     </Route>
   </Router>
 ), document.getElementById('app'));

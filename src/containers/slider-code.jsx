@@ -1,6 +1,7 @@
 import React from 'react';
 import ajax from 'utils/ajax';
 import EmbedCode from 'components/embed-code';
+import ProgressBar from 'components/progress-bar';
 import AuthenticationForm from 'components/authentication-form';
 import { browserHistory } from 'react-router';
 
@@ -48,6 +49,8 @@ class SliderCode extends React.Component {
 
     return (
       <div className="slider-code">
+        <ProgressBar activeStep={2} />
+
         <h1>Here is the code:</h1>
         <EmbedCode sliderId={this.state.slider.id} />
 

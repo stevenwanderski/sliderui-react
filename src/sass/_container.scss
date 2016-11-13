@@ -5,8 +5,13 @@
     display: flex;
   }
 
+  &--temp {
+    padding: 0 40px 20px;
+  }
+
   &__child--main {
     padding: 20px 40px;
+    width: 100%;
   }
 
   &__child--toolbar {

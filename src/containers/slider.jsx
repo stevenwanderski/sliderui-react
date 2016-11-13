@@ -3,6 +3,7 @@ import ajax from 'utils/ajax';
 import Slides from 'components/slides';
 import SliderPreview from 'components/slider-preview';
 import EmbedCode from 'components/embed-code';
+import ProgressBar from 'components/progress-bar';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
 
@@ -156,7 +157,10 @@ class Slider extends React.Component {
     }
 
     return (
-      <div>
+      <div className="slider-edit-temp">
+        <div className="slider__layout slider__layout--margin-bottom slider__layout--center">
+          <ProgressBar activeStep={1} />
+        </div>
         <div className="slider__layout slider__layout--margin-bottom">
           <div className="slider__layout-child">
             <h1>Slider: {this.state.slider.title}</h1>
