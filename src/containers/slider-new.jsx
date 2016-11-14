@@ -37,7 +37,7 @@ class SliderNew extends React.Component {
     const data = { slider: { title: title } };
     return ajax.post('/sliders', data)
       .then((response) => {
-        browserHistory.push(`/temp/slider/${response.data.id}`);
+        browserHistory.push(`/temp/slider/${response.data.id}/settings`);
       })
       .catch((error) => {
         this.setState({ loading: false });

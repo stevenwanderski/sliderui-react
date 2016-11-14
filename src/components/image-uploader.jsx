@@ -13,19 +13,26 @@ class ImageUploader extends React.Component {
   }
 
   render() {
-    let preview;
+    const fileInputId = `slide-image-${this.props.slideId}`;
 
+    let preview;
     if (this.props.imageUrl) {
       preview = <img src={this.state.previewSrc} />;
     }
 
     return (
-      <div>
+      <div className="image-uploader">
         {preview}
-        <input type="file" ref="image" onChange={this.onChange} />
+        <input type="file" id={fileInputId} ref="image" onChange={this.onChange} className="image-uploader__file" />
+        <label htmlFor={fileInputId} className="image-uploader__label">Select Image</label>
       </div>
     )
   }
+}
+
+ImageUploader.propTypes = {
+  slideId: React.PropTypes.string,
+  onImageChange: React.PropTypes.func
 }
 
 export default ImageUploader;

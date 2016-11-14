@@ -28,9 +28,9 @@ class Slides extends React.Component {
 
     let button;
     if (this.props.addLoading) {
-      button = <button className="button button--full-width" disabled>Loading...</button>;
+      button = <button disabled>Loading...</button>;
     } else {
-      button = <button onClick={this.props.onClickAddSlide} className="button button--full-width">Add Slide</button>;
+      button = <button onClick={this.props.onClickAddSlide}>Add Slide</button>;
     }
 
     const slides = this.props.slides.map((slide, index) => {

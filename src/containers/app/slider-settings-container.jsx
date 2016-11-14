@@ -1,11 +1,9 @@
 import React from 'react';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
-import SliderPreview from 'components/slider-preview';
-import EmbedCode from 'components/embed-code';
+import SliderSettingsForm from 'components/slider-settings-form';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
-import Modal from 'react-modal';
 
 class SliderSettingsContainer extends React.Component {
   constructor() {
@@ -13,7 +11,12 @@ class SliderSettingsContainer extends React.Component {
     this.state = {
       slides: [],
       slidesLoading: true,
-      sliderPreviewLoading: true,
+      sliderPreviewLoading: true
+      // sliderSettingsFormLoading: false,
+      // sliderSettingsFormValues: {
+      //   mode: 'horizontal',
+      //   speed: '500'
+      // }
     };
     this.addSlide = this.addSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
@@ -28,7 +31,7 @@ class SliderSettingsContainer extends React.Component {
       .then((response) => {
         this.setState({
           slides: response.data,
-          slidesLoading: false,
+          slidesLoading: false
         });
       });
   }
@@ -107,31 +110,59 @@ class SliderSettingsContainer extends React.Component {
     ajax.put(`/slides/collection`, { slides: data });
   }
 
+  // saveSettings(formValues) {
+  //   this.setState({ sliderSettingsFormLoading: true });
+  //
+  //   const data = {
+  //     slider: {
+  //       settings: formValues
+  //     }
+  //   }
+  //
+  //   ajax.put(`/sliders/${this.props.slider.id}`, data)
+  //   .then((response) => {
+  //     this.setState({ sliderSettingsFormLoading: false });
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     this.setState({ sliderSettingsFormLoading: false });
+  //   })
+  // }
+
+  // onSliderSettingsFormInputChange(name, value) {
+  //   let inputState = this.state.sliderSettingsFormValues;
+  //   inputState[name] = value;
+  //   this.setState({ sliderSettingsFormValues: inputState });
+  // }
+
   render() {
     if (this.state.slidesLoading) {
       return <div>Loading...</div>;
     }
 
     return (
-      <div>
-        <div className="slider__layout">
-          <div className="slider__layout-child slider__slides">
-            <h3>Slides</h3>
-            <Slides
-              slides={this.state.slides}
-              loading={this.state.slidesLoading}
-              addLoading={this.state.slidesAddLoading}
-              onClickAddSlide={this.addSlide}
-              onClickEditSlide={this.editSlide}
-              onClickDeleteSlide={this.deleteSlide}
-              onClickCancelSlide={this.cancelSlide}
-              onImageChange={this.saveSlideImage}
-              onSortEnd={this.sortSlides} />
-          </div>
+      <div className="slider-settings flex-container">
+        <div className="slider-settings__slides">
+          <h3>Slides</h3>
+          <Slides
+            slides={this.state.slides}
+            loading={this.state.slidesLoading}
+            addLoading={this.state.slidesAddLoading}
+            onClickAddSlide={this.addSlide}
+            onClickEditSlide={this.editSlide}
+            onClickDeleteSlide={this.deleteSlide}
+            onClickCancelSlide={this.cancelSlide}
+            onImageChange={this.saveSlideImage}
+            onSortEnd={this.sortSlides} />
+        </div>
 
-          <div className="slider__layout-child slider__layout-child--full-width">
-            <h3>Settings</h3>
-          </div>
+        <div className="slider-settings__child">
+          <h3>Settings</h3>
+          <SliderSettingsForm
+            slider={this.props.slider}
+            onSubmit={this.props.onSliderSettingsFormSubmit}
+            onInputChange={this.props.onSliderSettingsFormInputChange}
+            loading={this.props.sliderSettingsFormLoading} />
         </div>
       </div>
     );

@@ -28,7 +28,7 @@ class Slide extends React.Component {
         return (
           <div className="slide-item slide-item--editing">
             <div className="slide-item__content">
-              LOADING...
+              Loading...
             </div>
           </div>
         )

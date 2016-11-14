@@ -26,7 +26,6 @@ class ProgressBar extends React.Component {
     }
 
     const style = { width: statusPercent };
-    console.log(style);
 
     return (
       <div className="progress-bar">

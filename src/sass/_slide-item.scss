@@ -1,0 +1,28 @@
+.slide-item {
+  border: solid $primary-border-width $gray-light;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 2px;
+
+  &--showing {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.slide-item__preview {
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.slide-item__content {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.slide-item__handle {
+  cursor: move;
+}

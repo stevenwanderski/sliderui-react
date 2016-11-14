@@ -1,109 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
 
 @import 'variables';
+@import 'base';
 @import 'button';
 @import 'form';
 @import 'input';
 @import 'label';
 @import 'error';
-@import 'user-toolbar';
+@import 'flex-container';
 @import 'container';
+@import 'user-toolbar';
 @import 'nav';
 @import 'slider-layout';
+@import 'slider-settings';
 @import 'slider-preview';
+@import 'slide-item';
 @import 'authentication';
 @import 'progress-bar';
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins';
-  font-size: 16px;
-  font-weight: normal;
-  box-sizing: border-box;
-  outline: 0;
-}
-
-hr {
-  border: 0;
-  border-bottom: solid 1px #eee;
-  margin: 10px 0;
-}
-
-body {
-  color: $gray-dark;
-
-  &.ReactModal__Body--open {
-    overflow: hidden;
-  }
-}
-
-h1 {
-  font-size: 28px;
-  font-weight: 300;
-  margin-bottom: 20px;
-  color: $gray-dark;
-}
-
-h2 {
-  font-size: 28px;
-  line-height: 40px;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-h3 {
-  font-size: 14px;
-  color: $gray-dark;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-a {
-  color: $primary;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-p {
-  margin-bottom: 20px;
-}
-
-pre {
-  padding: 20px;
-  background: #f9f9f9;
-  margin-bottom: 20px;
-}
-
-code {
-  font-family: 'Monaco';
-  line-height: 24px;
-  font-size: 15px;
-}
-
-.slider__layout {
-  display: flex;
-  justify-content: space-between;
-}
-
-.slider__layout-child--full-width {
-  width: 100%;
-}
-
-.slider__layout--margin-bottom {
-  margin-bottom: 20px;
-}
-
-.slider__layout--center {
-  justify-content: center;
-}
+@import 'image-uploader';
 
 .slider__slides {
-  width: 300px;
-  flex: 0 0 300px;
+  // width: 300px;
+  // flex: 0 0 300px;
   margin-right: 50px;
 }
 
@@ -111,35 +29,6 @@ code {
   width: 500px;
   margin: 0 auto;
   text-align: center;
-}
-
-.slide-item {
-  border: solid $primary-border-width $gray-light;
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #fff;
-  border-radius: 2px;
-
-  &--showing {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-.slide-item__preview {
-  width: 70px;
-  height: 70px;
-  background-size: cover;
-  margin-right: 10px;
-}
-
-.slide-item__content {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.slide-item__handle {
-  cursor: move;
 }
 
 .slider-code__callout {
