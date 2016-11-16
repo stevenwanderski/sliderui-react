@@ -1,0 +1,27 @@
+.setting-group {
+  margin-right: 60px;
+  flex: 0 0 200px;
+
+  &__title {
+    font-size: 18px;
+    border-bottom: solid $gray-light 2px;
+    padding-bottom: 5px;
+    margin-bottom: 16px;
+  }
+
+  &__body {
+    font-size: 14px;
+  }
+
+  .input--text {
+    padding: 5px 8px;
+    font-size: 14px;
+    width: 70px;
+  }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

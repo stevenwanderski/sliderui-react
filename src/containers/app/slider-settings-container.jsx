@@ -4,6 +4,7 @@ import Slides from 'components/slides';
 import SliderSettingsForm from 'components/slider-settings-form';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
+import sliderFormBuilder from 'utils/form-builders/bxslider';
 
 class SliderSettingsContainer extends React.Component {
   constructor() {
@@ -12,11 +13,6 @@ class SliderSettingsContainer extends React.Component {
       slides: [],
       slidesLoading: true,
       sliderPreviewLoading: true
-      // sliderSettingsFormLoading: false,
-      // sliderSettingsFormValues: {
-      //   mode: 'horizontal',
-      //   speed: '500'
-      // }
     };
     this.addSlide = this.addSlide.bind(this);
     this.editSlide = this.editSlide.bind(this);
@@ -110,31 +106,6 @@ class SliderSettingsContainer extends React.Component {
     ajax.put(`/slides/collection`, { slides: data });
   }
 
-  // saveSettings(formValues) {
-  //   this.setState({ sliderSettingsFormLoading: true });
-  //
-  //   const data = {
-  //     slider: {
-  //       settings: formValues
-  //     }
-  //   }
-  //
-  //   ajax.put(`/sliders/${this.props.slider.id}`, data)
-  //   .then((response) => {
-  //     this.setState({ sliderSettingsFormLoading: false });
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     this.setState({ sliderSettingsFormLoading: false });
-  //   })
-  // }
-
-  // onSliderSettingsFormInputChange(name, value) {
-  //   let inputState = this.state.sliderSettingsFormValues;
-  //   inputState[name] = value;
-  //   this.setState({ sliderSettingsFormValues: inputState });
-  // }
-
   render() {
     if (this.state.slidesLoading) {
       return <div>Loading...</div>;
@@ -156,10 +127,11 @@ class SliderSettingsContainer extends React.Component {
             onSortEnd={this.sortSlides} />
         </div>
 
-        <div className="slider-settings__child">
+        <div className="flex-child--full-width">
           <h3>Settings</h3>
           <SliderSettingsForm
             slider={this.props.slider}
+            builder={sliderFormBuilder}
             onSubmit={this.props.onSliderSettingsFormSubmit}
             onInputChange={this.props.onSliderSettingsFormInputChange}
             loading={this.props.sliderSettingsFormLoading} />

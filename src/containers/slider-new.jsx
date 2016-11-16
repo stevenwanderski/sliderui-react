@@ -47,10 +47,15 @@ class SliderNew extends React.Component {
   render() {
     return (
       <div className="slider-new">
-        <ProgressBar activeStep={0} />
-        <SliderForm
-          loading={this.state.loading}
-          onSubmit={this.saveSlider} />
+        <header className="container__header--temp">
+          <ProgressBar activeStep={0} />
+        </header>
+
+        <div className="container__body--temp">
+          <SliderForm
+            loading={this.state.loading}
+            onSubmit={this.saveSlider} />
+        </div>
       </div>
     )
   }

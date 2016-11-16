@@ -49,7 +49,9 @@ class SliderCode extends React.Component {
 
     return (
       <div className="slider-code">
-        <ProgressBar activeStep={2} />
+        <header className="header--temp">
+          <ProgressBar activeStep={2} />
+        </header>
 
         <h1>Here is the code:</h1>
         <EmbedCode sliderId={this.state.slider.id} />

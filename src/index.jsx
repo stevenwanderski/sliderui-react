@@ -6,8 +6,6 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
 import HomeLayout from 'layouts/home-layout';
 import TempLayout from 'layouts/temp-layout';
 import AppLayout from 'layouts/app-layout';
-import TempSliderLayout from 'layouts/temp-slider-layout';
-import SliderLayout from 'layouts/slider-layout';
 
 // Containers
 import HomeContainer from 'containers/home-container';
@@ -15,6 +13,8 @@ import AuthenticationContainer from 'containers/authentication-container';
 import SliderNew from 'containers/slider-new';
 import SliderCode from 'containers/slider-code';
 import SliderListContainer from 'containers/slider-list-container';
+import SliderEditContainer from 'containers/slider-edit-container';
+import TempSliderEditContainer from 'containers/temp-slider-edit-container';
 
 import SliderSettingsContainer from 'containers/app/slider-settings-container';
 import SliderPreviewContainer from 'containers/app/slider-preview-container';
@@ -32,7 +32,7 @@ render((
 
     <Route path="/temp" component={TempLayout}>
       <Route path="new" component={SliderNew}/>
-      <Route path="slider/:id" component={TempSliderLayout}>
+      <Route path="slider/:id" component={TempSliderEditContainer}>
         <Route path="settings" component={SliderSettingsContainer}/>
         <Route path="preview" component={SliderPreviewContainer}/>
       </Route>
@@ -41,7 +41,7 @@ render((
 
     <Route path="/app" component={AppLayout}>
       <Route path="sliders" component={SliderListContainer}/>
-      <Route path="slider/:id" component={SliderLayout}>
+      <Route path="slider/:id" component={SliderEditContainer}>
         <Route path="settings" component={SliderSettingsContainer}/>
         <Route path="preview" component={SliderPreviewContainer}/>
         <Route path="code" component={SliderCodeContainer}/>

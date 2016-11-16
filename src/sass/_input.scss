@@ -1,5 +1,5 @@
-input:not([type="file"]):not([type="radio"]),
-textarea {
+.input--text,
+.textarea {
   display: block;
   padding: 10px;
   border: solid $gray-light 1px;
@@ -9,12 +9,16 @@ textarea {
   color: $gray-dark;
 }
 
-input[type="file"] {
+.input--file {
   font-size: 14px;
 }
 
-input[type="radio"] {
+.input--radio {
   margin-right: 2px;
+}
+
+.input--checkbox {
+  margin-right: 5px;
 }
 
 .input--large {

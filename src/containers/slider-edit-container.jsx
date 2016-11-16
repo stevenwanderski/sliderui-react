@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import ajax from 'utils/ajax';
 
-class SliderLayout extends React.Component {
+class SliderEditContainer extends React.Component {
   constructor() {
     super();
 
@@ -43,4 +43,4 @@ class SliderLayout extends React.Component {
   }
 }
 
-export default SliderLayout;
+export default SliderEditContainer;

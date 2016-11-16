@@ -9,3 +9,11 @@
 .flex-container--center {
   justify-content: center;
 }
+
+.flex-container--wrap {
+  flex-wrap: wrap;
+}
+
+.flex-child--full-width {
+  width: 100%;
+}

@@ -1,3 +1,8 @@
-.label--radio {
-  margin-right: 16px;
+.label {
+  display: block;
+  margin-bottom: 5px;
+
+  &--radio {
+    margin-right: 16px;
+  }
 }
