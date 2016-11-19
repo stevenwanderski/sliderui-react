@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import { HOC } from 'formsy-react';
 
 class SliderSettingsForm extends React.Component {
   constructor() {
@@ -31,7 +32,7 @@ class SliderSettingsForm extends React.Component {
     return (
       <div className="form-row" key={index}>
         <label>{builderItem.label}</label>
-        <select name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name] || builderItem.default} onChange={this.onInputChange}>
+        <select name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange}>
           {options}
         </select>
       </div>
@@ -42,7 +43,7 @@ class SliderSettingsForm extends React.Component {
     return (
       <div className="form-row" key={index}>
         <label>
-          <input type="checkbox" name={builderItem.name} className="input--checkbox" defaultChecked={this.props.slider['settings'][builderItem.name] || builderItem.default} onChange={this.onInputChange} />
+          <input type="checkbox" name={builderItem.name} className="input--checkbox" defaultChecked={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange} />
           {builderItem.label}
         </label>
       </div>
@@ -53,13 +54,13 @@ class SliderSettingsForm extends React.Component {
     return (
       <div className="form-row" key={index}>
         <label>{builderItem.label}</label>
-        <input type={builderItem.inputType} className="input--text" name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name] || builderItem.default} onChange={this.onInputChange} />
+        <input type={builderItem.inputType} className="input--text" name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange} />
       </div>
     );
   }
 
   buildGroupOutput(builder) {
-    const groups = _.groupBy(builder, 'group');
+    const groups = _.groupBy(builder.fields, 'group');
     return Object.keys(groups).map((group, index) => {
 
       const formInputs = groups[group].map((item, index) => {
@@ -118,11 +119,12 @@ class SliderSettingsForm extends React.Component {
 }
 
 // SliderSettingsForm.propTypes = {
-//   formValues: React.PropTypes.object,
+//   builder: React.PropTypes.object,
+//   slider: React.PropTypes.object,
 //   onSubmit: React.PropTypes.func.isRequired,
 //   onInputChange: React.PropTypes.func,
 //   loading: React.PropTypes.bool,
 //   errorMessage: React.PropTypes.string
 // }
 
-export default SliderSettingsForm;
+export default HOC(SliderSettingsForm);

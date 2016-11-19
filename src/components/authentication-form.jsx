@@ -54,10 +54,11 @@ class AuthenticationForm extends React.Component {
       authTypeControls = (
         <div className="form-row">
           <label className="label--radio">
-            <input type="radio" name="authType" value="existing" onChange={this.onInputChange} defaultChecked={true} /> Existing User
+            <input
+              type="radio" name="authType" value="existing" className="input--radio" onChange={this.onInputChange} defaultChecked={true} /> Existing User
           </label>
           <label className="label--radio">
-            <input type="radio" name="authType" value="new" onChange={this.onInputChange} /> New User
+            <input type="radio" name="authType" value="new" className="input--radio" onChange={this.onInputChange} /> New User
           </label>
         </div>
       )
@@ -69,11 +70,11 @@ class AuthenticationForm extends React.Component {
         {authTypeControls}
 
         <div className="form-row">
-          <input type="text" name="email" placeholder="email" onChange={this.onInputChange} />
+          <input type="text" name="email" className="input--text" placeholder="email" onChange={this.onInputChange} />
         </div>
 
         <div className="form-row">
-          <input type="password" name="password" placeholder="password" onChange={this.onInputChange} />
+          <input type="password" name="password" className="input--text" placeholder="password" onChange={this.onInputChange} />
         </div>
 
         <div className="form-row">

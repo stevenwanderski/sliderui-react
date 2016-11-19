@@ -35,7 +35,7 @@ class SliderForm extends React.Component {
       <form onSubmit={this.onSubmit}>
         <h1>Give the slider a name:</h1>
         <div className="form-row">
-          <input type="text" ref="title" onChange={this.onChange} className="input--large" id="slider-name" />
+          <input type="text" ref="title" onChange={this.onChange} className="input--text" id="slider-name" />
         </div>
         {button}
       </form>

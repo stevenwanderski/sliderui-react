@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ajax from 'utils/ajax';
+import { formBuilder, formDefaults } from 'form-builders/bxslider';
 
 class SliderEditContainer extends React.Component {
   constructor() {
@@ -10,13 +11,38 @@ class SliderEditContainer extends React.Component {
       loading: true,
       slider: {}
     }
+
+    this.onSliderSettingsFormInputChange = this.onSliderSettingsFormInputChange.bind(this);
+    this.saveSettings = this.saveSettings.bind(this);
   }
 
   componentDidMount() {
     ajax.get(`/sliders/${this.props.params.id}`)
     .then((response) => {
-      this.setState({ slider: response.data, loading: false });
+      let slider = response.data;
+      if (!Object.keys(slider.settings).length) {
+        slider.settings = formDefaults();
+      }
+      this.setState({ slider: slider, loading: false });
     });
+  }
+
+  onSliderSettingsFormInputChange(name, value) {
+    let slider = JSON.parse(JSON.stringify(this.state.slider));
+    slider['settings'][name] = value;
+    this.setState({ slider: slider });
+  }
+
+  saveSettings(formValues) {
+    this.setState({ sliderSettingsFormLoading: true });
+
+    ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
+    .then((response) => {
+      this.setState({ sliderSettingsFormLoading: false });
+    })
+    .catch((error) => {
+      this.setState({ sliderSettingsFormLoading: false });
+    })
   }
 
   render() {
@@ -36,7 +62,11 @@ class SliderEditContainer extends React.Component {
         </div>
 
         {this.props.children && React.cloneElement(this.props.children, {
-          slider: this.state.slider
+          slider: this.state.slider,
+          onSliderSettingsFormInputChange: this.onSliderSettingsFormInputChange,
+          onSliderSettingsFormSubmit: this.saveSettings,
+          sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
+          sliderFormBuilder: formBuilder
         })}
       </div>
     );

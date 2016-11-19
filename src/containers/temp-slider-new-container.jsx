@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router'
 import SliderForm from 'components/slider-form';
 import ProgressBar from 'components/progress-bar';
 
-class SliderNew extends React.Component {
+class TempSliderNewContainer extends React.Component {
   constructor() {
     super();
     this.state = { loading: false };
@@ -46,7 +46,7 @@ class SliderNew extends React.Component {
 
   render() {
     return (
-      <div className="slider-new">
+      <div className="slider-new slider-new--center">
         <header className="container__header--temp">
           <ProgressBar activeStep={0} />
         </header>
@@ -61,4 +61,4 @@ class SliderNew extends React.Component {
   }
 }
 
-export default SliderNew;
+export default TempSliderNewContainer;

@@ -4,7 +4,6 @@ import Slides from 'components/slides';
 import SliderSettingsForm from 'components/slider-settings-form';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
-import sliderFormBuilder from 'utils/form-builders/bxslider';
 
 class SliderSettingsContainer extends React.Component {
   constructor() {
@@ -131,7 +130,7 @@ class SliderSettingsContainer extends React.Component {
           <h3>Settings</h3>
           <SliderSettingsForm
             slider={this.props.slider}
-            builder={sliderFormBuilder}
+            builder={this.props.sliderFormBuilder}
             onSubmit={this.props.onSliderSettingsFormSubmit}
             onInputChange={this.props.onSliderSettingsFormInputChange}
             loading={this.props.sliderSettingsFormLoading} />

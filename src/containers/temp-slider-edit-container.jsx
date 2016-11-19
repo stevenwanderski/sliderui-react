@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
 import ajax from 'utils/ajax';
-import sliderFormBuilder from 'utils/form-builders/bxslider';
+import sliderFormBuilder from 'form-builders/bxslider';
 
 class TempSliderEditContainer extends React.Component {
   constructor() {
@@ -18,39 +18,9 @@ class TempSliderEditContainer extends React.Component {
     this.saveSettings = this.saveSettings.bind(this);
   }
 
-  assignDefaultSliderSettings(slider) {
-    if (!Object.keys(slider.settings).length){
-      slider.settings = {
-        mode: 'horizontal',
-        speed: '765',
-        slideMargin: '0',
-        startSlide: '0',
-        randomStart: false,
-        infiniteLoop: true,
-        hideControlOnEnd: false,
-        ticker: false,
-        tickerHover: false,
-        adaptiveHeight: false,
-        adaptiveHeightSpeed: 500,
-        video: false,
-        responsive: true,
-        useCSS: true,
-        preloadImages: 'visible',
-        touchEnabled: true,
-        swipeThreshold: 50,
-        oneToOneTouch: true,
-        preventDefaultSwipeX: true,
-        preventDefaultSwipeY: false
-      }
-    }
-
-    return slider;
-  }
-
   componentDidMount() {
     ajax.get(`/sliders/${this.props.params.id}`)
     .then((response) => {
-      const slider = this.assignDefaultSliderSettings(response.data);
       this.setState({ slider: response.data, loading: false });
     });
   }
@@ -70,7 +40,6 @@ class TempSliderEditContainer extends React.Component {
   onSliderSettingsFormInputChange(name, value) {
     let slider = JSON.parse(JSON.stringify(this.state.slider));
     slider['settings'][name] = value;
-    console.log(slider);
     this.setState({ slider: slider });
   }
 

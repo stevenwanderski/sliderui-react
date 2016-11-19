@@ -13,6 +13,7 @@
 @import 'nav';
 @import 'slider-layout';
 @import 'slider-settings';
+@import 'slider-new';
 @import 'slider-preview';
 @import 'slide-item';
 @import 'authentication';
@@ -24,12 +25,6 @@
   // width: 300px;
   // flex: 0 0 300px;
   margin-right: 50px;
-}
-
-.slider-new {
-  width: 500px;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .slider-code__callout {
