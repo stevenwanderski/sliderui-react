@@ -78,7 +78,7 @@ const formBuilder = {
     },
     {
       name: 'autoControls',
-      label: 'Start / Sttop Controls Enabled',
+      label: 'Start / Stop Controls Enabled',
       default: false,
       inputType: 'checkbox',
       group: 'Controls'

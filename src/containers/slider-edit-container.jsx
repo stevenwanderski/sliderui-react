@@ -34,7 +34,12 @@ class SliderEditContainer extends React.Component {
   }
 
   saveSettings(formValues) {
-    this.setState({ sliderSettingsFormLoading: true });
+    let slider = this.state.slider;
+    slider.settings = formValues;
+    this.setState({
+      slider: slider,
+      sliderSettingsFormLoading: true
+    });
 
     ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
     .then((response) => {

@@ -16,6 +16,7 @@ class Checkbox extends React.Component {
       <input
         type="checkbox"
         value={this.props.getValue()}
+        checked={this.props.getValue() ? 'checked' : null}
         className="input--checkbox"
         onChange={this.changeValue} />
     );

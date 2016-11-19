@@ -23,8 +23,8 @@ class SliderSettingsForm extends React.Component {
     this.props.onInputChange(e.target.name, value);
   }
 
-  onSubmit(model) {
-    this.props.onSubmit(model);
+  onSubmit(formValues) {
+    this.props.onSubmit(formValues);
   }
 
   enableButton() {
