@@ -16,21 +16,33 @@ const formBuilder = {
       label: 'Speed',
       default: 500,
       inputType: 'number',
-      group: 'General'
+      group: 'General',
+      required: true,
+      validations: {
+        isNumeric: true
+      }
     },
     {
       name: 'slideMargin',
       label: 'Slide Margin',
       default: 0,
       inputType: 'number',
-      group: 'General'
+      required: true,
+      group: 'General',
+      validations: {
+        isNumeric: true
+      }
     },
     {
       name: 'startSlide',
       label: 'Start Slide',
       default: 0,
       inputType: 'number',
-      group: 'General'
+      required: true,
+      group: 'General',
+      validations: {
+        isNumeric: true
+      }
     },
     {
       name: 'randomStart',

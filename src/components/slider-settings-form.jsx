@@ -1,17 +1,21 @@
 import React from 'react';
 import _ from 'underscore';
-import { HOC } from 'formsy-react';
+import Input from 'components/forms/input';
+import Select from 'components/forms/select';
+import Checkbox from 'components/forms/checkbox';
 
 class SliderSettingsForm extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      disabled: false,
+      canSubmit: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.enableButton = this.enableButton.bind(this);
+    this.disableButton = this.disableButton.bind(this);
   }
 
   onInputChange(e) {
@@ -19,22 +23,31 @@ class SliderSettingsForm extends React.Component {
     this.props.onInputChange(e.target.name, value);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.props.formValues);
+  onSubmit(model) {
+    this.props.onSubmit(model);
+  }
+
+  enableButton() {
+    this.setState({
+      canSubmit: true
+    });
+  }
+
+  disableButton() {
+    this.setState({
+      canSubmit: false
+    });
   }
 
   buildSelectInput(builderItem, index) {
-    const options = builderItem.options.map((option, index) => {
-      return <option value={option.value} key={index}>{option.label}</option>;
-    });
-
     return (
       <div className="form-row" key={index}>
         <label>{builderItem.label}</label>
-        <select name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange}>
-          {options}
-        </select>
+        <Select
+          name={builderItem.name}
+          value={this.props.slider['settings'][builderItem.name]}
+          options={builderItem.options}
+          validations={builderItem.validations} />
       </div>
     );
   }
@@ -43,7 +56,11 @@ class SliderSettingsForm extends React.Component {
     return (
       <div className="form-row" key={index}>
         <label>
-          <input type="checkbox" name={builderItem.name} className="input--checkbox" defaultChecked={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange} />
+          <Checkbox
+            name={builderItem.name}
+            value={this.props.slider['settings'][builderItem.name]}
+            validations={builderItem.validations}/>
+
           {builderItem.label}
         </label>
       </div>
@@ -54,7 +71,12 @@ class SliderSettingsForm extends React.Component {
     return (
       <div className="form-row" key={index}>
         <label>{builderItem.label}</label>
-        <input type={builderItem.inputType} className="input--text" name={builderItem.name} defaultValue={this.props.slider['settings'][builderItem.name]} onChange={this.onInputChange} />
+        <Input
+          name={builderItem.name}
+          type={builderItem.inputType}
+          value={this.props.slider['settings'][builderItem.name]}
+          required={builderItem.required}
+          validations={builderItem.validations}/>
       </div>
     );
   }
@@ -103,7 +125,7 @@ class SliderSettingsForm extends React.Component {
     const groupOutput = this.buildGroupOutput(this.props.builder);
 
     return (
-      <form className="form--slider-settings" onSubmit={this.onSubmit}>
+      <Formsy.Form className="form--slider-settings" onValidSubmit={this.onSubmit} onValid={this.enableButton} onInvalid={this.disableButton}>
         {error}
 
         <div className="setting-groups flex-container flex-container--wrap">
@@ -111,9 +133,9 @@ class SliderSettingsForm extends React.Component {
         </div>
 
         <div className="form-row">
-          <button disabled={this.state.disabled || this.props.loading} className="button">{submitText}</button>
+          <button disabled={!this.state.canSubmit || this.props.loading} className="button">{submitText}</button>
         </div>
-      </form>
+      </Formsy.Form>
     );
   }
 }
@@ -127,4 +149,4 @@ class SliderSettingsForm extends React.Component {
 //   errorMessage: React.PropTypes.string
 // }
 
-export default HOC(SliderSettingsForm);
+export default SliderSettingsForm;
