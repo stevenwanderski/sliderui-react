@@ -1,6 +1,6 @@
 import React from 'react';
 import ajax from 'utils/ajax';
-import { browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import SliderList from 'components/slider-list';
 
 class SliderListContainer extends React.Component {
@@ -24,7 +24,12 @@ class SliderListContainer extends React.Component {
       return <div>Loading...</div>;
     }
 
-    return <SliderList sliders={this.state.sliders} />
+    return (
+      <div>
+        <Link to="/app/slider/new">Add New Slider</Link>
+        <SliderList sliders={this.state.sliders} />
+      </div>
+    )
   }
 }
 

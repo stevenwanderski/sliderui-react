@@ -9,7 +9,8 @@ class SliderEditContainer extends React.Component {
 
     this.state = {
       loading: true,
-      slider: {}
+      slider: {},
+      successFlash: null
     }
 
     this.onSliderSettingsFormInputChange = this.onSliderSettingsFormInputChange.bind(this);
@@ -43,7 +44,8 @@ class SliderEditContainer extends React.Component {
 
     ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
     .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false });
+      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Saved yo!' });
+      setTimeout(() => this.setState({ successFlash: null }), 2000);
     })
     .catch((error) => {
       this.setState({ sliderSettingsFormLoading: false });
@@ -71,7 +73,8 @@ class SliderEditContainer extends React.Component {
           onSliderSettingsFormInputChange: this.onSliderSettingsFormInputChange,
           onSliderSettingsFormSubmit: this.saveSettings,
           sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
-          sliderFormBuilder: formBuilder
+          sliderFormBuilder: formBuilder,
+          successFlash: this.state.successFlash
         })}
       </div>
     );

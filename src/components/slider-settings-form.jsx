@@ -122,6 +122,11 @@ class SliderSettingsForm extends React.Component {
       submitText = 'Loading...';
     }
 
+    let successFlash;
+    if (this.props.successFlash) {
+      successFlash = <div className="flash">{this.props.successFlash}</div>;
+    }
+
     const groupOutput = this.buildGroupOutput(this.props.builder);
 
     return (
@@ -134,6 +139,7 @@ class SliderSettingsForm extends React.Component {
 
         <div className="form-row">
           <button disabled={!this.state.canSubmit || this.props.loading} className="button">{submitText}</button>
+          {successFlash}
         </div>
       </Formsy.Form>
     );

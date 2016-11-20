@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
+import { loggedIn } from 'utils/auth';
 
 // Layouts
 import HomeLayout from 'layouts/home-layout';
@@ -24,14 +25,26 @@ import SliderCodeContainer from 'containers/app/slider-code-container';
 // SASS
 import AppCSS from 'sass/app';
 
+const requireAuthentication = (nextState, replace) => {
+  if (!loggedIn()) {
+    replace('/auth');
+  }
+}
+
+const requireUnauthentication = (nextState, replace) => {
+  if (loggedIn()) {
+    replace('/app/sliders');
+  }
+}
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={HomeLayout}>
       <IndexRoute component={HomeContainer} />
-      <Route path="/auth" component={AuthenticationContainer}/>
+      <Route path="/auth" component={AuthenticationContainer} onEnter={requireUnauthentication}/>
     </Route>
 
-    <Route path="/temp" component={TempLayout}>
+    <Route path="/temp" component={TempLayout} onEnter={requireUnauthentication}>
       <Route path="slider/new" component={TempSliderNewContainer}/>
       <Route path="slider/:id" component={TempSliderEditContainer}>
         <Route path="settings" component={SliderSettingsContainer}/>
@@ -40,7 +53,7 @@ render((
       <Route path="slider/:id/code" component={SliderCode}/>
     </Route>
 
-    <Route path="/app" component={AppLayout}>
+    <Route path="/app" component={AppLayout} onEnter={requireAuthentication}>
       <Route path="sliders" component={SliderListContainer}/>
       <Route path="slider/new" component={SliderNewContainer}/>
       <Route path="slider/:id" component={SliderEditContainer}>

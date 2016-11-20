@@ -133,7 +133,8 @@ class SliderSettingsContainer extends React.Component {
             builder={this.props.sliderFormBuilder}
             onSubmit={this.props.onSliderSettingsFormSubmit}
             onInputChange={this.props.onSliderSettingsFormInputChange}
-            loading={this.props.sliderSettingsFormLoading} />
+            loading={this.props.sliderSettingsFormLoading}
+            successFlash={this.props.successFlash} />
         </div>
       </div>
     );
