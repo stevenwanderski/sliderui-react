@@ -2,6 +2,7 @@ import React from 'react';
 import AuthenticationForm from 'components/authentication-form';
 import { browserHistory } from 'react-router'
 import ajax from 'utils/ajax';
+import { login } from 'utils/auth';
 
 class AuthenticationContainer extends React.Component {
   constructor() {
@@ -22,7 +23,7 @@ class AuthenticationContainer extends React.Component {
 
     ajax.post(url, formValues)
     .then((response) => {
-      localStorage.setItem('token', response.data.token);
+      login(response.data);
       browserHistory.push('/app/sliders');
     })
     .catch((error) => {

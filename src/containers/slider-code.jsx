@@ -1,5 +1,6 @@
 import React from 'react';
 import ajax from 'utils/ajax';
+import { login } from 'utils/auth';
 import EmbedCode from 'components/embed-code';
 import ProgressBar from 'components/progress-bar';
 import AuthenticationForm from 'components/authentication-form';
@@ -28,7 +29,8 @@ class SliderCode extends React.Component {
     this.setState({ authenticationLoading: true });
 
     ajax.put('/user', formValues)
-    .then(() => {
+    .then((response) => {
+      login(response.data);
       browserHistory.push('/app/sliders');
     })
     .catch((error) => {

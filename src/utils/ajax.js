@@ -1,23 +1,18 @@
 import axios from 'axios';
+import { currentUser } from 'utils/auth';
 
 const ajax = axios.create({
   baseURL: `${process.env.API_URL}/api`
 });
 
 ajax.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const user = currentUser();
 
-  if (token) {
-    config.headers['Authorization'] = `Token token=${token}`;
+  if (user) {
+    config.headers['Authorization'] = `Token token=${user.token}`;
   }
 
   return config;
 });
-
-// const token = localStorage.getItem('token');
-//
-// if (token) {
-//   ajax.defaults.headers = { 'Authorization': `Token token=${token}` }
-// }
 
 export default ajax;

@@ -1,17 +1,32 @@
 import ajax from 'utils/ajax';
 
-export function loggedIn() {
-  return !!localStorage.getItem('token');
+function loggedIn() {
+  return !!localStorage.getItem('user');
 }
 
-export function currentUser() {
-  return ajax.get('/user');
+function confirmed() {
+  if (!loggedIn()) {
+    return false;
+  }
+
+  const user = currentUser();
+  return user.confirmed;
 }
 
-export function login(token) {
-  localStorage.setItem('token', token);
+function currentUser() {
+  if (!localStorage.getItem('user')) {
+    return null;
+  }
+
+  return JSON.parse(localStorage.getItem('user'));
 }
 
-export function logout() {
-  localStorage.removeItem('token');
+function login(user) {
+  localStorage.setItem('user', JSON.stringify(user));
 }
+
+function logout() {
+  localStorage.removeItem('user');
+}
+
+export { loggedIn, confirmed, currentUser, login, logout };
