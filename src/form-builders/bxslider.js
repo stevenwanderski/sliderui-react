@@ -83,10 +83,7 @@ const formBuilder = {
       inputType: 'checkbox',
       group: 'Controls'
     }
-  ],
-  validations: {
-    speed: null
-  }
+  ]
 };
 
 function formDefaults() {

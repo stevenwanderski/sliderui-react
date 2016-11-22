@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
 import ajax from 'utils/ajax';
-import sliderFormBuilder from 'form-builders/bxslider';
+import { formBuilder, formDefaults } from 'form-builders/bxslider';
 
 class TempSliderEditContainer extends React.Component {
   constructor() {
@@ -21,7 +21,11 @@ class TempSliderEditContainer extends React.Component {
   componentDidMount() {
     ajax.get(`/sliders/${this.props.params.id}`)
     .then((response) => {
-      this.setState({ slider: response.data, loading: false });
+      let slider = response.data;
+      if (!Object.keys(slider.settings).length) {
+        slider.settings = formDefaults();
+      }
+      this.setState({ slider: slider, loading: false });
     });
   }
 
@@ -67,7 +71,7 @@ class TempSliderEditContainer extends React.Component {
           onSliderSettingsFormInputChange: this.onSliderSettingsFormInputChange,
           onSliderSettingsFormSubmit: this.saveSettings,
           sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
-          sliderFormBuilder: sliderFormBuilder
+          sliderFormBuilder: formBuilder
         })}
       </div>
     );

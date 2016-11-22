@@ -11,6 +11,7 @@ import AppLayout from 'layouts/app-layout';
 // Containers
 import HomeContainer from 'containers/home-container';
 import AuthenticationContainer from 'containers/authentication-container';
+import AccountContainer from 'containers/account-container';
 import SliderNewContainer from 'containers/slider-new-container';
 import SliderCode from 'containers/slider-code';
 import SliderListContainer from 'containers/slider-list-container';
@@ -44,7 +45,7 @@ render((
       <Route path="/auth" component={AuthenticationContainer} onEnter={requireUnauthentication}/>
     </Route>
 
-    <Route path="/temp" component={TempLayout} onEnter={requireUnauthentication}>
+    <Route path="/temp" component={TempLayout}>
       <Route path="slider/new" component={TempSliderNewContainer}/>
       <Route path="slider/:id" component={TempSliderEditContainer}>
         <Route path="settings" component={SliderSettingsContainer}/>
@@ -61,6 +62,7 @@ render((
         <Route path="preview" component={SliderPreviewContainer}/>
         <Route path="code" component={SliderCodeContainer}/>
       </Route>
+      <Route path="account" component={AccountContainer}/>
     </Route>
   </Router>
 ), document.getElementById('app'));

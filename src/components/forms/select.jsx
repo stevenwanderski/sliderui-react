@@ -17,13 +17,11 @@ class Select extends React.Component {
     });
 
     return (
-      <div>
-        <select
-          value={this.props.getValue()}
-          onChange={this.changeValue}>
-          {options}
-        </select>
-      </div>
+      <select
+        value={this.props.getValue()}
+        onChange={this.changeValue}>
+        {options}
+      </select>
     );
   }
 }
