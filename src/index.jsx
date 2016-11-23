@@ -14,11 +14,12 @@ import AuthenticationContainer from 'containers/authentication-container';
 import AccountContainer from 'containers/account-container';
 import ConfirmContainer from 'containers/confirm-container';
 import SliderNewContainer from 'containers/slider-new-container';
-import SliderCode from 'containers/slider-code';
 import SliderListContainer from 'containers/slider-list-container';
 import SliderEditContainer from 'containers/slider-edit-container';
+
 import TempSliderEditContainer from 'containers/temp-slider-edit-container';
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
+import TempSliderCodeContainer from 'containers/temp-slider-code-container';
 
 import SliderSettingsContainer from 'containers/app/slider-settings-container';
 import SliderPreviewContainer from 'containers/app/slider-preview-container';
@@ -71,7 +72,7 @@ render((
           <Route path="settings" component={SliderSettingsContainer}/>
           <Route path="preview" component={SliderPreviewContainer}/>
         </Route>
-        <Route path="temp/slider/:id/code" component={SliderCode}/>
+        <Route path="temp/slider/:id/code" component={TempSliderCodeContainer}/>
       </Route>
     </Route>
 

@@ -6,7 +6,7 @@ import ProgressBar from 'components/progress-bar';
 import AuthenticationForm from 'components/authentication-form';
 import { browserHistory } from 'react-router';
 
-class SliderCode extends React.Component {
+class TempSliderCodeContainer extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -28,7 +28,7 @@ class SliderCode extends React.Component {
   authenticate(formValues) {
     this.setState({ authenticationLoading: true });
 
-    ajax.put('/user', formValues)
+    ajax.post('/user/confirm', formValues)
     .then((response) => {
       login(response.data);
       browserHistory.push('/app/sliders');
@@ -71,4 +71,4 @@ class SliderCode extends React.Component {
   }
 }
 
-export default SliderCode;
+export default TempSliderCodeContainer;

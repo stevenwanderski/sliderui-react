@@ -19,7 +19,7 @@ class AuthenticationContainer extends React.Component {
   authenticate(formValues) {
     this.setState({ authenticationLoading: true });
 
-    const url = formValues['authType'] === 'new' ? '/register' : '/login';
+    const url = formValues['authType'] === 'new' ? '/registrations' : '/sessions';
 
     ajax.post(url, formValues)
     .then((response) => {

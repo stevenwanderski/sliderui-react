@@ -21,7 +21,7 @@ class ConfirmContainer extends React.Component {
     const data = {
       user: formValues
     }
-    return ajax.put('/confirm', data)
+    return ajax.post('/user/confirm', data)
     .then((response) => {
       login(response.data);
       browserHistory.push('/app/sliders');

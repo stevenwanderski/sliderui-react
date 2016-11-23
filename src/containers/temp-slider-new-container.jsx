@@ -27,7 +27,7 @@ class TempSliderNewContainer extends React.Component {
   }
 
   createUser() {
-    return ajax.post('/register-temp')
+    return ajax.post('/registrations/temp')
       .then((response) => {
         login(response.data);
       });
