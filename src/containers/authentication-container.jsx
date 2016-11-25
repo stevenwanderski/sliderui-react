@@ -17,7 +17,7 @@ class AuthenticationContainer extends React.Component {
   }
 
   authenticate(formValues) {
-    this.setState({ authenticationLoading: true });
+    this.setState({ loading: true });
 
     const url = formValues['authType'] === 'new' ? '/registrations' : '/sessions';
 

@@ -1,10 +1,25 @@
-.slider-layout__title {
-  font-size: 16px;
-}
+.slider-layout {
+  &__title {
+    font-size: 16px;
+  }
 
-.slider-layout__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__tab-link {
+    padding-bottom: 5px;
+
+    &:hover {
+      box-shadow: 0 2px 0 lighten($primary, 20%);
+      text-decoration: none;
+    }
+  }
+
+  .active {
+    box-shadow: 0 2px 0 lighten($primary, 20%);
+  }
 }

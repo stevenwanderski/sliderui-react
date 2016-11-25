@@ -1,5 +1,5 @@
 import React from 'react';
-import md5 from 'js-md5';
+import Gravatar from 'react-gravatar';
 import { Link } from 'react-router';
 
 class UserToolbar extends React.Component {
@@ -21,7 +21,7 @@ class UserToolbar extends React.Component {
     return (
       <div className='user-toolbar'>
         <div className="user-toolbar__row">
-          {/* <img src={`https://www.gravatar.com/avatar/${md5('this.props.email')}`} /> {this.props.email} */}
+          <Gravatar email={this.props.email} />
           <div>{this.props.email}</div>
           <Link to="/app/account">Account</Link>
         </div>

@@ -7,7 +7,7 @@ class AccountContainer extends React.Component {
     super();
 
     this.state = {
-      accountFormLoading: false,
+      loading: false,
       successFlash: null
     }
 
@@ -15,12 +15,15 @@ class AccountContainer extends React.Component {
   }
 
   saveAccount(formValues) {
-    const data = {
-      user: formValues
-    }
+    this.setState({ loading: true });
+
+    const data = { user: formValues }
     return ajax.put('/user', data)
     .then((response) => {
-      this.setState({ successFlash: 'All saved up!' });
+      this.setState({
+        successFlash: 'All saved up!',
+        loading: false
+      });
       setTimeout(() => this.setState({ successFlash: null }), 2000);
     });
   }
@@ -31,6 +34,7 @@ class AccountContainer extends React.Component {
         <h1>Account Settings</h1>
         <AccountForm
           successFlash={this.state.successFlash}
+          loading={this.state.loading}
           onSubmit={this.saveAccount} />
       </div>
     )

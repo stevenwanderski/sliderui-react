@@ -34,6 +34,11 @@ class AccountForm extends React.Component {
       successFlash = <div className="success-flash">{this.props.successFlash}</div>;
     }
 
+    let submitText = 'Save';
+    if (this.props.loading) {
+      submitText = 'Loading...';
+    }
+
     return (
       <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton} ref="form">
         <div className="form-row">
@@ -54,11 +59,17 @@ class AccountForm extends React.Component {
             required
             validations="equalsField:password" />
         </div>
-        <button className="button" disabled={!this.state.canSubmit}>Save</button>
+        <button className="button" disabled={!this.state.canSubmit || this.props.loading}>{submitText}</button>
         {successFlash}
       </Formsy.Form>
     );
   }
+}
+
+AccountForm.propTypes = {
+  successFlash: React.PropTypes.string,
+  loading: React.PropTypes.bool,
+  onSubmit: React.PropTypes.func.isRequired
 }
 
 export default AccountForm;

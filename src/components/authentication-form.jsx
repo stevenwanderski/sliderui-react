@@ -1,40 +1,31 @@
 import React from 'react';
-import SigninForm from 'components/signin-form';
-import SignupForm from 'components/signup-form';
+import Formsy from 'formsy-react';
+import Input from 'components/forms/input';
+import RadioGroup from 'components/forms/radio-group';
 
 class AuthenticationForm extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      email: '',
-      password: '',
       authType: 'existing',
-      disabled: true
+      canSubmit: false
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.submit = this.submit.bind(this);
+    this.enableButton = this.enableButton.bind(this);
+    this.disableButton = this.disableButton.bind(this);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    nextState.disabled = nextState.email === '' || nextState.password === '';
+  enableButton() {
+    this.setState({ canSubmit: true });
   }
 
-  onInputChange(e) {
-    let inputState = {};
-    inputState[e.target.name] = e.target.value;
-    this.setState(inputState);
+  disableButton() {
+    this.setState({ canSubmit: false });
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-
-    const formValues = {
-      email: this.state.email,
-      password: this.state.password,
-      authType: this.state.authType
-    }
+  submit(formValues) {
     this.props.onSubmit(formValues);
   }
 
@@ -53,34 +44,46 @@ class AuthenticationForm extends React.Component {
     if (!this.props.hideAuthType) {
       authTypeControls = (
         <div className="form-row">
-          <label className="label--radio">
-            <input
-              type="radio" name="authType" value="existing" className="input--radio" onChange={this.onInputChange} defaultChecked={true} /> Existing User
-          </label>
-          <label className="label--radio">
-            <input type="radio" name="authType" value="new" className="input--radio" onChange={this.onInputChange} /> New User
-          </label>
+          <RadioGroup
+            name="authType"
+            value='existing'
+            items={[
+              { value: 'existing', label: 'Existing User' },
+              { value: 'new', label: 'New User' }
+            ]} />
         </div>
       )
     }
 
     return (
-      <form className="form--auth" onSubmit={this.onSubmit}>
+      <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton} className="form--auth">
         {error}
         {authTypeControls}
 
         <div className="form-row">
-          <input type="text" name="email" className="input--text" placeholder="email" onChange={this.onInputChange} />
+          <label>Email</label>
+          <Input
+            name="email"
+            type="text"
+            value=""
+            validations="isEmail"
+            required />
         </div>
 
         <div className="form-row">
-          <input type="password" name="password" className="input--text" placeholder="password" onChange={this.onInputChange} />
+          <label>Password</label>
+          <Input
+            name="password"
+            type="password"
+            value=""
+            validations="minLength:4"
+            required />
         </div>
 
         <div className="form-row">
-          <button disabled={this.state.disabled || this.props.loading} className="button">{submitText}</button>
+          <button disabled={!this.state.canSubmit || this.props.loading} className="button">{submitText}</button>
         </div>
-      </form>
+      </Formsy.Form>
     );
   }
 }
