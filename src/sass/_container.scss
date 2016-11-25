@@ -6,9 +6,18 @@
   }
 
   &--temp {
-    padding: 0 40px 20px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &__header {
+    background: $white;
+    border-bottom: solid $gray-light 1px;
+    margin-bottom: 20px;
+  }
+
+  &__body {
+    padding: 0 40px 40px;
   }
 
   &__child--main {
@@ -20,10 +29,5 @@
     flex: 0 0 200px;
     background: #f9f9f9;
     padding: 20px;
-  }
-
-  &__header--temp {
-    border-bottom: solid $gray-lightest 1px;
-    margin-bottom: 20px;
   }
 }

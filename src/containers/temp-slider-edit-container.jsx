@@ -11,10 +11,10 @@ class TempSliderEditContainer extends React.Component {
     this.state = {
       loading: true,
       slider: {},
-      sliderSettingsFormLoading: false
+      sliderSettingsFormLoading: false,
+      successFlash: null
     }
 
-    this.onSliderSettingsFormInputChange = this.onSliderSettingsFormInputChange.bind(this);
     this.saveSettings = this.saveSettings.bind(this);
   }
 
@@ -30,21 +30,21 @@ class TempSliderEditContainer extends React.Component {
   }
 
   saveSettings(formValues) {
-    this.setState({ sliderSettingsFormLoading: true });
+    let slider = this.state.slider;
+    slider.settings = formValues;
+    this.setState({
+      slider: slider,
+      sliderSettingsFormLoading: true
+    });
 
     ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
     .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false });
+      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Saved yo!' });
+      setTimeout(() => this.setState({ successFlash: null }), 2000);
     })
     .catch((error) => {
       this.setState({ sliderSettingsFormLoading: false });
     })
-  }
-
-  onSliderSettingsFormInputChange(name, value) {
-    let slider = JSON.parse(JSON.stringify(this.state.slider));
-    slider['settings'][name] = value;
-    this.setState({ slider: slider });
   }
 
   render() {
@@ -53,26 +53,28 @@ class TempSliderEditContainer extends React.Component {
     }
 
     return (
-      <div className="slider-layout">
-        <header className="header--temp">
+      <div>
+        <header className="container__header">
           <ProgressBar activeStep={1} />
         </header>
 
-        <div className="slider-layout__header">
-          <nav>
-            <Link to={`/temp/slider/${this.props.params.id}/settings`}>Settings</Link>
-            <Link to={`/temp/slider/${this.props.params.id}/preview`}>Preview</Link>
-          </nav>
-          <Link to={`/temp/slider/${this.props.params.id}/code`} className="button">Save and Get Code</Link>
-        </div>
+        <div className="container__body slider-layout">
+          <div className="slider-layout__header">
+            <nav>
+              <Link to={`/temp/slider/${this.props.params.id}/settings`}>Settings</Link>
+              <Link to={`/temp/slider/${this.props.params.id}/preview`}>Preview</Link>
+            </nav>
+            <Link to={`/temp/slider/${this.props.params.id}/code`} className="button button--primary">Get Code</Link>
+          </div>
 
-        {this.props.children && React.cloneElement(this.props.children, {
-          slider: this.state.slider,
-          onSliderSettingsFormInputChange: this.onSliderSettingsFormInputChange,
-          onSliderSettingsFormSubmit: this.saveSettings,
-          sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
-          sliderFormBuilder: formBuilder
-        })}
+          {this.props.children && React.cloneElement(this.props.children, {
+            slider: this.state.slider,
+            onSliderSettingsFormSubmit: this.saveSettings,
+            sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
+            sliderFormBuilder: formBuilder,
+            successFlash: this.state.successFlash
+          })}
+        </div>
       </div>
     );
   }

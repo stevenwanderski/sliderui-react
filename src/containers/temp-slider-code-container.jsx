@@ -50,22 +50,28 @@ class TempSliderCodeContainer extends React.Component {
     }
 
     return (
-      <div className="slider-code">
-        <header className="header--temp">
+      <div>
+        <header className="container__header">
           <ProgressBar activeStep={2} />
         </header>
 
-        <h1>Here is the code:</h1>
-        <EmbedCode sliderId={this.state.slider.id} />
+        <div className="container__body slider-layout">
+          <div className="section">
+            <h1>Here is the code:</h1>
+            <EmbedCode sliderId={this.state.slider.id} />
+          </div>
 
-        <div className="slider-code__callout">
-          Heads up! This slider is active for 24 hours.<br />
-          To make it active forever, signup to claim this slider:
+          <div className="section">
+            <div className="slider-code__callout">
+              Heads up! This slider is active for 24 hours.<br />
+              To make it active forever, signup to claim this slider:
+            </div>
+            <AuthenticationForm onSubmit={this.authenticate}
+                                loading={this.state.authenticationLoading}
+                                hideAuthType={true}
+                                errorMessage={this.state.authenticationError} />
+          </div>
         </div>
-        <AuthenticationForm onSubmit={this.authenticate}
-                            loading={this.state.authenticationLoading}
-                            hideAuthType={true}
-                            errorMessage={this.state.authenticationError} />
       </div>
     )
   }

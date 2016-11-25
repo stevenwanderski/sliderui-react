@@ -33,8 +33,8 @@ class TempSliderNewContainer extends React.Component {
       });
   }
 
-  createSliderAndRedirect(title) {
-    const data = { slider: { title: title } };
+  createSliderAndRedirect(formValues) {
+    const data = { slider: formValues };
     return ajax.post('/sliders', data)
       .then((response) => {
         browserHistory.push(`/temp/slider/${response.data.id}/settings`);
@@ -46,15 +46,17 @@ class TempSliderNewContainer extends React.Component {
 
   render() {
     return (
-      <div className="slider-new slider-new--center">
-        <header className="container__header--temp">
+      <div>
+        <header className="container__header">
           <ProgressBar activeStep={0} />
         </header>
 
-        <div className="container__body--temp">
-          <SliderForm
-            loading={this.state.loading}
-            onSubmit={this.saveSlider} />
+        <div className="container__body">
+          <div className="slider-new slider-new--center">
+            <SliderForm
+              loading={this.state.loading}
+              onSubmit={this.saveSlider} />
+          </div>
         </div>
       </div>
     )

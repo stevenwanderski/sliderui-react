@@ -1,4 +1,6 @@
-.slider-settings__slides {
-  flex: 0 0 200px;
-  margin-right: 50px;
+.slider-settings {
+  &__slides {
+    flex: 0 0 400px;
+    margin-right: 20px;
+  }
 }

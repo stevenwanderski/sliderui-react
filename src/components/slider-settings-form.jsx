@@ -138,7 +138,7 @@ class SliderSettingsForm extends React.Component {
         </div>
 
         <div className="form-row">
-          <button disabled={!this.state.canSubmit || this.props.loading} className="button">{submitText}</button>
+          <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary">{submitText}</button>
           {successFlash}
         </div>
       </Formsy.Form>

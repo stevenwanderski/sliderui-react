@@ -16,6 +16,7 @@ hr {
 
 body {
   color: $gray-dark;
+  background: $gray-lightest;
 
   &.ReactModal__Body--open {
     overflow: hidden;
@@ -37,7 +38,7 @@ h2 {
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 13px;
   color: $gray-dark;
   text-transform: uppercase;
   margin-bottom: 20px;

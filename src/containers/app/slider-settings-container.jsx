@@ -112,7 +112,7 @@ class SliderSettingsContainer extends React.Component {
 
     return (
       <div className="slider-settings flex-container">
-        <div className="slider-settings__slides">
+        <div className="section slider-settings__slides">
           <h3>Slides</h3>
           <Slides
             slides={this.state.slides}
@@ -126,7 +126,7 @@ class SliderSettingsContainer extends React.Component {
             onSortEnd={this.sortSlides} />
         </div>
 
-        <div className="flex-child--full-width">
+        <div className="section flex-child--full-width">
           <h3>Settings</h3>
           <SliderSettingsForm
             slider={this.props.slider}

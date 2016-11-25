@@ -81,7 +81,7 @@ class AuthenticationForm extends React.Component {
         </div>
 
         <div className="form-row">
-          <button disabled={!this.state.canSubmit || this.props.loading} className="button">{submitText}</button>
+          <button disabled={!this.state.canSubmit || this.props.loading} className="button button--primary">{submitText}</button>
         </div>
       </Formsy.Form>
     );

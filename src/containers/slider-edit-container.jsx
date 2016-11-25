@@ -13,7 +13,6 @@ class SliderEditContainer extends React.Component {
       successFlash: null
     }
 
-    this.onSliderSettingsFormInputChange = this.onSliderSettingsFormInputChange.bind(this);
     this.saveSettings = this.saveSettings.bind(this);
   }
 
@@ -26,12 +25,6 @@ class SliderEditContainer extends React.Component {
       }
       this.setState({ slider: slider, loading: false });
     });
-  }
-
-  onSliderSettingsFormInputChange(name, value) {
-    let slider = JSON.parse(JSON.stringify(this.state.slider));
-    slider['settings'][name] = value;
-    this.setState({ slider: slider });
   }
 
   saveSettings(formValues) {
@@ -70,7 +63,6 @@ class SliderEditContainer extends React.Component {
 
         {this.props.children && React.cloneElement(this.props.children, {
           slider: this.state.slider,
-          onSliderSettingsFormInputChange: this.onSliderSettingsFormInputChange,
           onSliderSettingsFormSubmit: this.saveSettings,
           sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
           sliderFormBuilder: formBuilder,

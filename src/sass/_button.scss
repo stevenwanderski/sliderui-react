@@ -1,13 +1,10 @@
 .button {
-  color: #fff;
   padding: 10px 16px;
-  border: 0;
   cursor: pointer;
   border-radius: 2px;
-  margin-right: 10px;
-  background: lighten($primary, 27%);
-  border: solid $primary-border-width lighten($primary, 20%);
-  color: $primary;
+  border-style: solid;
+  border-width: $primary-border-width;
+  font-size: 14px;
 
   &[disabled] {
     border-color: $gray-light;
@@ -26,8 +23,24 @@
     text-decoration: none;
   }
 
-  &:not([disabled]):hover {
-    background: lighten($primary, 24%);
+  &--primary {
+    background: $primary;
+    border-color: $primary;
+    color: $white;
+
+    &:not([disabled]):hover {
+      background: darken($primary, 5%);
+    }
+  }
+
+  &--secondary {
+    background: lighten($primary, 27%);
+    border-color: lighten($primary, 20%);
+    color: $primary;
+
+    &:not([disabled]):hover {
+      background: lighten($primary, 24%);
+    }
   }
 }
 

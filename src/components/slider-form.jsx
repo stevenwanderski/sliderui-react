@@ -1,46 +1,56 @@
 import React from 'react';
+import Formsy from 'formsy-react';
+import Input from 'components/forms/input';
 
 class SliderForm extends React.Component {
   constructor() {
     super();
-    this.state = { disabled: true }
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.state = {
+      canSubmit: false
+    };
+
+    this.submit = this.submit.bind(this);
+    this.enableButton = this.enableButton.bind(this);
+    this.disableButton = this.disableButton.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.refs.title.value);
+  enableButton() {
+    this.setState({ canSubmit: true });
   }
 
-  onChange(e) {
-    const value = e.currentTarget.value;
+  disableButton() {
+    this.setState({ canSubmit: false });
+  }
 
-    if (!value) {
-      this.setState({ disabled: true });
-    } else {
-      this.setState({ disabled: false });
-    }
+  submit(formValues) {
+    this.props.onSubmit(formValues);
   }
 
   render() {
-    let button;
+    let submitText = 'Create Slider and Add Slides';
     if (this.props.loading) {
-      button = <button disabled className="button loading">Creating...</button>;
-    } else {
-      button = <button disabled={this.state.disabled} className="button">Create Slider and Add Slides</button>
+      submitText = 'Creating...';
     }
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
         <h1>Give the slider a name:</h1>
         <div className="form-row">
-          <input type="text" ref="title" onChange={this.onChange} className="input--text" id="slider-name" />
+          <Input
+            type="text"
+            name="title"
+            value=""
+            required />
         </div>
-        {button}
-      </form>
+        <button disabled={!this.state.canSubmit || this.props.loading} className="button button--primary">{submitText}</button>
+      </Formsy.Form>
     );
   }
+}
+
+SliderForm.propTypes = {
+  onSubmit: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.bool
 }
 
 export default SliderForm;

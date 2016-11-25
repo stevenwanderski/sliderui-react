@@ -17,9 +17,9 @@
       box-shadow: 0 2px 0 lighten($primary, 20%);
       text-decoration: none;
     }
-  }
 
-  .active {
-    box-shadow: 0 2px 0 lighten($primary, 20%);
+    &.active {
+      box-shadow: 0 2px 0 lighten($primary, 20%);
+    }
   }
 }
