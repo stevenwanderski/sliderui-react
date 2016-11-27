@@ -47,7 +47,12 @@ class TempSliderNewContainer extends React.Component {
   render() {
     return (
       <div>
-        <header className="container__header">
+        <header className="container__header container__header--temp">
+          <div className="brand">
+            <div className="brand__logo"></div>
+            <div className="brand__name">SliderUI</div>
+          </div>
+
           <ProgressBar activeStep={0} />
         </header>
 

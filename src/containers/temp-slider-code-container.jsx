@@ -51,25 +51,41 @@ class TempSliderCodeContainer extends React.Component {
 
     return (
       <div>
-        <header className="container__header">
+        <header className="container__header container__header--temp">
+          <div className="brand">
+            <div className="brand__logo"></div>
+            <div className="brand__name">SliderUI</div>
+          </div>
+
           <ProgressBar activeStep={2} />
         </header>
 
-        <div className="container__body slider-layout">
-          <div className="section">
-            <h1>Here is the code:</h1>
-            <EmbedCode sliderId={this.state.slider.id} />
+        <div className="container__body flex-container">
+          <div className="section section--padded section--margin-right">
+            <h1>Instructions</h1>
+            <ol>
+              <li>Copy the embed code displayed below</li>
+              <li>Select a location on any webpage and paste the code.<br />
+              The slider will appear at that exact location.</li>
+            </ol>
+
+            <hr />
+
+            <h1>Embed Code</h1>
+            <EmbedCode shortCode={this.state.slider.short_code} />
           </div>
 
-          <div className="section">
-            <div className="slider-code__callout">
-              Heads up! This slider is active for 24 hours.<br />
+          <div className="section section--padded">
+            <h1>Heads up!</h1>
+            <p>
+              This slider is only active for the next 24 hours.<br />
               To make it active forever, signup to claim this slider:
-            </div>
-            <AuthenticationForm onSubmit={this.authenticate}
-                                loading={this.state.authenticationLoading}
-                                hideAuthType={true}
-                                errorMessage={this.state.authenticationError} />
+            </p>
+            <AuthenticationForm
+              onSubmit={this.authenticate}
+              loading={this.state.authenticationLoading}
+              hideAuthType={true}
+              errorMessage={this.state.authenticationError} />
           </div>
         </div>
       </div>

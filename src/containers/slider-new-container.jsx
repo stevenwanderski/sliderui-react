@@ -12,10 +12,10 @@ class SliderNew extends React.Component {
     this.saveSlider = this.saveSlider.bind(this);
   }
 
-  saveSlider(title) {
+  saveSlider(formValues) {
     this.setState({ loading: true });
 
-    const data = { slider: { title: title } };
+    const data = { slider: formValues };
     return ajax.post('/sliders', data)
       .then((response) => {
         browserHistory.push(`/app/slider/${response.data.id}/settings`);

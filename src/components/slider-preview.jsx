@@ -13,7 +13,7 @@ class SliderPreview extends React.Component {
 
     if (!this.props.slides.length) {
       return (
-        <div className="slider-preview__placeholder">Slider will appear after adding a slide :)</div>
+        <div className="slider-preview__placeholder">Slider will appear after adding a slide 😬</div>
       );
     }
 

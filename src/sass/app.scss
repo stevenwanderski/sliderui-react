@@ -4,10 +4,12 @@
 @import 'base';
 @import 'button';
 @import 'form';
+@import 'link';
 @import 'input';
 @import 'label';
 @import 'error';
 @import 'flash';
+@import 'brand';
 @import 'flex-container';
 @import 'container';
 @import 'user-toolbar';
@@ -17,15 +19,10 @@
 @import 'slider-settings';
 @import 'slider-new';
 @import 'slider-preview';
+@import 'slider-code';
 @import 'slide-item';
 @import 'authentication';
 @import 'progress-bar';
 @import 'image-uploader';
 @import 'setting-group';
-
-.slider-code__callout {
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
+@import 'embed-code';

@@ -54,15 +54,20 @@ class TempSliderEditContainer extends React.Component {
 
     return (
       <div>
-        <header className="container__header">
+        <header className="container__header container__header--temp">
+          <div className="brand">
+            <div className="brand__logo"></div>
+            <div className="brand__name">SliderUI</div>
+          </div>
+
           <ProgressBar activeStep={1} />
         </header>
 
         <div className="container__body slider-layout">
           <div className="slider-layout__header">
             <nav>
-              <Link to={`/temp/slider/${this.props.params.id}/settings`}>Settings</Link>
-              <Link to={`/temp/slider/${this.props.params.id}/preview`}>Preview</Link>
+              <Link to={`/temp/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link" activeClassName="active">Settings</Link>
+              <Link to={`/temp/slider/${this.props.params.id}/preview`} className="slider-layout__tab-link" activeClassName="active">Preview</Link>
             </nav>
             <Link to={`/temp/slider/${this.props.params.id}/code`} className="button button--primary">Get Code</Link>
           </div>

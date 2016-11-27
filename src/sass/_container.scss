@@ -14,6 +14,18 @@
     background: $white;
     border-bottom: solid $gray-light 1px;
     margin-bottom: 20px;
+
+    &--temp {
+      display: flex;
+      justify-content: space-between;;
+      padding-left: 40px;
+      padding-right: 40px;
+
+      &::after {
+        content: '';
+        flex-basis: 100px;
+      }
+    }
   }
 
   &__body {

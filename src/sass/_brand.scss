@@ -1,0 +1,15 @@
+.brand {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    background: url('../svg/icon-star.svg') center center no-repeat;
+    height: 30px;
+    width: 30px;
+    margin-right: 4px;
+  }
+
+  &__name {
+    font-size: 18px;
+  }
+}

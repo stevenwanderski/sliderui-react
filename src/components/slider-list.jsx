@@ -7,7 +7,7 @@ class SliderList extends React.Component {
       return (
         <div>
           You have no sliders yet.<br/>
-          <Link to='/app/slider/new' className="button button--primary">Click here to add a slider!</Link>
+          <Link to='/app/slider/new'>Click here to add a slider!</Link>
         </div>
       );
     }

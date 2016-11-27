@@ -4,4 +4,12 @@
   border: solid 1px $gray-light;
   border-radius: 2px;
   margin-bottom: 20px;
+
+  &--padded {
+    padding: 30px;
+  }
+
+  &--margin-right {
+    margin-right: 40px;
+  }
 }

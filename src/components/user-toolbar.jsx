@@ -20,9 +20,9 @@ class UserToolbar extends React.Component {
 
     return (
       <div className='user-toolbar'>
-        <div className="user-toolbar__brand">
-          <div className="user-toolbar__brand-logo"></div>
-          <div className="user-toolbar__brand-name">SliderUI</div>
+        <div className="brand">
+          <div className="brand__logo"></div>
+          <div className="brand__name">SliderUI</div>
         </div>
 
         <div className="user-toolbar__account">
