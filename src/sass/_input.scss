@@ -7,6 +7,7 @@
   font-size: 16px;
   border-radius: 5px;
   color: $gray-dark;
+  max-width: 500px;
 }
 
 .input--file {
@@ -18,7 +19,9 @@
 }
 
 .input--checkbox {
-  margin-right: 5px;
+  margin-right: 7px;
+  margin-top: 5px;
+  width: 15px;
 }
 
 .input--large {

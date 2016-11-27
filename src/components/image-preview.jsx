@@ -11,9 +11,7 @@ class ImagePreview extends React.Component {
     }
 
     return (
-      <div className="slide-item__content">
-        <div className="slide-item__preview" style={style}></div>
-      </div>
+      <div className="slide-item__preview" style={style}></div>
     );
   }
 }

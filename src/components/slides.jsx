@@ -23,15 +23,10 @@ class Slides extends React.Component {
 
   render() {
     if (this.props.loading) {
-      return <div>LOADING...</div>;
+      return <div>Loading...</div>;
     }
 
-    let button;
-    if (this.props.addLoading) {
-      button = <button className="button button--secondary" disabled>Loading...</button>;
-    } else {
-      button = <button className="button button--secondary" onClick={this.props.onClickAddSlide}>Add Slide</button>;
-    }
+    let buttonText = this.props.addLoading ? 'Loading' : 'Add Slide';
 
     const slides = this.props.slides.map((slide, index) => {
       return <Slide
@@ -51,7 +46,10 @@ class Slides extends React.Component {
                       lockAxis='y'
                       lockToContainerEdges={true}
                       useDragHandle={true} />
-        {button}
+        <button
+          className="button button--secondary"
+          onClick={this.props.onClickAddSlide}
+          disabled={this.props.addLoading}>{buttonText}</button>
       </div>
     )
   }

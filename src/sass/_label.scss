@@ -4,5 +4,11 @@
 
   &--radio {
     margin-right: 16px;
+    cursor: pointer;
+  }
+
+  &--checkbox {
+    display: flex;
+    cursor: pointer;
   }
 }

@@ -27,12 +27,10 @@ class SliderNew extends React.Component {
 
   render() {
     return (
-      <div className="slider-new">
-        <div className="container__body--temp">
-          <SliderForm
-            loading={this.state.loading}
-            onSubmit={this.saveSlider} />
-        </div>
+      <div className="section">
+        <SliderForm
+          loading={this.state.loading}
+          onSubmit={this.saveSlider} />
       </div>
     )
   }

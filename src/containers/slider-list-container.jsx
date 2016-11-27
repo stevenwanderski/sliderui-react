@@ -25,7 +25,7 @@ class SliderListContainer extends React.Component {
     }
 
     return (
-      <div>
+      <div className="section">
         <Link to="/app/slider/new">Add New Slider</Link>
         <SliderList sliders={this.state.sliders} />
       </div>

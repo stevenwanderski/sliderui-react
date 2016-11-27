@@ -1,2 +1,26 @@
 .user-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+
+  &__account {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    border-radius: 50px;
+    margin-right: 5px;
+  }
+
+  &__row {
+    margin-right: 10px;
+  }
+
+  &__email {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+  }
 }

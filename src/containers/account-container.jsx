@@ -30,7 +30,7 @@ class AccountContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="section">
         <h1>Account Settings</h1>
         <AccountForm
           successFlash={this.state.successFlash}

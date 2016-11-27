@@ -39,7 +39,7 @@ class AuthenticationContainer extends React.Component {
 
   render() {
     return (
-      <div className="authentication">
+      <div className="authentication section">
         <h1>Login or Signup</h1>
         <AuthenticationForm
           onSubmit={this.authenticate}

@@ -69,10 +69,7 @@ class SliderSettingsContainer extends React.Component {
     const slides = this.state.slides.filter((slide) => slide.id != id);
     this.setState({ slides: slides, sliderPreviewLoading: true });
 
-    ajax.delete(`/slides/${id}`)
-    .then((response) => {
-      this.loadSliderPreview();
-    });
+    ajax.delete(`/slides/${id}`);
   }
 
   saveSlideImage(id, file) {

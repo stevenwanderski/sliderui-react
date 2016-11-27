@@ -14,13 +14,16 @@ hr {
   margin: 10px 0;
 }
 
+body,
+html,
+#app,
+.container {
+  height: 100%;
+}
+
 body {
   color: $gray-dark;
   background: $gray-lightest;
-
-  &.ReactModal__Body--open {
-    overflow: hidden;
-  }
 }
 
 h1 {

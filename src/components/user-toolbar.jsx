@@ -21,18 +21,25 @@ class UserToolbar extends React.Component {
     return (
       <div className='user-toolbar'>
         <div className="user-toolbar__row">
-          <Gravatar email={this.props.email} />
-          <div>{this.props.email}</div>
-          <Link to="/app/account">Account</Link>
-        </div>
-        <div className="user-toolbar__row user-toolbar__row--logout">
-          <a href='' onClick={this.onClickLogout}>Logout</a>
+          <Link to='/app/sliders'>My Sliders</Link>
         </div>
 
-        <hr />
+        <div className="user-toolbar__account">
+          <div className="user-toolbar__row user-toolbar__email">
+            <Gravatar
+              email={this.props.email}
+              size={30}
+              className="user-toolbar__avatar" />
+            <div>{this.props.email}</div>
+          </div>
 
-        <div className="user-toolbar__row">
-          <Link to='/app/sliders'>Sliders</Link>
+          <div className="user-toolbar__row">
+            <Link to="/app/account">Account</Link>
+          </div>
+
+          <div className="user-toolbar__row">
+            <a href='' onClick={this.onClickLogout}>Logout</a>
+          </div>
         </div>
       </div>
     )

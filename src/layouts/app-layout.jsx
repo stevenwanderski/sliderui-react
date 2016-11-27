@@ -30,15 +30,15 @@ class AppLayout extends React.Component {
 
   render() {
     return (
-      <div className="container container--app">
-        <div className="container__child container__child--toolbar">
+      <div className="container">
+        <div className="container__header">
           <UserToolbar
             email={this.state.user.email}
             loading={this.state.userLoading}
             onClickLogout={this.logout} />
         </div>
 
-        <div className="container__child container__child--main">
+        <div className="container__body">
           {this.props.children}
         </div>
       </div>

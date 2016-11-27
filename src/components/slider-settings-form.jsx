@@ -55,13 +55,13 @@ class SliderSettingsForm extends React.Component {
   buildCheckboxInput(builderItem, index) {
     return (
       <div className="form-row" key={index}>
-        <label>
+        <label className="label--checkbox">
           <Checkbox
             name={builderItem.name}
             value={this.props.slider['settings'][builderItem.name]}
             validations={builderItem.validations}/>
 
-          {builderItem.label}
+          <div>{builderItem.label}</div>
         </label>
       </div>
     );
