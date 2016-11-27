@@ -1,0 +1,10 @@
+.flash {
+  color: $secondary;
+
+  &--inline {
+    margin-left: 10px;
+    background: url('../svg/icon-check.svg') left center no-repeat;
+    background-size: 20px;
+    padding-left: 26px;
+  }
+}

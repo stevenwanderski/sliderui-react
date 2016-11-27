@@ -23,4 +23,22 @@
     align-items: center;
     margin-right: 30px;
   }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+  }
+
+  &__brand-logo {
+    background: url('../svg/icon-star.svg') center center no-repeat lighten($primary, 23%);
+    background-size: 24px;
+    height: 30px;
+    width: 30px;
+    border-radius: 40px;
+    margin-right: 7px;
+  }
+
+  &__brand-name {
+    font-size: 18px;
+  }
 }

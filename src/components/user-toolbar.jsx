@@ -20,8 +20,9 @@ class UserToolbar extends React.Component {
 
     return (
       <div className='user-toolbar'>
-        <div className="user-toolbar__row">
-          <Link to='/app/sliders'>My Sliders</Link>
+        <div className="user-toolbar__brand">
+          <div className="user-toolbar__brand-logo"></div>
+          <div className="user-toolbar__brand-name">SliderUI</div>
         </div>
 
         <div className="user-toolbar__account">
@@ -31,6 +32,10 @@ class UserToolbar extends React.Component {
               size={30}
               className="user-toolbar__avatar" />
             <div>{this.props.email}</div>
+          </div>
+
+          <div className="user-toolbar__row">
+            <Link to='/app/sliders'>My Sliders</Link>
           </div>
 
           <div className="user-toolbar__row">

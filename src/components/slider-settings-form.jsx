@@ -124,7 +124,7 @@ class SliderSettingsForm extends React.Component {
 
     let successFlash;
     if (this.props.successFlash) {
-      successFlash = <div className="flash">{this.props.successFlash}</div>;
+      successFlash = <div className="flash flash--inline">{this.props.successFlash}</div>;
     }
 
     const groupOutput = this.buildGroupOutput(this.props.builder);
@@ -137,7 +137,7 @@ class SliderSettingsForm extends React.Component {
           {groupOutput}
         </div>
 
-        <div className="form-row">
+        <div className="form-row flex-container flex-container--align-center">
           <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary">{submitText}</button>
           {successFlash}
         </div>

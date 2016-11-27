@@ -31,7 +31,7 @@ class AccountForm extends React.Component {
   render() {
     let successFlash;
     if (this.props.successFlash) {
-      successFlash = <div className="success-flash">{this.props.successFlash}</div>;
+      successFlash = <div className="flash flash--inline">{this.props.successFlash}</div>;
     }
 
     let submitText = 'Save';
@@ -59,8 +59,11 @@ class AccountForm extends React.Component {
             required
             validations="equalsField:password" />
         </div>
-        <button className="button" disabled={!this.state.canSubmit || this.props.loading}>{submitText}</button>
-        {successFlash}
+
+        <div className="form-row flex-container flex-container--align-center">
+          <button className="button button--primary" disabled={!this.state.canSubmit || this.props.loading}>{submitText}</button>
+          {successFlash}
+        </div>
       </Formsy.Form>
     );
   }

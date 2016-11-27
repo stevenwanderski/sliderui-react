@@ -37,7 +37,7 @@ class SliderEditContainer extends React.Component {
 
     ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
     .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Saved yo!' });
+      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Successfully saved' });
       setTimeout(() => this.setState({ successFlash: null }), 2000);
     })
     .catch((error) => {
