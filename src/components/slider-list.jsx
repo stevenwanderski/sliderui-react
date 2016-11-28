@@ -13,8 +13,13 @@ class SliderList extends React.Component {
     }
 
     const sliders = this.props.sliders.map((slider, index) => {
+      const style = {
+        backgroundImage: `url('${slider.display_image_url}')`
+      }
+
       return (
-        <div key={index}>
+        <div key={index} className="slider-list__slide">
+          <div className="slider-list__slide-image" style={style}></div>
           <Link to={`/app/slider/${slider.id}/settings`}>{slider.title}</Link>
         </div>
       );
@@ -22,7 +27,12 @@ class SliderList extends React.Component {
 
     return (
       <div className='slider-list'>
-        <Link to="/app/slider/new">+ Add New Slider</Link>
+        <div className="slider-list__header">
+          <h1>My Sliders</h1>
+          <div className="slider-list__button">
+            <Link to="/app/slider/new" className="button button--primary">+ Add New Slider</Link>
+          </div>
+        </div>
         {sliders}
       </div>
     );

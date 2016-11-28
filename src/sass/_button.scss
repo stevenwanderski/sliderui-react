@@ -5,6 +5,7 @@
   border-style: solid;
   border-width: $primary-border-width;
   font-size: 14px;
+  display: inline-block;
 
   &[disabled] {
     border-color: $gray-light;
