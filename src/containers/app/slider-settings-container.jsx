@@ -124,7 +124,7 @@ class SliderSettingsContainer extends React.Component {
         </div>
 
         <div className="section flex-child--full-width">
-          <h3>Settings</h3>
+          <h3 className="slider-settings__settings-header">Settings</h3>
           <SliderSettingsForm
             slider={this.props.slider}
             builder={this.props.sliderFormBuilder}

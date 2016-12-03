@@ -21,7 +21,7 @@ class AccountContainer extends React.Component {
     return ajax.put('/user', data)
     .then((response) => {
       this.setState({
-        successFlash: 'All saved up!',
+        successFlash: 'Successfully saved',
         loading: false
       });
       setTimeout(() => this.setState({ successFlash: null }), 2000);

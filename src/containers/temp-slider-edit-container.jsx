@@ -3,6 +3,35 @@ import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
 import ajax from 'utils/ajax';
 import { formBuilder, formDefaults } from 'form-builders/bxslider';
+import Tour from 'react-user-tour';
+
+const steps = [
+  {
+    step: 1,
+    selector: '.button--add-slide',
+    title: <div className='tour__title'>Start by adding slides</div>,
+    body: <div className='tour__body'>This is where you can upload images for the slider.</div>
+  },
+  {
+    step: 2,
+    selector: '.slider-layout__tab-link--preview',
+    title: <div className='tour__title'>Preview the slider</div>,
+    body: <div className='tour__body'>After adding slides, click here to see what the slider will look like. Feel free to switch back and forth as you make changes.</div>
+  },
+  {
+    step: 3,
+    selector: '.slider-settings__settings-header',
+    title: <div className='tour__title'>Tweak some slider settings</div>,
+    body: <div className='tour__body'>Use these settings to change how the slider behaves.</div>,
+    position: 'bottom'
+  },
+  {
+    step: 4,
+    selector: '.button--get-code',
+    title: <div className='tour__title'>Finish up here</div>,
+    body: <div className='tour__body'>Get the slider code and instructions on how to use it.</div>
+  }
+]
 
 class TempSliderEditContainer extends React.Component {
   constructor() {
@@ -12,7 +41,9 @@ class TempSliderEditContainer extends React.Component {
       loading: true,
       slider: {},
       sliderSettingsFormLoading: false,
-      successFlash: null
+      successFlash: null,
+      isTourActive: false,
+      tourStep: 1
     }
 
     this.saveSettings = this.saveSettings.bind(this);
@@ -26,6 +57,7 @@ class TempSliderEditContainer extends React.Component {
         slider.settings = formDefaults();
       }
       this.setState({ slider: slider, loading: false });
+      setTimeout(() => this.setState({ isTourActive: true }), 1000);
     });
   }
 
@@ -39,7 +71,7 @@ class TempSliderEditContainer extends React.Component {
 
     ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
     .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Saved yo!' });
+      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Successfully saved' });
       setTimeout(() => this.setState({ successFlash: null }), 2000);
     })
     .catch((error) => {
@@ -54,6 +86,16 @@ class TempSliderEditContainer extends React.Component {
 
     return (
       <div>
+        <Tour
+            active={this.state.isTourActive}
+            step={this.state.tourStep}
+            onNext={(step) => this.setState({ tourStep: step })}
+            onBack={(step) => this.setState({ tourStep: step })}
+            onCancel={() => this.setState({ isTourActive: false })}
+            steps={steps}
+            arrowColor='#8687c5'
+        />
+
         <header className="container__header container__header--temp">
           <div className="brand">
             <div className="brand__logo"></div>
@@ -66,10 +108,10 @@ class TempSliderEditContainer extends React.Component {
         <div className="container__body slider-layout">
           <div className="slider-layout__header">
             <nav>
-              <Link to={`/temp/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link" activeClassName="active">Settings</Link>
-              <Link to={`/temp/slider/${this.props.params.id}/preview`} className="slider-layout__tab-link" activeClassName="active">Preview</Link>
+              <Link to={`/temp/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link slider-layout__tab-link--settings" activeClassName="active">Settings</Link>
+              <Link to={`/temp/slider/${this.props.params.id}/preview`} className="slider-layout__tab-link slider-layout__tab-link--preview" activeClassName="active">Preview</Link>
             </nav>
-            <Link to={`/temp/slider/${this.props.params.id}/code`} className="button button--primary">Get Code</Link>
+            <Link to={`/temp/slider/${this.props.params.id}/code`} className="button button--primary button--get-code">Get Code</Link>
           </div>
 
           {this.props.children && React.cloneElement(this.props.children, {

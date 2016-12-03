@@ -47,7 +47,7 @@ class Slides extends React.Component {
                       lockToContainerEdges={true}
                       useDragHandle={true} />
         <button
-          className="button button--secondary"
+          className="button button--secondary button--add-slide"
           onClick={this.props.onClickAddSlide}
           disabled={this.props.addLoading}>{buttonText}</button>
       </div>
