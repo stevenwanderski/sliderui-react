@@ -6,8 +6,7 @@ var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
-  context: APP_DIR,
-  entry: './index.jsx',
+  entry: path.resolve(__dirname, 'src/index.jsx'),
   output: {
     path: BUILD_DIR,
     publicPath: '/',
@@ -39,7 +38,8 @@ var config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index-template.ejs'
+      template: 'src/index-template.html',
+      favicon: 'src/images/icon-star.png'
     }),
     new webpack.DefinePlugin({
       'process.env':{
