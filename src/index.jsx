@@ -1,3 +1,6 @@
+import Raven from 'raven-js';
+Raven.config(process.env.SENTRY_KEY).install();
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
