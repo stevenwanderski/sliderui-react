@@ -47,6 +47,7 @@ class TempSliderEditContainer extends React.Component {
     }
 
     this.saveSettings = this.saveSettings.bind(this);
+    this.enableTour = this.enableTour.bind(this);
   }
 
   componentDidMount() {
@@ -57,7 +58,6 @@ class TempSliderEditContainer extends React.Component {
         slider.settings = formDefaults();
       }
       this.setState({ slider: slider, loading: false });
-      setTimeout(() => this.setState({ isTourActive: true }), 1000);
     });
   }
 
@@ -77,6 +77,10 @@ class TempSliderEditContainer extends React.Component {
     .catch((error) => {
       this.setState({ sliderSettingsFormLoading: false });
     })
+  }
+
+  enableTour() {
+    setTimeout(() => this.setState({ isTourActive: true }), 1000);
   }
 
   render() {
@@ -119,7 +123,8 @@ class TempSliderEditContainer extends React.Component {
             onSliderSettingsFormSubmit: this.saveSettings,
             sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
             sliderFormBuilder: formBuilder,
-            successFlash: this.state.successFlash
+            successFlash: this.state.successFlash,
+            enableTour: this.enableTour
           })}
         </div>
       </div>

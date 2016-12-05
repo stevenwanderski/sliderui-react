@@ -28,6 +28,10 @@ class SliderSettingsContainer extends React.Component {
           slides: response.data,
           slidesLoading: false
         });
+
+        if (this.props.enableTour) {
+          this.props.enableTour();
+        }
       });
   }
 
