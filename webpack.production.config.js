@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var Dotenv = require('dotenv-webpack');
 
 var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -42,14 +41,8 @@ var config = {
       template: 'src/index-template.html',
       favicon: 'src/images/icon-star.png'
     }),
-    new Dotenv(),
     new webpack.optimize.UglifyJsPlugin()
-  ],
-  devtool: 'source-map',
-
-  devServer: {
-    historyApiFallback: true
-  }
+  ]
 };
 
 module.exports = config;
