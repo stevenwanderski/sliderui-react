@@ -1,6 +1,9 @@
 import Raven from 'raven-js';
 Raven.config(process.env.SENTRY_KEY).install();
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-36499930-13');
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
@@ -59,9 +62,14 @@ const requireUnconfirmedAuthentication = (nextState, replace) => {
   }
 }
 
+const logPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
+
 render((
 
-  <Router history={browserHistory}>
+  <Router history={browserHistory} onUpdate={logPageView}>
     <Route path="/" component={HomeLayout}>
       <IndexRoute component={HomeContainer} />
       <Route path="/auth" component={AuthenticationContainer} onEnter={requireUnauthentication}/>
