@@ -1,6 +1,7 @@
 import React from 'react';
 import ajax from 'utils/ajax';
 import SliderPreview from 'components/slider-preview';
+import Loader from 'components/loader';
 
 class SliderPreviewContainer extends React.Component {
   constructor() {
@@ -44,7 +45,7 @@ class SliderPreviewContainer extends React.Component {
 
   render() {
     if (this.state.slidesLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

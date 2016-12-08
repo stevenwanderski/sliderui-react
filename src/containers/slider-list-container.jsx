@@ -2,6 +2,7 @@ import React from 'react';
 import ajax from 'utils/ajax';
 import { Link } from 'react-router'
 import SliderList from 'components/slider-list';
+import Loader from 'components/loader';
 
 class SliderListContainer extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ class SliderListContainer extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

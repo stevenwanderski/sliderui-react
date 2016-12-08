@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from 'components/loader';
 
 class SliderPreview extends React.Component {
   componentDidMount() {
@@ -8,7 +9,7 @@ class SliderPreview extends React.Component {
   render() {
     let loading;
     if (this.props.loading) {
-      loading = <div className="loading">Loading...</div>;
+      loading = <Loader />;
     }
 
     if (!this.props.slides.length) {

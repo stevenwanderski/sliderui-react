@@ -2,6 +2,7 @@ import React from 'react';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
 import SliderSettingsForm from 'components/slider-settings-form';
+import Loader from 'components/loader';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
 
@@ -108,7 +109,7 @@ class SliderSettingsContainer extends React.Component {
 
   render() {
     if (this.state.slidesLoading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

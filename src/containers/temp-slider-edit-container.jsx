@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
+import Loader from 'components/loader';
 import ajax from 'utils/ajax';
 import { formBuilder, formDefaults } from 'form-builders/bxslider';
 import Tour from 'react-user-tour';
@@ -85,7 +86,7 @@ class TempSliderEditContainer extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

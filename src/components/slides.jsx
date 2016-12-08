@@ -1,5 +1,6 @@
 import React from 'react';
 import Slide from 'components/slide';
+import Loader from 'components/loader';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 const SortableItem = SortableElement(({value}) => value);
@@ -23,7 +24,7 @@ class Slides extends React.Component {
 
   render() {
     if (this.props.loading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     let buttonText = this.props.addLoading ? 'Loading' : 'Add Slide';

@@ -4,6 +4,7 @@ import { login } from 'utils/auth';
 import EmbedCode from 'components/embed-code';
 import ProgressBar from 'components/progress-bar';
 import AuthenticationForm from 'components/authentication-form';
+import Loader from 'components/loader';
 import { browserHistory } from 'react-router';
 
 class TempSliderCodeContainer extends React.Component {
@@ -46,7 +47,7 @@ class TempSliderCodeContainer extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

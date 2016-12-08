@@ -26,6 +26,12 @@
         flex-basis: 100px;
       }
     }
+
+    &--brand {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
   }
 
   &__body {

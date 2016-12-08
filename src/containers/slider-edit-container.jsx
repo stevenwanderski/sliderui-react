@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import ajax from 'utils/ajax';
 import { formBuilder, formDefaults } from 'form-builders/bxslider';
+import Loader from 'components/loader';
 
 class SliderEditContainer extends React.Component {
   constructor() {
@@ -47,7 +48,7 @@ class SliderEditContainer extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

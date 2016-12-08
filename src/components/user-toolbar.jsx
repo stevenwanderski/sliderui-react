@@ -1,6 +1,7 @@
 import React from 'react';
 import Gravatar from 'react-gravatar';
 import { Link } from 'react-router';
+import Loader from 'components/loader';
 
 class UserToolbar extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class UserToolbar extends React.Component {
 
   render() {
     if (this.props.loading) {
-      return <div className='user-toolbar'>Loading...</div>
+      return <Loader />
     }
 
     return (
