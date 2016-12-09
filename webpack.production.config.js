@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var Dotenv = require('dotenv-webpack');
 
 var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -41,15 +42,8 @@ var config = {
       template: 'src/index-template.html',
       favicon: 'src/images/icon-star.png'
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV) || JSON.stringify('production'),
-        'API_URL': JSON.stringify(process.env.API_URL),
-        'BABEL_ENV': JSON.stringify(process.env.BABEL_ENV),
-        'SENTRY_KEY': JSON.stringify(process.env.SENTRY_KEY)
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    new Dotenv()
   ]
 };
 
