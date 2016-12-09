@@ -37,6 +37,11 @@ var config = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index-template.html',
       favicon: 'src/images/icon-star.png'
