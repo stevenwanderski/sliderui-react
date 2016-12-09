@@ -43,10 +43,10 @@ var config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': process.env.NODE_ENV || JSON.stringify('production'),
-        'API_URL': process.env.API_URL,
-        'BABEL_ENV': process.env.BABEL_ENV,
-        'SENTRY_KEY': process.env.SENTRY_KEY
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV) || JSON.stringify('production'),
+        'API_URL': JSON.stringify(process.env.API_URL),
+        'BABEL_ENV': JSON.stringify(process.env.BABEL_ENV),
+        'SENTRY_KEY': JSON.stringify(process.env.SENTRY_KEY)
       }
     }),
     new webpack.optimize.UglifyJsPlugin()
