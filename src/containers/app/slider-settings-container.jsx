@@ -3,6 +3,7 @@ import ajax from 'utils/ajax';
 import Slides from 'components/slides';
 import SliderSettingsForm from 'components/slider-settings-form';
 import Loader from 'components/loader';
+import Modal from 'react-modal';
 import { arrayMove } from 'react-sortable-hoc';
 import { Link } from 'react-router';
 
@@ -30,8 +31,8 @@ class SliderSettingsContainer extends React.Component {
           slidesLoading: false
         });
 
-        if (this.props.enableTour) {
-          this.props.enableTour();
+        if (this.props.enableWelcome) {
+          this.props.enableWelcome();
         }
       });
   }
@@ -113,31 +114,48 @@ class SliderSettingsContainer extends React.Component {
     }
 
     return (
-      <div className="slider-settings flex-container">
-        <div className="section slider-settings__slides">
-          <h3>Slides</h3>
-          <Slides
-            slides={this.state.slides}
-            loading={this.state.slidesLoading}
-            addLoading={this.state.slidesAddLoading}
-            onClickAddSlide={this.addSlide}
-            onClickEditSlide={this.editSlide}
-            onClickDeleteSlide={this.deleteSlide}
-            onClickCancelSlide={this.cancelSlide}
-            onImageChange={this.saveSlideImage}
-            onSortEnd={this.sortSlides} />
+      <div>
+        <div className="slider-settings flex-container">
+          <div className="section slider-settings__slides">
+            <h3>Slides</h3>
+            <Slides
+              slides={this.state.slides}
+              loading={this.state.slidesLoading}
+              addLoading={this.state.slidesAddLoading}
+              onClickAddSlide={this.addSlide}
+              onClickEditSlide={this.editSlide}
+              onClickDeleteSlide={this.deleteSlide}
+              onClickCancelSlide={this.cancelSlide}
+              onImageChange={this.saveSlideImage}
+              onSortEnd={this.sortSlides} />
+          </div>
+
+          <div className="section flex-child--full-width">
+            <h3 className="slider-settings__settings-header">Settings</h3>
+            <SliderSettingsForm
+              slider={this.props.slider}
+              builder={this.props.sliderFormBuilder}
+              onSubmit={this.props.onSliderSettingsFormSubmit}
+              onInputChange={this.props.onSliderSettingsFormInputChange}
+              loading={this.props.sliderSettingsFormLoading}
+              successFlash={this.props.successFlash} />
+          </div>
         </div>
 
-        <div className="section flex-child--full-width">
-          <h3 className="slider-settings__settings-header">Settings</h3>
-          <SliderSettingsForm
-            slider={this.props.slider}
-            builder={this.props.sliderFormBuilder}
-            onSubmit={this.props.onSliderSettingsFormSubmit}
-            onInputChange={this.props.onSliderSettingsFormInputChange}
-            loading={this.props.sliderSettingsFormLoading}
-            successFlash={this.props.successFlash} />
-        </div>
+        <Modal
+          isOpen={this.props.isWelcomeActive}
+          contentLabel="Welcome"
+          className="modal__content"
+          overlayClassName="modal__overlay"
+        >
+          <div className="welcome__title">Welcome to the settings page 👋</div>
+          <div className="welcome__section">
+            From here you can add slides, upload images, and tweak slider settings.
+            We have provided a short tour that will show you the ropes.
+          </div>
+          <button className="button button--primary button--inline" onClick={this.props.enableTour}>Start Tour!</button>
+          <button className="button button--secondary" onClick={this.props.disableWelcome}>No, thanks.</button>
+        </Modal>
       </div>
     );
   }

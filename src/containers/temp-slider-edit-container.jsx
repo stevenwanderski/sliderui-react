@@ -43,12 +43,15 @@ class TempSliderEditContainer extends React.Component {
       slider: {},
       sliderSettingsFormLoading: false,
       successFlash: null,
+      isWelcomeActive: false,
       isTourActive: false,
       tourStep: 1
     }
 
     this.saveSettings = this.saveSettings.bind(this);
     this.enableTour = this.enableTour.bind(this);
+    this.enableWelcome = this.enableWelcome.bind(this);
+    this.disableWelcome = this.disableWelcome.bind(this);
   }
 
   componentDidMount() {
@@ -81,7 +84,15 @@ class TempSliderEditContainer extends React.Component {
   }
 
   enableTour() {
-    setTimeout(() => this.setState({ isTourActive: true }), 1000);
+    this.setState({ isTourActive: true, isWelcomeActive: false });
+  }
+
+  enableWelcome() {
+    this.setState({ isWelcomeActive: true });
+  }
+
+  disableWelcome() {
+    this.setState({ isWelcomeActive: false });
   }
 
   render() {
@@ -125,7 +136,10 @@ class TempSliderEditContainer extends React.Component {
             sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
             sliderFormBuilder: formBuilder,
             successFlash: this.state.successFlash,
-            enableTour: this.enableTour
+            enableTour: this.enableTour,
+            enableWelcome: this.enableWelcome,
+            disableWelcome: this.disableWelcome,
+            isWelcomeActive: this.state.isWelcomeActive
           })}
         </div>
       </div>

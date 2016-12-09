@@ -43,6 +43,10 @@
       background: lighten($primary, 24%);
     }
   }
+
+  &--inline {
+    margin-right: 20px;
+  }
 }
 
 .button--large {

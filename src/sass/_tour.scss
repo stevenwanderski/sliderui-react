@@ -16,9 +16,12 @@
 // inline styles and does not allow for easy overrides.
 // Tis life.
 .react-user-tour-container {
+  background: #666;
+  
   > div {
     border-radius: 2px;
-    box-shadow: inset 0 0 0 3px $primary !important;
+    box-shadow: inset 0 0 0 3px $primary,
+                0 0 40px $gray-light !important;
     height: 200px !important;
   }
 }

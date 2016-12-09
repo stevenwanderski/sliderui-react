@@ -1,0 +1,32 @@
+.modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($white, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 600px;
+    max-height: 100%;
+    margin: 40px;
+    border: solid 2px $primary;
+    padding: 30px;
+    background: $white;
+    position: relative;
+    box-shadow: 0 0 40px $gray-light;
+  }
+}
+
+// react-modal adds the following class to
+// the body when opened. use the following
+// style to disable scrolling when open.
+.ReactModal__Body--open {
+  overflow: hidden;
+}
