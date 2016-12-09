@@ -37,16 +37,20 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
     new HtmlWebpackPlugin({
       template: 'src/index-template.html',
       favicon: 'src/images/icon-star.png'
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: true
+      }
+    })
   ]
 };
 
