@@ -9,14 +9,15 @@ class ConfirmContainer extends React.Component {
     super();
 
     this.state = {
-      confirmFormLoading: false
+      loading: false,
+      errorMessage: null
     }
 
     this.saveAccount = this.saveAccount.bind(this);
   }
 
   saveAccount(formValues) {
-    this.setState({ confirmFormLoading: true });
+    this.setState({ loading: true });
 
     const data = {
       user: formValues
@@ -26,8 +27,14 @@ class ConfirmContainer extends React.Component {
       login(response.data);
       browserHistory.push('/app/sliders');
     })
-    .catch((errors) => {
-      this.setState({ confirmFormLoading: false });
+    .catch((error) => {
+      this.setState({ loading: false });
+
+      if (error.response) {
+        this.setState({ errorMessage: error.response.data.errors });
+      } else {
+        this.setState({ errorMessage: error.message });
+      }
     });
   }
 
@@ -44,7 +51,9 @@ class ConfirmContainer extends React.Component {
           <h1>Confirm Account</h1>
           <p>Before continuing, please add an email so you can login again.</p>
           <ConfirmForm
+            loading={this.state.loading}
             successFlash={this.state.successFlash}
+            errorMessage={this.state.errorMessage}
             onSubmit={this.saveAccount} />
         </div>
       </div>

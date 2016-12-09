@@ -28,8 +28,14 @@ class ConfirmForm extends React.Component {
   }
 
   render() {
+    let error;
+    if (this.props.errorMessage) {
+      error = <div className="form-row error">{this.props.errorMessage}</div>;
+    }
+
     return (
       <Formsy.Form onValidSubmit={this.submit} onValid={this.enableButton} onInvalid={this.disableButton}>
+        {error}
         <div className="form-row">
           <label>Email</label>
           <Input
@@ -39,7 +45,7 @@ class ConfirmForm extends React.Component {
             validations="isEmail"
             required />
         </div>
-        <button className="button" disabled={!this.state.canSubmit}>Save</button>
+        <button className="button button--primary" disabled={!this.state.canSubmit || this.props.loading}>Save</button>
       </Formsy.Form>
     );
   }
