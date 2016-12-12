@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline",
-    "test": "API_URL=http://localhost:3001 node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --port 8081",
+    "test": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --port 8081 --config webpack.test.config.js",
     "build": "node ./node_modules/.bin/webpack -p --progress --colors --config webpack.production.config.js"
   },
   "author": "",
