@@ -21,7 +21,6 @@ import AppLayout from 'layouts/app-layout';
 import HomeContainer from 'containers/home-container';
 import AuthenticationContainer from 'containers/authentication-container';
 import AccountContainer from 'containers/account-container';
-import ConfirmContainer from 'containers/confirm-container';
 import SliderNewContainer from 'containers/slider-new-container';
 import SliderListContainer from 'containers/slider-list-container';
 import SliderEditContainer from 'containers/slider-edit-container';
@@ -75,11 +74,10 @@ render((
     <Route path="/" component={HomeLayout}>
       <IndexRoute component={HomeContainer} />
       <Route path="/auth" component={AuthenticationContainer} onEnter={requireUnauthentication}/>
-      <Route path="/confirm" component={ConfirmContainer} onEnter={requireAuthentication} />
     </Route>
 
     <Route component={TempLayout}>
-      <Route path="temp/slider/new" component={TempSliderNewContainer}/>
+      <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnauthentication}/>
       <Route onEnter={requireUnconfirmedAuthentication}>
         <Route path="temp/slider/:id" component={TempSliderEditContainer}>
           <Route path="settings" component={SliderSettingsContainer}/>
