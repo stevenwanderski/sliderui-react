@@ -43,12 +43,6 @@ const requireConfirmedAuthentication = (nextState, replace) => {
   }
 }
 
-const requireAuthentication = (nextState, replace) => {
-  if (!loggedIn()) {
-    replace('/auth');
-  }
-}
-
 const requireUnauthentication = (nextState, replace) => {
   if (loggedIn()) {
     replace('/app/sliders');

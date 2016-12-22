@@ -88,7 +88,12 @@ class TempSliderEditContainer extends React.Component {
   }
 
   enableWelcome() {
+    if(localStorage.getItem('welcomeScreenHasBeenSeen')) {
+      return;
+    }
+    
     this.setState({ isWelcomeActive: true });
+    localStorage.setItem('welcomeScreenHasBeenSeen', true);
   }
 
   disableWelcome() {
