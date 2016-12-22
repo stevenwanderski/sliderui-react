@@ -10,7 +10,7 @@ ReactGA.initialize('UA-36499930-13');
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
-import { loggedIn, confirmed } from 'utils/auth';
+import { loggedIn, confirmed, logout } from 'utils/auth';
 
 // Layouts
 import HomeLayout from 'layouts/home-layout';
@@ -38,10 +38,9 @@ import SliderCodeContainer from 'containers/app/slider-code-container';
 import AppCSS from 'sass/app';
 
 const requireConfirmedAuthentication = (nextState, replace) => {
-  if (!loggedIn()) {
+  if (!loggedIn() || !confirmed()) {
+    logout();
     replace('/auth');
-  } else if (!confirmed()) {
-    replace('/confirm');
   }
 }
 

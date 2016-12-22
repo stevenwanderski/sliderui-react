@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory, Link } from 'react-router'
 import ajax from 'utils/ajax';
-import { login } from 'utils/auth';
+import { login, logout } from 'utils/auth';
 import ConfirmForm from 'components/confirm-form';
 
 class ConfirmContainer extends React.Component {
@@ -38,6 +38,11 @@ class ConfirmContainer extends React.Component {
     });
   }
 
+  onClickLogout() {
+    logout();
+    browserHistory.push('/auth');
+  }
+
   render() {
     return (
       <div>
@@ -45,6 +50,10 @@ class ConfirmContainer extends React.Component {
           <div className="brand">
             <div className="brand__logo"></div>
             <div className="brand__name">SliderUI</div>
+          </div>
+
+          <div className="logout">
+            <a href='' onClick={this.onClickLogout}>Logout</a>
           </div>
         </div>
         <div className="authentication section">

@@ -28,6 +28,7 @@ class RadioGroup extends React.Component {
           <input
             type="radio"
             name={this.props.name}
+            value={item.value}
             className="input--radio"
             checked={this.state.value === item.value}
             onChange={this.changeValue.bind(this, item)} />
