@@ -4,3 +4,5 @@ build/index.html
 
 .env
 .DS_Store
+.eslintcache
+npm-debug.log

@@ -23,4 +23,9 @@ class Checkbox extends React.Component {
   }
 }
 
+Checkbox.propTypes = {
+  setValue: React.PropTypes.func,
+  getValue: React.PropTypes.func
+}
+
 export default HOC(Checkbox);

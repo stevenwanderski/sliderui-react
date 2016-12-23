@@ -23,4 +23,11 @@ class Input extends React.Component {
   }
 }
 
+Input.propTypes = {
+  setValue: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  type: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired
+}
+
 export default HOC(Input);

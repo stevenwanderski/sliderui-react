@@ -26,4 +26,10 @@ class Select extends React.Component {
   }
 }
 
+Select.propTypes = {
+  setValue: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  options: React.PropTypes.array.isRequired
+}
+
 export default HOC(Select);

@@ -41,4 +41,12 @@ class RadioGroup extends React.Component {
   }
 }
 
+RadioGroup.propTypes = {
+  setValue: React.PropTypes.func,
+  getValue: React.PropTypes.func,
+  value: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  items: React.PropTypes.array.isRequired
+}
+
 export default HOC(RadioGroup);

@@ -43,4 +43,9 @@ class Password extends React.Component {
   }
 }
 
+Password.propTypes = {
+  setValue: React.PropTypes.func,
+  getValue: React.PropTypes.func
+}
+
 export default HOC(Password);
