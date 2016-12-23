@@ -1,5 +1,4 @@
-import React from 'react';
-import ajax from 'utils/ajax';
+import React, { PropTypes } from 'react';
 
 class ImageUploader extends React.Component {
   constructor() {
@@ -65,8 +64,9 @@ class ImageUploader extends React.Component {
 }
 
 ImageUploader.propTypes = {
-  slideId: React.PropTypes.string,
-  onImageChange: React.PropTypes.func
+  slideId: PropTypes.string.isRequired,
+  onImageChange: PropTypes.func.isRequired,
+  labelText: PropTypes.string.isRequired
 }
 
 export default ImageUploader;

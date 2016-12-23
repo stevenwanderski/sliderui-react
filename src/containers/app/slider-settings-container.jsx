@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
 import SliderSettingsForm from 'components/slider-settings-form';
 import Loader from 'components/loader';
 import Modal from 'react-modal';
 import { arrayMove } from 'react-sortable-hoc';
-import { Link } from 'react-router';
 
 class SliderSettingsContainer extends React.Component {
   constructor() {
@@ -159,6 +158,19 @@ class SliderSettingsContainer extends React.Component {
       </div>
     );
   }
+}
+
+SliderSettingsContainer.propTypes = {
+  slider: PropTypes.object.isRequired,
+  enableWelcome: PropTypes.bool.isRequired,
+  disableWelcome: PropTypes.bool.isRequired,
+  enableTour: PropTypes.bool.isRequired,
+  isWelcomeActive: PropTypes.bool.isRequired,
+  sliderFormBuilder: PropTypes.object.isRequired,
+  onSliderSettingsFormSubmit: PropTypes.func.isRequired,
+  onSliderSettingsFormInputChange: PropTypes.func.isRequired,
+  sliderSettingsFormLoading: PropTypes.bool.isRequired,
+  successFlash: PropTypes.string
 }
 
 export default SliderSettingsContainer;

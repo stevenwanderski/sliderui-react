@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class ProgressBar extends React.Component {
   render() {
@@ -40,9 +40,8 @@ class ProgressBar extends React.Component {
   }
 }
 
-// ProgressBar.propTypes = {
-//   items: React.PropTypes.array.isRequired,
-//   activeKey: React.PropTypes.integer.isRequired
-// }
+ProgressBar.propTypes = {
+  activeStep: PropTypes.number.isRequired
+}
 
 export default ProgressBar;

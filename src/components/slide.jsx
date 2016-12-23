@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ImageUploader from 'components/image-uploader';
 import ImagePreview from 'components/image-preview';
 import { SortableHandle } from 'react-sortable-hoc';
@@ -106,6 +106,14 @@ class Slide extends React.Component {
 
     return this.renderShowing();
   }
+}
+
+Slide.propTypes = {
+  slide: PropTypes.object.isRequired,
+  onClickEditSlide: PropTypes.func.isRequired,
+  onClickDeleteSlide: PropTypes.func.isRequired,
+  onClickCancelSlide: PropTypes.func.isRequired,
+  onImageChange: PropTypes.func.isRequired
 }
 
 export default Slide;

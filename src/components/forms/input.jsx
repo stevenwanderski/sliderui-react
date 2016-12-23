@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { HOC } from 'formsy-react';
 
 class Input extends React.Component {
@@ -24,10 +24,10 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  setValue: React.PropTypes.func,
-  getValue: React.PropTypes.func,
-  type: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired
+  setValue: PropTypes.func,
+  getValue: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default HOC(Input);

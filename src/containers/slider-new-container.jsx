@@ -1,9 +1,7 @@
 import React from 'react';
 import ajax from 'utils/ajax';
-import { loggedIn, login } from 'utils/auth';
 import { browserHistory } from 'react-router'
 import SliderForm from 'components/slider-form';
-import ProgressBar from 'components/progress-bar';
 
 class SliderNew extends React.Component {
   constructor() {

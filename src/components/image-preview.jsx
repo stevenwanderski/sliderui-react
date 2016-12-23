@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class ImagePreview extends React.Component {
   render() {
@@ -14,6 +14,10 @@ class ImagePreview extends React.Component {
       <div className="slide-item__preview" style={style}></div>
     );
   }
+}
+
+ImagePreview.propTypes = {
+  imageUrl: PropTypes.string
 }
 
 export default ImagePreview;

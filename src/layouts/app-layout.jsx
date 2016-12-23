@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import ajax from 'utils/ajax';
 import { logout } from 'utils/auth';
@@ -44,6 +44,10 @@ class AppLayout extends React.Component {
       </div>
     );
   }
+}
+
+AppLayout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default AppLayout;

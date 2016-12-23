@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import ajax from 'utils/ajax';
 import { formBuilder, formDefaults } from 'form-builders/bxslider';
@@ -72,6 +72,11 @@ class SliderEditContainer extends React.Component {
       </div>
     );
   }
+}
+
+SliderEditContainer.propTypes = {
+  params: PropTypes.object.isRequired,
+  children: PropTypes.element.node
 }
 
 export default SliderEditContainer;

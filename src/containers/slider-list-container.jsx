@@ -1,6 +1,5 @@
 import React from 'react';
 import ajax from 'utils/ajax';
-import { Link } from 'react-router'
 import SliderList from 'components/slider-list';
 import Loader from 'components/loader';
 

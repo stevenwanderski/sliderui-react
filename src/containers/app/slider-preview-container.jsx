@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ajax from 'utils/ajax';
 import SliderPreview from 'components/slider-preview';
 import Loader from 'components/loader';
@@ -58,6 +58,10 @@ class SliderPreviewContainer extends React.Component {
       </div>
     );
   }
+}
+
+SliderPreviewContainer.propTypes = {
+  slider: PropTypes.object.isRequired
 }
 
 export default SliderPreviewContainer;

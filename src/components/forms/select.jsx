@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { HOC } from 'formsy-react';
 
 class Select extends React.Component {
@@ -27,9 +27,9 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
-  setValue: React.PropTypes.func,
-  getValue: React.PropTypes.func,
-  options: React.PropTypes.array.isRequired
+  setValue: PropTypes.func,
+  getValue: PropTypes.func,
+  options: PropTypes.array.isRequired
 }
 
 export default HOC(Select);

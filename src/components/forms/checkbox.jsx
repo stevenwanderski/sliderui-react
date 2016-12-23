@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { HOC } from 'formsy-react';
 
 class Checkbox extends React.Component {
@@ -24,8 +24,8 @@ class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
-  setValue: React.PropTypes.func,
-  getValue: React.PropTypes.func
+  setValue: PropTypes.func,
+  getValue: PropTypes.func
 }
 
 export default HOC(Checkbox);

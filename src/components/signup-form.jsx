@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class SignupForm extends React.Component {
   render() {
@@ -11,6 +11,10 @@ class SignupForm extends React.Component {
       </form>
     )
   }
+}
+
+SignupForm.propTypes = {
+  onClickSignin: PropTypes.func.isRequired
 }
 
 export default SignupForm;

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import _ from 'underscore';
+import Formsy from 'formsy-react';
 import Input from 'components/forms/input';
 import Select from 'components/forms/select';
 import Checkbox from 'components/forms/checkbox';
@@ -89,11 +90,9 @@ class SliderSettingsForm extends React.Component {
         switch (item.inputType) {
           case 'select':
             return this.buildSelectInput(item, index);
-            break;
 
           case 'checkbox':
             return this.buildCheckboxInput(item, index);
-            break;
 
           default:
             return this.buildTextInput(item, index);
@@ -146,13 +145,14 @@ class SliderSettingsForm extends React.Component {
   }
 }
 
-// SliderSettingsForm.propTypes = {
-//   builder: React.PropTypes.object,
-//   slider: React.PropTypes.object,
-//   onSubmit: React.PropTypes.func.isRequired,
-//   onInputChange: React.PropTypes.func,
-//   loading: React.PropTypes.bool,
-//   errorMessage: React.PropTypes.string
-// }
+SliderSettingsForm.propTypes = {
+  builder: PropTypes.object.isRequired,
+  slider: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
+  successFlash: PropTypes.string
+}
 
 export default SliderSettingsForm;

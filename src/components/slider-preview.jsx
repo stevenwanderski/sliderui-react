@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Loader from 'components/loader';
 
 class SliderPreview extends React.Component {
@@ -26,6 +26,13 @@ class SliderPreview extends React.Component {
       </div>
     );
   }
+}
+
+SliderPreview.propTypes = {
+  onSliderPreviewMounted: PropTypes.func.isRequired,
+  slides: PropTypes.array.isRequired,
+  sliderId: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired
 }
 
 export default SliderPreview;

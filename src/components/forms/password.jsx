@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { HOC } from 'formsy-react';
 
 class Password extends React.Component {
@@ -44,8 +44,8 @@ class Password extends React.Component {
 }
 
 Password.propTypes = {
-  setValue: React.PropTypes.func,
-  getValue: React.PropTypes.func
+  setValue: PropTypes.func,
+  getValue: PropTypes.func
 }
 
 export default HOC(Password);

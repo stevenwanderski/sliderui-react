@@ -1,5 +1,3 @@
-import ajax from 'utils/ajax';
-
 function loggedIn() {
   return !!localStorage.getItem('user');
 }

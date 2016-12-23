@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "AppCSS" }] */
+
 import Raven from 'raven-js';
 
 if (process.env.NODE_ENV === 'production') {
@@ -9,7 +11,7 @@ ReactGA.initialize('UA-36499930-13');
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { loggedIn, confirmed, logout } from 'utils/auth';
 
 // Layouts

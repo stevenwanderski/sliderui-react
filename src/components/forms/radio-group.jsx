@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { HOC } from 'formsy-react';
 
 class RadioGroup extends React.Component {
@@ -42,11 +42,11 @@ class RadioGroup extends React.Component {
 }
 
 RadioGroup.propTypes = {
-  setValue: React.PropTypes.func,
-  getValue: React.PropTypes.func,
-  value: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  items: React.PropTypes.array.isRequired
+  setValue: PropTypes.func,
+  getValue: PropTypes.func,
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 export default HOC(RadioGroup);

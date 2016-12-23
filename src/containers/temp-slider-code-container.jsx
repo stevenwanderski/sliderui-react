@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ajax from 'utils/ajax';
 import { login } from 'utils/auth';
 import EmbedCode from 'components/embed-code';
@@ -92,6 +92,10 @@ class TempSliderCodeContainer extends React.Component {
       </div>
     )
   }
+}
+
+TempSliderCodeContainer.propTypes = {
+  params: PropTypes.object.isRequired
 }
 
 export default TempSliderCodeContainer;

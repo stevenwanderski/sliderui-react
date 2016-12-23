@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Slide from 'components/slide';
 import Loader from 'components/loader';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
@@ -14,8 +14,6 @@ const SortableList = SortableContainer(({items}) => {
     </div>
   );
 });
-
-const items = ['Puff', 'Tentacle', 'Frank', 'Zappa'];
 
 class Slides extends React.Component {
   onSortEnd({ oldIndex, newIndex }) {
@@ -54,6 +52,19 @@ class Slides extends React.Component {
       </div>
     )
   }
+}
+
+Slides.propTypes = {
+  slides: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  onSortEnd: PropTypes.func.isRequired,
+  onClickAddSlide: PropTypes.func.isRequired,
+  onClickSaveSlide: PropTypes.func.isRequired,
+  onClickEditSlide: PropTypes.func.isRequired,
+  onClickDeleteSlide: PropTypes.func.isRequired,
+  onClickCancelSlide: PropTypes.func.isRequired,
+  onImageChange: PropTypes.func.isRequired,
+  addLoading: PropTypes.bool.isRequired
 }
 
 export default Slides;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
 import Loader from 'components/loader';
@@ -91,7 +91,7 @@ class TempSliderEditContainer extends React.Component {
     if(localStorage.getItem('welcomeScreenHasBeenSeen')) {
       return;
     }
-    
+
     this.setState({ isWelcomeActive: true });
     localStorage.setItem('welcomeScreenHasBeenSeen', true);
   }
@@ -151,6 +151,11 @@ class TempSliderEditContainer extends React.Component {
       </div>
     );
   }
+}
+
+TempSliderEditContainer.propTypes = {
+  params: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default TempSliderEditContainer;
