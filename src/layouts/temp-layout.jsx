@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import ProgressBar from 'components/progress-bar';
 import { getStepFromPath } from 'utils/progress-bar-helper';
 

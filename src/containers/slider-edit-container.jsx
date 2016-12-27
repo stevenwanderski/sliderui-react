@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import ajax from 'utils/ajax';
-import { formBuilder, formDefaults } from 'form-builders/bxslider';
 import Loader from 'components/loader';
 
 class SliderEditContainer extends React.Component {

@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import ajax from 'utils/ajax';
 import { login } from 'utils/auth';
 import EmbedCode from 'components/embed-code';
-import ProgressBar from 'components/progress-bar';
 import AuthenticationForm from 'components/authentication-form';
 import Loader from 'components/loader';
 import { browserHistory } from 'react-router';
