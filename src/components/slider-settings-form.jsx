@@ -13,15 +13,9 @@ class SliderSettingsForm extends React.Component {
       canSubmit: false,
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.enableButton = this.enableButton.bind(this);
     this.disableButton = this.disableButton.bind(this);
-  }
-
-  onInputChange(e) {
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    this.props.onInputChange(e.target.name, value);
   }
 
   onSubmit(formValues) {
@@ -46,7 +40,7 @@ class SliderSettingsForm extends React.Component {
         <label>{builderItem.label}</label>
         <Select
           name={builderItem.name}
-          value={this.props.slider['settings'][builderItem.name]}
+          value={this.props.slider.settings[builderItem.name] || builderItem.default}
           options={builderItem.options}
           validations={builderItem.validations} />
       </div>
@@ -59,7 +53,7 @@ class SliderSettingsForm extends React.Component {
         <label className="label--checkbox">
           <Checkbox
             name={builderItem.name}
-            value={this.props.slider['settings'][builderItem.name]}
+            value={this.props.slider.settings[builderItem.name] || builderItem.default}
             validations={builderItem.validations}/>
 
           <div>{builderItem.label}</div>
@@ -75,7 +69,7 @@ class SliderSettingsForm extends React.Component {
         <Input
           name={builderItem.name}
           type={builderItem.inputType}
-          value={this.props.slider['settings'][builderItem.name]}
+          value={this.props.slider.settings[builderItem.name] || builderItem.default}
           required={builderItem.required}
           validations={builderItem.validations}/>
       </div>
@@ -149,7 +143,6 @@ SliderSettingsForm.propTypes = {
   builder: PropTypes.object.isRequired,
   slider: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   successFlash: PropTypes.string

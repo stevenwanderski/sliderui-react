@@ -1,4 +1,4 @@
-const formBuilder = {
+export default {
   fields: [
     {
       name: 'mode',
@@ -85,13 +85,3 @@ const formBuilder = {
     }
   ]
 };
-
-function formDefaults() {
-  let obj = {};
-  formBuilder.fields.forEach((item) => {
-    obj[item.name] = item.default;
-  });
-  return obj;
-}
-
-export { formBuilder, formDefaults };

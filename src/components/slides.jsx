@@ -31,7 +31,6 @@ class Slides extends React.Component {
       return <Slide
                 slide={slide}
                 key={index}
-                onClickSaveSlide={this.props.onClickSaveSlide}
                 onClickEditSlide={this.props.onClickEditSlide}
                 onClickDeleteSlide={this.props.onClickDeleteSlide}
                 onClickCancelSlide={this.props.onClickCancelSlide}
@@ -59,7 +58,6 @@ Slides.propTypes = {
   loading: PropTypes.bool.isRequired,
   onSortEnd: PropTypes.func.isRequired,
   onClickAddSlide: PropTypes.func.isRequired,
-  onClickSaveSlide: PropTypes.func.isRequired,
   onClickEditSlide: PropTypes.func.isRequired,
   onClickDeleteSlide: PropTypes.func.isRequired,
   onClickCancelSlide: PropTypes.func.isRequired,

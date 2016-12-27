@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import ProgressBar from 'components/progress-bar';
-import Loader from 'components/loader';
-import ajax from 'utils/ajax';
-import { formBuilder, formDefaults } from 'form-builders/bxslider';
+import SliderSettingsContainer from 'containers/slider-settings-container';
 import Tour from 'react-user-tour';
 
 const steps = [
@@ -34,12 +30,11 @@ const steps = [
   }
 ]
 
-class TempSliderEditContainer extends React.Component {
+class TempSliderSettingsContainer extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      loading: true,
       slider: {},
       sliderSettingsFormLoading: false,
       successFlash: null,
@@ -48,39 +43,9 @@ class TempSliderEditContainer extends React.Component {
       tourStep: 1
     }
 
-    this.saveSettings = this.saveSettings.bind(this);
     this.enableTour = this.enableTour.bind(this);
     this.enableWelcome = this.enableWelcome.bind(this);
     this.disableWelcome = this.disableWelcome.bind(this);
-  }
-
-  // componentDidMount() {
-  //   ajax.get(`/sliders/${this.props.params.id}`)
-  //   .then((response) => {
-  //     let slider = response.data;
-  //     if (!Object.keys(slider.settings).length) {
-  //       slider.settings = formDefaults();
-  //     }
-  //     this.setState({ slider: slider, loading: false });
-  //   });
-  // }
-
-  saveSettings(formValues) {
-    let slider = this.state.slider;
-    slider.settings = formValues;
-    this.setState({
-      slider: slider,
-      sliderSettingsFormLoading: true
-    });
-
-    ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
-    .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Successfully saved' });
-      setTimeout(() => this.setState({ successFlash: null }), 2000);
-    })
-    .catch((error) => {
-      this.setState({ sliderSettingsFormLoading: false });
-    })
   }
 
   enableTour() {
@@ -101,12 +66,25 @@ class TempSliderEditContainer extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <Loader />;
-    }
-
     return (
       <div>
+        <SliderSettingsContainer sliderId={this.props.params.id} />
+
+        {/* <Modal
+          isOpen={this.props.isWelcomeActive}
+          contentLabel="Welcome"
+          className="modal__content"
+          overlayClassName="modal__overlay"
+        >
+          <div className="welcome__title">Welcome to the settings page 👋</div>
+          <div className="welcome__section">
+            From here you can add slides, upload images, and tweak slider settings.
+            We have provided a short tour that will show you the ropes.
+          </div>
+          <button className="button button--primary button--inline" onClick={this.props.enableTour}>Start Tour!</button>
+          <button className="button button--secondary" onClick={this.props.disableWelcome}>No, thanks.</button>
+        </Modal> */}
+
         {/* <Tour
             active={this.state.isTourActive}
             step={this.state.tourStep}
@@ -118,25 +96,7 @@ class TempSliderEditContainer extends React.Component {
             arrowColor='#8687c5'
         /> */}
 
-        <header className="container__header container__header--temp">
-          <div className="brand">
-            <div className="brand__logo"></div>
-            <div className="brand__name">SliderUI</div>
-          </div>
-
-          <ProgressBar activeStep={1} />
-        </header>
-
-        <div className="container__body slider-layout">
-          <div className="slider-layout__header">
-            <nav>
-              <Link to={`/temp/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link slider-layout__tab-link--settings" activeClassName="active">Settings</Link>
-              <Link to={`/temp/slider/${this.props.params.id}/preview`} className="slider-layout__tab-link slider-layout__tab-link--preview" activeClassName="active">Preview</Link>
-            </nav>
-            <Link to={`/temp/slider/${this.props.params.id}/code`} className="button button--primary button--get-code">Get Code</Link>
-          </div>
-
-          {this.props.children}
+          {/* {this.props.children} */}
 
           {/* {this.props.children && React.cloneElement(this.props.children, {
             slider: this.state.slider,
@@ -149,15 +109,13 @@ class TempSliderEditContainer extends React.Component {
             disableWelcome: this.disableWelcome,
             isWelcomeActive: this.state.isWelcomeActive
           })} */}
-        </div>
       </div>
     );
   }
 }
 
-TempSliderEditContainer.propTypes = {
-  params: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired
+TempSliderSettingsContainer.propTypes = {
+  params: PropTypes.object.isRequired
 }
 
-export default TempSliderEditContainer;
+export default TempSliderSettingsContainer;

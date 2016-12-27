@@ -17,6 +17,7 @@ import { loggedIn, confirmed, logout } from 'utils/auth';
 // Layouts
 import HomeLayout from 'layouts/home-layout';
 import TempLayout from 'layouts/temp-layout';
+import TempSlidesLayout from 'layouts/temp-slides-layout';
 import AppLayout from 'layouts/app-layout';
 
 // Containers
@@ -27,13 +28,12 @@ import SliderNewContainer from 'containers/slider-new-container';
 import SliderListContainer from 'containers/slider-list-container';
 import SliderEditContainer from 'containers/slider-edit-container';
 
-import TempSliderEditContainer from 'containers/temp-slider-edit-container';
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
 import TempSliderCodeContainer from 'containers/temp-slider-code-container';
 
-import SliderSettingsContainer from 'containers/app/slider-settings-container';
-import SliderPreviewContainer from 'containers/app/slider-preview-container';
-import SliderCodeContainer from 'containers/app/slider-code-container';
+import SliderSettingsContainer from 'containers/slider-settings-container';
+import SliderPreviewContainer from 'containers/slider-preview-container';
+import SliderCodeContainer from 'containers/slider-code-container';
 
 // SASS
 import AppCSS from 'sass/app';
@@ -75,9 +75,9 @@ render((
     <Route component={TempLayout}>
       <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnauthentication}/>
       <Route onEnter={requireUnconfirmedAuthentication}>
-        <Route path="temp/slider/:id" component={TempSliderEditContainer}>
-          <Route path="settings" component={SliderSettingsContainer}/>
-          <Route path="preview" component={SliderPreviewContainer}/>
+        <Route component={TempSlidesLayout}>
+          <Route path="temp/slider/:id/settings" component={SliderSettingsContainer} />
+          <Route path="temp/slider/:id/preview" component={SliderPreviewContainer} />
         </Route>
         <Route path="temp/slider/:id/code" component={TempSliderCodeContainer}/>
       </Route>

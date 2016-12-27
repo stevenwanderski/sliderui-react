@@ -52,15 +52,6 @@ class TempSliderCodeContainer extends React.Component {
 
     return (
       <div>
-        <header className="container__header container__header--temp">
-          <div className="brand">
-            <div className="brand__logo"></div>
-            <div className="brand__name">SliderUI</div>
-          </div>
-
-          <ProgressBar activeStep={2} />
-        </header>
-
         <div className="container__body flex-container">
           <div className="section section--padded section--margin-right">
             <h1>Instructions</h1>

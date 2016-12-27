@@ -46,22 +46,11 @@ class TempSliderNewContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <header className="container__header container__header--temp">
-          <div className="brand">
-            <div className="brand__logo"></div>
-            <div className="brand__name">SliderUI</div>
-          </div>
-
-          <ProgressBar activeStep={0} />
-        </header>
-
-        <div className="container__body">
-          <div className="slider-new slider-new--center">
-            <SliderForm
-              loading={this.state.loading}
-              onSubmit={this.saveSlider} />
-          </div>
+      <div className="container__body">
+        <div className="slider-new slider-new--center">
+          <SliderForm
+            loading={this.state.loading}
+            onSubmit={this.saveSlider} />
         </div>
       </div>
     )
