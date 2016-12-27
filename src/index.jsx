@@ -30,6 +30,7 @@ import SliderEditContainer from 'containers/slider-edit-container';
 
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
 import TempSliderSettingsContainer from 'containers/temp-slider-settings-container';
+import TempSliderPreviewContainer from 'containers/temp-slider-preview-container';
 import TempSliderCodeContainer from 'containers/temp-slider-code-container';
 
 import SliderSettingsContainer from 'containers/slider-settings-container';
@@ -78,7 +79,7 @@ render((
       <Route onEnter={requireUnconfirmedAuthentication}>
         <Route component={TempSlidesLayout}>
           <Route path="temp/slider/:id/settings" component={TempSliderSettingsContainer} />
-          <Route path="temp/slider/:id/preview" component={SliderPreviewContainer} />
+          <Route path="temp/slider/:id/preview" component={TempSliderPreviewContainer} />
         </Route>
         <Route path="temp/slider/:id/code" component={TempSliderCodeContainer}/>
       </Route>

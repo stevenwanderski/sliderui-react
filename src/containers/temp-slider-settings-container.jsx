@@ -3,12 +3,16 @@ import SliderSettingsContainer from 'containers/slider-settings-container';
 import Tour from 'react-user-tour';
 import Modal from 'react-modal';
 import steps from 'utils/tour-steps';
+import ajax from 'utils/ajax';
+import Loader from 'components/loader';
 
 class TempSliderSettingsContainer extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      slider: {},
+      loading: true,
       isWelcomeActive: false,
       isTourActive: false,
       tourStep: 1
@@ -20,7 +24,11 @@ class TempSliderSettingsContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.enableWelcome();
+    ajax.get(`/sliders/${this.props.params.id}`)
+    .then((response) => {
+      this.setState({ slider: response.data, loading: false });
+      this.enableWelcome();
+    });
   }
 
   enableTour() {
@@ -41,9 +49,13 @@ class TempSliderSettingsContainer extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
+
     return (
       <div>
-        <SliderSettingsContainer sliderId={this.props.params.id} />
+        <SliderSettingsContainer slider={this.state.slider} />
 
         <Modal
           isOpen={this.state.isWelcomeActive}

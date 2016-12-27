@@ -8,12 +8,12 @@ class SliderSettingsContainer extends React.Component {
       <div className="slider-settings flex-container">
         <div className="section slider-settings__slides">
           <h3>Slides</h3>
-          <SlidesContainer sliderId={this.props.sliderId} />
+          <SlidesContainer sliderId={this.props.slider.id} />
         </div>
 
         <div className="section flex-child--full-width">
           <h3 className="slider-settings__settings-header">Settings</h3>
-          <SliderSettingsFormContainer sliderId={this.props.sliderId} />
+          <SliderSettingsFormContainer sliderId={this.props.slider.id} />
         </div>
       </div>
     );
@@ -21,7 +21,7 @@ class SliderSettingsContainer extends React.Component {
 }
 
 SliderSettingsContainer.propTypes = {
-  sliderId: PropTypes.string.isRequired
+  slider: PropTypes.object
 }
 
 export default SliderSettingsContainer;

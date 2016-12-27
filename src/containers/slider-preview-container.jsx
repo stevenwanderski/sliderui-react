@@ -4,18 +4,20 @@ import SliderPreview from 'components/slider-preview';
 import Loader from 'components/loader';
 
 class SliderPreviewContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       slides: [],
       slidesLoading: true,
       sliderPreviewLoading: true,
     };
+    
     this.loadSliderPreview = this.loadSliderPreview.bind(this);
   }
 
   componentDidMount() {
-    ajax.get(`/sliders/${this.props.params.id}/slides`)
+    ajax.get(`/sliders/${this.props.slider.id}/slides`)
       .then((response) => {
         this.setState({
           slides: response.data,
@@ -26,17 +28,17 @@ class SliderPreviewContainer extends React.Component {
   }
 
   loadSliderPreview() {
-    if (!document.querySelector(`[data-slider-id="${this.props.params.id}"]`)) {
+    if (!document.querySelector(`[data-slider-id="${this.props.slider.id}"]`)) {
       return;
     }
 
     this.setState({ sliderPreviewLoading: true });
 
-    document.querySelector(`[data-slider-id="${this.props.params.id}"]`).innerHTML = '';
+    document.querySelector(`[data-slider-id="${this.props.slider.id}"]`).innerHTML = '';
     document.querySelector('#script-container').innerHTML = '';
 
     const script = document.createElement('script');
-    script.src = `${process.env.API_URL}/sliders/${this.props.params.id}`;
+    script.src = `${process.env.API_URL}/sliders/${this.props.slider.id}`;
     script.onload = () => {
       this.setState({ sliderPreviewLoading: false });
     }
@@ -51,7 +53,7 @@ class SliderPreviewContainer extends React.Component {
     return (
       <div>
         <SliderPreview
-          sliderId={this.props.params.id}
+          sliderId={this.props.slider.id}
           slides={this.state.slides}
           loading={this.state.sliderPreviewLoading}
           onSliderPreviewMounted={this.loadSliderPreview} />
@@ -61,7 +63,7 @@ class SliderPreviewContainer extends React.Component {
 }
 
 SliderPreviewContainer.propTypes = {
-  params: PropTypes.object.isRequired
+  slider: PropTypes.object
 }
 
 export default SliderPreviewContainer;

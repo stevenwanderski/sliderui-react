@@ -20,11 +20,7 @@ class SliderEditContainer extends React.Component {
   componentDidMount() {
     ajax.get(`/sliders/${this.props.params.id}`)
     .then((response) => {
-      let slider = response.data;
-      if (!Object.keys(slider.settings).length) {
-        slider.settings = formDefaults();
-      }
-      this.setState({ slider: slider, loading: false });
+      this.setState({ slider: response.data, loading: false });
     });
   }
 
@@ -63,11 +59,7 @@ class SliderEditContainer extends React.Component {
         </div>
 
         {this.props.children && React.cloneElement(this.props.children, {
-          slider: this.state.slider,
-          onSliderSettingsFormSubmit: this.saveSettings,
-          sliderSettingsFormLoading: this.state.sliderSettingsFormLoading,
-          sliderFormBuilder: formBuilder,
-          successFlash: this.state.successFlash
+          slider: this.state.slider
         })}
       </div>
     );
@@ -76,7 +68,7 @@ class SliderEditContainer extends React.Component {
 
 SliderEditContainer.propTypes = {
   params: PropTypes.object.isRequired,
-  children: PropTypes.element.node
+  children: PropTypes.node.isRequired
 }
 
 export default SliderEditContainer;

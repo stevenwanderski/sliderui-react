@@ -24,7 +24,7 @@ class SliderCodeContainer extends React.Component {
 }
 
 SliderCodeContainer.propTypes = {
-  slider: PropTypes.object.isRequired
+  slider: PropTypes.object
 }
 
 export default SliderCodeContainer;
