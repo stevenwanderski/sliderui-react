@@ -2,4 +2,9 @@
   &__code-copy {
     margin-bottom: 20px;
   }
+
+  &__instructions {
+    flex: 2;
+    min-width: 0;
+  }
 }

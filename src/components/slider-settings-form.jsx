@@ -48,13 +48,15 @@ class SliderSettingsForm extends React.Component {
   }
 
   buildCheckboxInput(builderItem, index) {
+    const settingsValue = this.props.slider.settings[builderItem.name];
+    const inputValue = settingsValue === undefined ? builderItem.default : settingsValue;
     return (
       <div className="form-row" key={index}>
         <label className="label--checkbox">
           <Checkbox
             name={builderItem.name}
-            value={this.props.slider.settings[builderItem.name] || builderItem.default}
-            validations={builderItem.validations}/>
+            value={inputValue}
+            validations={builderItem.validations} />
 
           <div>{builderItem.label}</div>
         </label>

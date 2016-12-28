@@ -32,9 +32,9 @@ class EmbedCode extends React.Component {
         </CopyToClipboard>
 
         <div className="code">
-          <pre><code>
+          <pre>
             {code}
-          </code></pre>
+          </pre>
         </div>
       </div>
     );

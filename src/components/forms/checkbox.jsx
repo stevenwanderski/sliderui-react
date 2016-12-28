@@ -15,8 +15,8 @@ class Checkbox extends React.Component {
     return (
       <input
         type="checkbox"
-        value={this.props.getValue()}
-        checked={this.props.getValue() ? 'checked' : null}
+        name={this.props.name}
+        checked={this.props.getValue()}
         className="input--checkbox"
         onChange={this.changeValue} />
     );
@@ -25,7 +25,8 @@ class Checkbox extends React.Component {
 
 Checkbox.propTypes = {
   setValue: PropTypes.func,
-  getValue: PropTypes.func
+  getValue: PropTypes.func,
+  name: PropTypes.string
 }
 
 export default HOC(Checkbox);

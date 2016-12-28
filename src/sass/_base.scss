@@ -71,9 +71,7 @@ pre {
   background: $gray-lightest;
   border-radius: 2px;
   border: solid $gray-light 1px;
-}
-
-code {
+  overflow-x: scroll;
   font-family: 'Monaco';
   line-height: 24px;
   font-size: 15px;

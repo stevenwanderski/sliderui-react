@@ -52,7 +52,7 @@ class TempSliderCodeContainer extends React.Component {
     return (
       <div>
         <div className="container__body flex-container">
-          <div className="section section--padded section--margin-right">
+          <div className="section section--padded section--margin-right embed-code__instructions">
             <h1>Instructions</h1>
             <ol>
               <li>Copy the embed code displayed below</li>

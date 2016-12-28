@@ -12,8 +12,6 @@ class SliderEditContainer extends React.Component {
       slider: {},
       successFlash: null
     }
-
-    this.saveSettings = this.saveSettings.bind(this);
   }
 
   componentDidMount() {
@@ -21,24 +19,6 @@ class SliderEditContainer extends React.Component {
     .then((response) => {
       this.setState({ slider: response.data, loading: false });
     });
-  }
-
-  saveSettings(formValues) {
-    let slider = this.state.slider;
-    slider.settings = formValues;
-    this.setState({
-      slider: slider,
-      sliderSettingsFormLoading: true
-    });
-
-    ajax.put(`/sliders/${this.props.params.id}`, { slider: this.state.slider })
-    .then((response) => {
-      this.setState({ sliderSettingsFormLoading: false, successFlash: 'Successfully saved' });
-      setTimeout(() => this.setState({ successFlash: null }), 2000);
-    })
-    .catch((error) => {
-      this.setState({ sliderSettingsFormLoading: false });
-    })
   }
 
   render() {

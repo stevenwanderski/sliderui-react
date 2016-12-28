@@ -9,8 +9,6 @@ class SliderSettingsFormContainer extends React.Component {
     super();
 
     this.state = {
-      slider: {},
-      loading: true,
       saving: false,
       successFlash: null
     };
@@ -18,32 +16,19 @@ class SliderSettingsFormContainer extends React.Component {
     this.saveSettings = this.saveSettings.bind(this);
   }
 
-  componentDidMount() {
-    ajax.get(`/sliders/${this.props.sliderId}`)
-      .then((response) => {
-        this.setState({
-          slider: response.data,
-          loading: false
-        });
-      });
-  }
-
   saveSettings(formValues) {
-    let slider = this.state.slider;
+    let slider = this.props.slider;
     slider.settings = formValues;
-    this.setState({
-      slider: slider,
-      saving: true
-    });
+    this.setState({ saving: true });
 
-    ajax.put(`/sliders/${this.props.sliderId}`, { slider: this.state.slider })
-    .then((response) => {
-      this.setState({ saving: false, successFlash: 'Successfully saved' });
-      setTimeout(() => this.setState({ successFlash: null }), 2000);
-    })
-    .catch((error) => {
-      this.setState({ saving: false });
-    })
+    ajax.put(`/sliders/${slider.id}`, { slider: slider })
+      .then((response) => {
+        this.setState({ saving: false, successFlash: 'Successfully saved' });
+        setTimeout(() => this.setState({ successFlash: null }), 2000);
+      })
+      .catch((error) => {
+        this.setState({ saving: false });
+      });
   }
 
   render() {
@@ -53,7 +38,7 @@ class SliderSettingsFormContainer extends React.Component {
 
     return (
       <SliderSettingsForm
-        slider={this.state.slider}
+        slider={this.props.slider}
         builder={formBuilder}
         onSubmit={this.saveSettings}
         loading={this.state.saving}
@@ -63,7 +48,7 @@ class SliderSettingsFormContainer extends React.Component {
 }
 
 SliderSettingsFormContainer.propTypes = {
-  sliderId: PropTypes.string.isRequired
+  slider: PropTypes.object.isRequired
 }
 
 export default SliderSettingsFormContainer;
