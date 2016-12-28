@@ -21,7 +21,7 @@ class SliderPreview extends React.Component {
     return (
       <div className="slider-preview">
         {loading}
-        <div data-slider-id={this.props.sliderId}></div>
+        <div data-slider-id={this.props.shortCode}></div>
         <div id="script-container"></div>
       </div>
     );
@@ -31,7 +31,7 @@ class SliderPreview extends React.Component {
 SliderPreview.propTypes = {
   onSliderPreviewMounted: PropTypes.func.isRequired,
   slides: PropTypes.array.isRequired,
-  sliderId: PropTypes.string.isRequired,
+  shortCode: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired
 }
 

@@ -12,7 +12,7 @@ class SliderPreviewContainer extends React.Component {
       slidesLoading: true,
       sliderPreviewLoading: true,
     };
-    
+
     this.loadSliderPreview = this.loadSliderPreview.bind(this);
   }
 
@@ -28,17 +28,17 @@ class SliderPreviewContainer extends React.Component {
   }
 
   loadSliderPreview() {
-    if (!document.querySelector(`[data-slider-id="${this.props.slider.id}"]`)) {
+    if (!document.querySelector(`[data-slider-id="${this.props.slider.short_code}"]`)) {
       return;
     }
 
     this.setState({ sliderPreviewLoading: true });
 
-    document.querySelector(`[data-slider-id="${this.props.slider.id}"]`).innerHTML = '';
+    document.querySelector(`[data-slider-id="${this.props.slider.short_code}"]`).innerHTML = '';
     document.querySelector('#script-container').innerHTML = '';
 
     const script = document.createElement('script');
-    script.src = `${process.env.API_URL}/sliders/${this.props.slider.id}`;
+    script.src = `${process.env.API_URL}/sliders/${this.props.slider.short_code}`;
     script.onload = () => {
       this.setState({ sliderPreviewLoading: false });
     }
@@ -53,7 +53,7 @@ class SliderPreviewContainer extends React.Component {
     return (
       <div>
         <SliderPreview
-          sliderId={this.props.slider.id}
+          shortCode={this.props.slider.short_code}
           slides={this.state.slides}
           loading={this.state.sliderPreviewLoading}
           onSliderPreviewMounted={this.loadSliderPreview} />

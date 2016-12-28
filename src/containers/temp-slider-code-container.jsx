@@ -69,8 +69,8 @@ class TempSliderCodeContainer extends React.Component {
           <div className="section section--padded">
             <h1>Heads up!</h1>
             <p>
-              This slider is only active for the next 24 hours.<br />
-              To make it active forever, signup to claim this slider:
+              In order to make changes to this slider and create new ones,<br />
+              signup so you can access the registered user section 👊
             </p>
             <AuthenticationForm
               onSubmit={this.authenticate}
