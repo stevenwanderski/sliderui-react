@@ -17,9 +17,9 @@ class TempSliderNewContainer extends React.Component {
 
     if (!loggedIn()) {
       this.createUser()
-      .then(() => {
-        this.createSliderAndRedirect(title);
-      });
+        .then(() => {
+          this.createSliderAndRedirect(title);
+        });
     } else {
       this.createSliderAndRedirect(title);
     }

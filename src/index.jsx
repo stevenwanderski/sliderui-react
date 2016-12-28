@@ -61,6 +61,12 @@ const requireUnconfirmedAuthentication = (nextState, replace) => {
   }
 }
 
+const requireUnconfirmedOrUnauthentication = (nextState, replace) => {
+  if (loggedIn() && confirmed()) {
+    replace('/app/sliders');
+  }
+}
+
 const logPageView = () => {
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);
@@ -75,7 +81,7 @@ render((
     </Route>
 
     <Route component={TempLayout}>
-      <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnauthentication}/>
+      <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnconfirmedOrUnauthentication}/>
       <Route onEnter={requireUnconfirmedAuthentication}>
         <Route component={TempSlidesLayout}>
           <Route path="temp/slider/:id/settings" component={TempSliderSettingsContainer} />
