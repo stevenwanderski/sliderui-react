@@ -38,7 +38,7 @@ class SliderPreviewContainer extends React.Component {
     document.querySelector('#script-container').innerHTML = '';
 
     const script = document.createElement('script');
-    script.src = `${process.env.API_URL}/sliders/${this.props.slider.short_code}`;
+    script.src = `${process.env.API_URL}/sliders/${this.props.slider.short_code}.js`;
     script.onload = () => {
       this.setState({ sliderPreviewLoading: false });
     }
