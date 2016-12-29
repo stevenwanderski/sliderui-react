@@ -10,7 +10,8 @@ var config = {
   output: {
     path: BUILD_DIR,
     publicPath: '/',
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    sourceMapFilename: "index_bundle.map.js",
   },
   resolve: {
     root: APP_DIR,
