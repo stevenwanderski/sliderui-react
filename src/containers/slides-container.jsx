@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { arrayMove } from 'react-sortable-hoc';
 import ajax from 'utils/ajax';
 import Slides from 'components/slides';
+import _ from 'underscore';
 
 class SlidesContainer extends React.Component {
   constructor() {
@@ -51,7 +52,7 @@ class SlidesContainer extends React.Component {
 
   editSlide(id) {
     let slides = this.state.slides;
-    const slide = slides.find((slide) => slide.id === id);
+    const slide = _.find(slides, ((slide) => slide.id === id));
     const slideIndex = slides.indexOf(slide);
     slides[slideIndex].editing = true
     this.setState({ slides: slides });
