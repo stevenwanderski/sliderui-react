@@ -1,5 +1,8 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "AppCSS" }] */
 
+import es6Promise from 'es6-promise';
+es6Promise.polyfill();
+
 import Raven from 'raven-js';
 
 if (process.env.NODE_ENV === 'production') {
