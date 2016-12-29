@@ -10,8 +10,7 @@ var config = {
   output: {
     path: BUILD_DIR,
     publicPath: '/',
-    filename: 'index_bundle.js',
-    sourceMapFilename: "index_bundle.map.js",
+    filename: 'index_bundle.js'
   },
   resolve: {
     root: APP_DIR,
@@ -51,7 +50,8 @@ var config = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin()
-  ]
+  ],
+  devtool: 'source-map'
 };
 
 module.exports = config;
