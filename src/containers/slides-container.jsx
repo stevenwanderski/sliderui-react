@@ -60,7 +60,7 @@ class SlidesContainer extends React.Component {
 
   cancelSlide(id) {
     let slides = this.state.slides;
-    const slide = slides.find((slide) => slide.id === id);
+    const slide = _.find(slides, ((slide) => slide.id === id));
     const slideIndex = slides.indexOf(slide);
     slides[slideIndex].editing = false
     this.setState({ slides: slides });
@@ -78,7 +78,7 @@ class SlidesContainer extends React.Component {
     formData.append('slide[image]', file);
 
     let slides = this.state.slides;
-    const slide = slides.find((slide) => slide.id === id);
+    const slide = _.find(slides, ((slide) => slide.id === id));
     const slideIndex = slides.indexOf(slide);
     slides[slideIndex].loading = true;
     this.setState({ slides: slides, sliderPreviewLoading: true });
