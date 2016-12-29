@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BUILD_DIR = path.resolve(__dirname, 'build');
 var APP_DIR = path.resolve(__dirname, 'src');
 
@@ -25,7 +25,7 @@ var config = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
       },
       {
          test: /\.(jpe?g|png|gif|svg)$/i,
@@ -41,6 +41,7 @@ var config = {
       template: 'src/index-template.html',
       favicon: 'src/images/icon-star.png'
     }),
+    new ExtractTextPlugin('styles.css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV) || JSON.stringify('production'),
