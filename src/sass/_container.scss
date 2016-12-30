@@ -12,14 +12,19 @@
 
   &__header {
     background: $white;
-    border-bottom: solid $gray-light 1px;
-    margin-bottom: 20px;
+
+    &--app {
+      margin-bottom: 20px;
+      border-bottom: solid $gray-light 1px;
+    }
 
     &--temp {
       display: flex;
       justify-content: space-between;;
       padding-left: 40px;
       padding-right: 40px;
+      border-bottom: solid $gray-light 1px;
+      margin-bottom: 20px;
 
       &::after {
         content: '';
@@ -29,8 +34,16 @@
 
     &--brand {
       display: flex;
-      justify-content: space-between;;
+      justify-content: space-between;
       padding: 20px 40px;
+      border-bottom: solid $gray-light 1px;
+      margin-bottom: 20px;
+    }
+
+    &--home {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;;
     }
   }
 

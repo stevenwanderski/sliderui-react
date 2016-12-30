@@ -31,7 +31,7 @@ class AppLayout extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="container__header">
+        <div className="container__header container__header--app">
           <UserToolbar
             email={this.state.user.email}
             loading={this.state.userLoading}

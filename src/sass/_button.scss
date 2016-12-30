@@ -47,6 +47,21 @@
   &--inline {
     margin-right: 20px;
   }
+
+  &--round {
+    border-radius: 40px;
+    background: none;
+    color: $white;
+    border: solid $white 2px;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    transition: all 200ms;
+
+    &:hover {
+      background: $white;
+      color: $primary;
+    }
+  }
 }
 
 .button--large {

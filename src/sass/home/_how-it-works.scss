@@ -1,0 +1,29 @@
+.how-it-works {
+  padding: 60px 0;
+
+  h2 {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &__body {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__step {
+    margin-right: 60px;
+    flex: 1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__step-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
