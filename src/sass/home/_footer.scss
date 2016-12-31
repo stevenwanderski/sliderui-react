@@ -1,0 +1,14 @@
+.footer {
+  background: $gray-lightest;
+  color: $gray-medium;
+  padding: 40px 0;
+  text-align: center;
+
+  &__row {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

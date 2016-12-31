@@ -40,6 +40,11 @@ class HomeContainer extends React.Component {
             </div>
           </div>
         </div>
+
+        <div className="footer">
+          <div className="footer__row">Coded with ♥ in Chicago</div>
+          <div className="footer__row"><a href="http://stevenwanderski.com" target="_blank">Steven Wanderski</a></div>
+        </div>
       </div>
     );
   }

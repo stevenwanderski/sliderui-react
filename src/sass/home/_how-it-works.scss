@@ -1,5 +1,6 @@
 .how-it-works {
-  padding: 60px 0;
+  padding: 100px 0 140px;
+  background: $white;
 
   h2 {
     margin-bottom: 40px;
@@ -14,7 +15,7 @@
   }
 
   &__step {
-    margin-right: 60px;
+    margin-right: 80px;
     flex: 1;
 
     &:last-child {
