@@ -1,19 +1,43 @@
 import React, { PropTypes } from 'react';
-import SlidesContainer from 'containers/slides-container';
 import SliderSettingsFormContainer from 'containers/slider-settings-form-container';
+import SliderPreviewContainer from 'containers/slider-preview-container';
 
 class SliderSettingsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      resettingPreview: false
+    }
+
+    this.updatePreview = this.updatePreview.bind(this);
+  }
+
+  updatePreview() {
+    this.setState({ resettingPreview: true });
+    setTimeout(() => this.setState({ resettingPreview: false }), 500);
+  }
+
   render() {
+    let preview;
+    if (this.state.resettingPreview) {
+      preview = <div>Updating preview...</div>;
+    } else {
+      preview = <SliderPreviewContainer slider={this.props.slider} />;
+    }
+
     return (
       <div className="slider-settings flex-container">
         <div className="section slider-settings__slides">
-          <h3>Slides</h3>
-          <SlidesContainer sliderId={this.props.slider.id} />
+          <h3>Settings</h3>
+          <SliderSettingsFormContainer
+            slider={this.props.slider}
+            onSave={this.updatePreview} />
         </div>
 
         <div className="section flex-child--full-width">
-          <h3 className="slider-settings__settings-header">Settings</h3>
-          <SliderSettingsFormContainer slider={this.props.slider} />
+          <h3>Preview</h3>
+          {preview}
         </div>
       </div>
     );

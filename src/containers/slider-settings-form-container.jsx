@@ -9,8 +9,7 @@ class SliderSettingsFormContainer extends React.Component {
     super();
 
     this.state = {
-      saving: false,
-      successFlash: null
+      saving: false
     };
 
     this.saveSettings = this.saveSettings.bind(this);
@@ -23,8 +22,8 @@ class SliderSettingsFormContainer extends React.Component {
 
     ajax.put(`/sliders/${slider.id}`, { slider: slider })
       .then((response) => {
-        this.setState({ saving: false, successFlash: 'Successfully saved' });
-        setTimeout(() => this.setState({ successFlash: null }), 2000);
+        this.setState({ saving: false });
+        this.props.onSave();
       })
       .catch((error) => {
         this.setState({ saving: false });
@@ -41,14 +40,14 @@ class SliderSettingsFormContainer extends React.Component {
         slider={this.props.slider}
         builder={formBuilder}
         onSubmit={this.saveSettings}
-        loading={this.state.saving}
-        successFlash={this.state.successFlash} />
+        loading={this.state.saving} />
     );
   }
 }
 
 SliderSettingsFormContainer.propTypes = {
-  slider: PropTypes.object.isRequired
+  slider: PropTypes.object.isRequired,
+  onSave: PropTypes.func
 }
 
 export default SliderSettingsFormContainer;

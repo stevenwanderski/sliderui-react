@@ -52,6 +52,13 @@ export default {
       group: 'General'
     },
     {
+      name: 'auto',
+      label: 'Auto Start',
+      default: false,
+      inputType: 'checkbox',
+      group: 'General'
+    },
+    {
       name: 'pager',
       label: 'Pager',
       default: true,

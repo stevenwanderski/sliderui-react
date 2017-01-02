@@ -23,7 +23,7 @@ class SlidesContainer extends React.Component {
   }
 
   componentDidMount() {
-    ajax.get(`/sliders/${this.props.sliderId}/slides`)
+    ajax.get(`/sliders/${this.props.slider.id}/slides`)
       .then((response) => {
         this.setState({
           slides: response.data,
@@ -38,7 +38,7 @@ class SlidesContainer extends React.Component {
     // Add the slide to state only once we
     // have the ID back from the server.
     ajax.post(`/slides`, {
-      slider_id: this.props.sliderId,
+      slider_id: this.props.slider.id,
       weight: this.state.slides.length
     })
     .then((response) => {
@@ -120,7 +120,7 @@ class SlidesContainer extends React.Component {
 }
 
 SlidesContainer.propTypes = {
-  sliderId: PropTypes.string.isRequired
+  slider: PropTypes.object
 }
 
 export default SlidesContainer;

@@ -47,7 +47,7 @@ class SliderPreviewContainer extends React.Component {
 
   render() {
     if (this.state.slidesLoading) {
-      return <Loader />;
+      return <div>Initializing slider...</div>;
     }
 
     return (

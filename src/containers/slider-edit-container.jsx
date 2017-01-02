@@ -30,8 +30,8 @@ class SliderEditContainer extends React.Component {
       <div className="slider-layout">
         <div className="slider-layout__header">
           <nav>
-            <Link to={`/app/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link" activeClassName="active">Settings</Link>
-            <Link to={`/app/slider/${this.props.params.id}/preview`} className="slider-layout__tab-link" activeClassName="active">Preview</Link>
+            <Link to={`/app/slider/${this.props.params.id}/slides`} className="slider-layout__tab-link" activeClassName="active">Slides</Link>
+            <Link to={`/app/slider/${this.props.params.id}/settings`} className="slider-layout__tab-link" activeClassName="active">Settings & Preview</Link>
             <Link to={`/app/slider/${this.props.params.id}/code`} className="slider-layout__tab-link" activeClassName="active">Embed Code</Link>
           </nav>
           <div className="slider-layout__title">Slider: {this.state.slider.title}</div>

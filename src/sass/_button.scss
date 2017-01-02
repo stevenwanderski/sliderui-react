@@ -62,25 +62,25 @@
       color: $primary;
     }
   }
-}
 
-.button--large {
-  font-size: 16px;
-}
+  &--large {
+    font-size: 16px;
+  }
 
-.button--small {
-  font-size: 14px;
-  padding: 6px 10px;
-}
+  &--small {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
 
-.button--gray {
-  background: $gray-dark;
-}
+  &--gray {
+    background: $gray-dark;
+  }
 
-.button--purple {
-  background: $purple;
-}
+  &--purple {
+    background: $purple;
+  }
 
-.button--full-width {
-  width: 100%;
+  &--full-width {
+    width: 100%;
+  }
 }

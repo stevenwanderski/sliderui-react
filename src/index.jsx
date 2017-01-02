@@ -27,18 +27,18 @@ import AppLayout from 'layouts/app-layout';
 import HomeContainer from 'containers/home-container';
 import AuthenticationContainer from 'containers/authentication-container';
 import AccountContainer from 'containers/account-container';
+
 import SliderNewContainer from 'containers/slider-new-container';
 import SliderListContainer from 'containers/slider-list-container';
 import SliderEditContainer from 'containers/slider-edit-container';
+import SliderSettingsContainer from 'containers/slider-settings-container';
+import SlidesContainer from 'containers/slides-container';
+import SliderCodeContainer from 'containers/slider-code-container';
 
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
 import TempSliderSettingsContainer from 'containers/temp-slider-settings-container';
 import TempSliderPreviewContainer from 'containers/temp-slider-preview-container';
 import TempSliderCodeContainer from 'containers/temp-slider-code-container';
-
-import SliderSettingsContainer from 'containers/slider-settings-container';
-import SliderPreviewContainer from 'containers/slider-preview-container';
-import SliderCodeContainer from 'containers/slider-code-container';
 
 // SASS
 import AppCSS from 'sass/app';
@@ -100,7 +100,7 @@ render((
         <Route path="slider/new" component={SliderNewContainer}/>
         <Route path="slider/:id" component={SliderEditContainer}>
           <Route path="settings" component={SliderSettingsContainer}/>
-          <Route path="preview" component={SliderPreviewContainer}/>
+          <Route path="slides" component={SlidesContainer}/>
           <Route path="code" component={SliderCodeContainer}/>
         </Route>
         <Route path="account" component={AccountContainer} />
