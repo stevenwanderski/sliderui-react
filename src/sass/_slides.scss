@@ -1,4 +1,13 @@
 .slides {
   width: 100%;
   padding-bottom: 20px;
+
+  &__empty {
+    padding: 50px;
+    border: dashed $primary-border-width $gray-light;
+    text-align: center;
+    background: $white;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
 }

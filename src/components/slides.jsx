@@ -37,13 +37,21 @@ class Slides extends React.Component {
                 onImageChange={this.props.onImageChange} />;
     });
 
+    let slideDisplay;
+    if (this.props.slides.length > 0) {
+      slideDisplay = <SortableList items={slides}
+                        onSortEnd={this.onSortEnd.bind(this)}
+                        lockAxis='y'
+                        lockToContainerEdges={true}
+                        useDragHandle={true} />
+
+    } else {
+      slideDisplay = <div className="slides__empty">Add at least one slide to make a proper slider 🎈</div>;
+    }
+
     return (
       <div className="slides">
-        <SortableList items={slides}
-                      onSortEnd={this.onSortEnd.bind(this)}
-                      lockAxis='y'
-                      lockToContainerEdges={true}
-                      useDragHandle={true} />
+        {slideDisplay}
         <button
           className="button button--secondary button--add-slide"
           onClick={this.props.onClickAddSlide}
