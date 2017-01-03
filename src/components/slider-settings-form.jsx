@@ -112,7 +112,7 @@ class SliderSettingsForm extends React.Component {
       error = <div className="setting-group__row error">{this.props.errorMessage}</div>;
     }
 
-    let submitText = 'Save & Update Preview';
+    let submitText = 'Save Settings';
     if (this.props.loading) {
       submitText = 'Loading...';
     }
@@ -123,16 +123,14 @@ class SliderSettingsForm extends React.Component {
       <Formsy.Form className="form--slider-settings" onValidSubmit={this.onSubmit} onValid={this.enableButton} onInvalid={this.disableButton}>
         {error}
 
-        <div className="form-row">
-          <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary button--full-width">{submitText}</button>
-        </div>
+        <div className="scrollable">
+          <div className="scrollable__header">
+            <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary button--full-width">{submitText}</button>
+          </div>
 
-        <div className="setting-groups">
-          {groupOutput}
-        </div>
-
-        <div>
-          <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary button--full-width">{submitText}</button>
+          <div className="scrollable__body setting-groups">
+            {groupOutput}
+          </div>
         </div>
       </Formsy.Form>
     );

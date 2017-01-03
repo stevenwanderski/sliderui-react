@@ -20,7 +20,7 @@ class SliderList extends React.Component {
       return (
         <div key={index} className="slider-list__slide">
           <div className="slider-list__slide-image" style={style}></div>
-          <Link to={`/app/slider/${slider.id}/settings`}>{slider.title}</Link>
+          <Link to={`/app/slider/${slider.id}/slides`}>{slider.title}</Link>
         </div>
       );
     });

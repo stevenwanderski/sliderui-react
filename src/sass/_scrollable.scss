@@ -1,0 +1,16 @@
+.scrollable {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+
+  &__header {
+    margin-bottom: 20px;
+  }
+
+  &__body {
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 20px;
+  }
+}

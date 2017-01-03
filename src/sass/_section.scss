@@ -12,4 +12,9 @@
     max-height: 100%;
     overflow-y: scroll;
   }
+
+  &--full-height-no-scroll {
+    max-height: 100%;
+    overflow-y: hidden;
+  }
 }
