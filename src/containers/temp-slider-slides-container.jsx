@@ -41,7 +41,7 @@ class TempSliderSlidesContainer extends React.Component {
     }
 
     this.setState({ isWelcomeActive: true });
-    // localStorage.setItem('welcomeScreenHasBeenSeen', true);
+    localStorage.setItem('welcomeScreenHasBeenSeen', true);
   }
 
   disableWelcome() {
