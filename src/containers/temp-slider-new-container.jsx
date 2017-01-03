@@ -36,7 +36,7 @@ class TempSliderNewContainer extends React.Component {
     const data = { slider: formValues };
     return ajax.post('/sliders', data)
       .then((response) => {
-        browserHistory.push(`/temp/slider/${response.data.id}/settings`);
+        browserHistory.push(`/temp/slider/${response.data.id}/slides`);
       })
       .catch((error) => {
         this.setState({ loading: false });
