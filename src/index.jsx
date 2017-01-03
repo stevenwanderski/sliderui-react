@@ -36,8 +36,8 @@ import SlidesContainer from 'containers/slides-container';
 import SliderCodeContainer from 'containers/slider-code-container';
 
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
+import TempSliderSlidesContainer from 'containers/temp-slider-slides-container';
 import TempSliderSettingsContainer from 'containers/temp-slider-settings-container';
-import TempSliderPreviewContainer from 'containers/temp-slider-preview-container';
 import TempSliderCodeContainer from 'containers/temp-slider-code-container';
 
 // SASS
@@ -87,8 +87,8 @@ render((
       <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnconfirmedOrUnauthentication}/>
       <Route onEnter={requireUnconfirmedAuthentication}>
         <Route component={TempSlidesLayout}>
+          <Route path="temp/slider/:id/slides" component={TempSliderSlidesContainer} />
           <Route path="temp/slider/:id/settings" component={TempSliderSettingsContainer} />
-          <Route path="temp/slider/:id/preview" component={TempSliderPreviewContainer} />
         </Route>
         <Route path="temp/slider/:id/code" component={TempSliderCodeContainer}/>
       </Route>
@@ -99,8 +99,8 @@ render((
         <Route path="sliders" component={SliderListContainer}/>
         <Route path="slider/new" component={SliderNewContainer}/>
         <Route path="slider/:id" component={SliderEditContainer}>
-          <Route path="settings" component={SliderSettingsContainer}/>
           <Route path="slides" component={SlidesContainer}/>
+          <Route path="settings" component={SliderSettingsContainer}/>
           <Route path="code" component={SliderCodeContainer}/>
         </Route>
         <Route path="account" component={AccountContainer} />

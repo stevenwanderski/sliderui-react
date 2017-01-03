@@ -1,0 +1,10 @@
+.temp-embed-code {
+  display: flex;
+  max-height: 100%;
+
+  &__instructions {
+    flex: 2;
+    min-width: 0;
+    margin-right: 40px;
+  }
+}

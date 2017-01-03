@@ -28,14 +28,14 @@ class SliderSettingsContainer extends React.Component {
 
     return (
       <div className="slider-settings flex-container">
-        <div className="section slider-settings__slides">
+        <div className="section section--full-height slider-settings__slides">
           <h3>Settings</h3>
           <SliderSettingsFormContainer
             slider={this.props.slider}
             onSave={this.updatePreview} />
         </div>
 
-        <div className="section flex-child--full-width">
+        <div className="section section--full-height flex-child--full-width">
           <h3>Preview</h3>
           {preview}
         </div>

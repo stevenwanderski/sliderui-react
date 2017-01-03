@@ -3,13 +3,13 @@
   padding: 15px 20px;
   border: solid 1px $gray-light;
   border-radius: 2px;
-  margin-bottom: 20px;
 
   &--padded {
     padding: 30px;
   }
 
-  &--margin-right {
-    margin-right: 40px;
+  &--full-height {
+    max-height: 100%;
+    overflow-y: scroll;
   }
 }

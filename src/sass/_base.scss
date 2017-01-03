@@ -13,6 +13,12 @@ hr {
   margin: 10px 0;
 }
 
+html,
+body,
+#app {
+  height: 100%;
+}
+
 body {
   color: $gray-dark;
   background: $gray-lightest;

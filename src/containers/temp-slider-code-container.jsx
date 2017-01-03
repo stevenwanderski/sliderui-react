@@ -50,9 +50,9 @@ class TempSliderCodeContainer extends React.Component {
     }
 
     return (
-      <div>
-        <div className="container__body flex-container">
-          <div className="section section--padded section--margin-right embed-code__instructions">
+      <div className="container__body">
+        <div className="temp-embed-code">
+          <div className="section section--padded section--full-height temp-embed-code__instructions">
             <h1>Instructions</h1>
             <ol>
               <li>Copy the embed code displayed below</li>
@@ -66,7 +66,7 @@ class TempSliderCodeContainer extends React.Component {
             <EmbedCode shortCode={this.state.slider.short_code} />
           </div>
 
-          <div className="section section--padded">
+          <div className="section section--padded section--full-height">
             <h1>Heads up!</h1>
             <p>
               In order to make changes to this slider and create new ones,<br />

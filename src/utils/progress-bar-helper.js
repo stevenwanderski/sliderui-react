@@ -3,8 +3,8 @@ export function getStepFromPath(path) {
   if (/slider\/new/.test(path)) {
     return 0;
 
-  // URL: temp/slider/:id/settings OR temp/slider/:id/preview
-  } else if (/settings|preview/.test(path)) {
+  // URL: temp/slider/:id/slides OR temp/slider/:id/settings
+  } else if (/slides|settings/.test(path)) {
     return 1;
 
   // URL: temp/slider/:id/code

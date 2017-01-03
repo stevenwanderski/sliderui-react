@@ -53,6 +53,8 @@ class TempSliderSettingsContainer extends React.Component {
       return <Loader />;
     }
 
+    return <SliderSettingsContainer slider={this.state.slider} />;
+
     return (
       <div>
         <SliderSettingsContainer slider={this.state.slider} />

@@ -4,7 +4,7 @@ import EmbedCode from 'components/embed-code';
 class SliderCodeContainer extends React.Component {
   render() {
     return (
-      <div className="section section--padded">
+      <div className="section section--padded section--full-height">
         <h1>Instructions</h1>
         <ol>
           <li>Copy the embed code displayed below</li>

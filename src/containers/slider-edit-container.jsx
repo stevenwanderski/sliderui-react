@@ -37,9 +37,11 @@ class SliderEditContainer extends React.Component {
           <div className="slider-layout__title">Slider: {this.state.slider.title}</div>
         </div>
 
-        {this.props.children && React.cloneElement(this.props.children, {
-          slider: this.state.slider
-        })}
+        <div className="slider-layout__body">
+          {this.props.children && React.cloneElement(this.props.children, {
+            slider: this.state.slider
+          })}
+        </div>
       </div>
     );
   }
