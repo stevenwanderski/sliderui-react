@@ -20,7 +20,6 @@ import { loggedIn, confirmed, logout } from 'utils/auth';
 // Layouts
 import HomeLayout from 'layouts/home-layout';
 import TempLayout from 'layouts/temp-layout';
-import TempSlidesLayout from 'layouts/temp-slides-layout';
 import AppLayout from 'layouts/app-layout';
 
 // Containers
@@ -32,11 +31,9 @@ import SliderNewContainer from 'containers/slider-new-container';
 import SliderListContainer from 'containers/slider-list-container';
 import SliderEditContainer from 'containers/slider-edit-container';
 import SliderSettingsContainer from 'containers/slider-settings-container';
-import SlidesContainer from 'containers/slides-container';
 import SliderCodeContainer from 'containers/slider-code-container';
 
 import TempSliderNewContainer from 'containers/temp-slider-new-container';
-import TempSliderSlidesContainer from 'containers/temp-slider-slides-container';
 import TempSliderSettingsContainer from 'containers/temp-slider-settings-container';
 import TempSliderCodeContainer from 'containers/temp-slider-code-container';
 
@@ -86,11 +83,10 @@ render((
     <Route component={TempLayout}>
       <Route path="temp/slider/new" component={TempSliderNewContainer} onEnter={requireUnconfirmedOrUnauthentication}/>
       <Route onEnter={requireUnconfirmedAuthentication}>
-        <Route component={TempSlidesLayout}>
-          <Route path="temp/slider/:id/slides" component={TempSliderSlidesContainer} />
-          <Route path="temp/slider/:id/settings" component={TempSliderSettingsContainer} />
+        <Route path="temp/slider/:id" component={SliderEditContainer}>
+          <Route path="edit" component={TempSliderSettingsContainer} />
+          <Route path="code" component={TempSliderCodeContainer}/>
         </Route>
-        <Route path="temp/slider/:id/code" component={TempSliderCodeContainer}/>
       </Route>
     </Route>
 
@@ -99,8 +95,7 @@ render((
         <Route path="sliders" component={SliderListContainer}/>
         <Route path="slider/new" component={SliderNewContainer}/>
         <Route path="slider/:id" component={SliderEditContainer}>
-          <Route path="slides" component={SlidesContainer}/>
-          <Route path="settings" component={SliderSettingsContainer}/>
+          <Route path="edit" component={SliderSettingsContainer}/>
           <Route path="code" component={SliderCodeContainer}/>
         </Route>
         <Route path="account" component={AccountContainer} />

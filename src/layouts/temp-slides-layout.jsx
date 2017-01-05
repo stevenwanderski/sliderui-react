@@ -6,11 +6,10 @@ const TempSlidesLayout = (props) => {
     <div className="container__body slider-layout">
       <div className="slider-layout__header">
         <nav>
-          <Link to={`/temp/slider/${props.params.id}/slides`} className="slider-layout__tab-link slider-layout__tab-link--slides" activeClassName="active">Slides</Link>
-          <Link to={`/temp/slider/${props.params.id}/settings`} className="slider-layout__tab-link slider-layout__tab-link--settings" activeClassName="active">Settings & Preview</Link>
+          <Link to={`/temp/slider/${props.params.id}/edit`} className="slider-layout__tab-link slider-layout__tab-link--edit" activeClassName="active">Edit</Link>
+          <Link to={`/temp/slider/${props.params.id}/code`} className="slider-layout__tab-link slider-layout__tab-link--code" activeClassName="active">Embed Slider</Link>
         </nav>
 
-        <Link to={`/temp/slider/${props.params.id}/code`} className="button button--primary button--get-code">Get Code</Link>
       </div>
 
       <div className="slider-layout__body">

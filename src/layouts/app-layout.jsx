@@ -39,7 +39,10 @@ class AppLayout extends React.Component {
         </div>
 
         <div className="container__body">
-          {this.props.children}
+          {this.props.children && React.cloneElement(this.props.children, {
+            layout: 'app',
+            showTour: false
+          })}
         </div>
       </div>
     );

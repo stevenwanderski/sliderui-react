@@ -1,6 +1,10 @@
 .setting-group {
   margin-bottom: 30px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &__row {
     display: flex;
     justify-content: space-between;

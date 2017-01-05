@@ -16,7 +16,7 @@ class SliderNew extends React.Component {
     const data = { slider: formValues };
     return ajax.post('/sliders', data)
       .then((response) => {
-        browserHistory.push(`/app/slider/${response.data.id}/slides`);
+        browserHistory.push(`/app/slider/${response.data.id}/edit`);
       })
       .catch((error) => {
         this.setState({ loading: false });

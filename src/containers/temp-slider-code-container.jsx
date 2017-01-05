@@ -50,34 +50,32 @@ class TempSliderCodeContainer extends React.Component {
     }
 
     return (
-      <div className="container__body">
-        <div className="temp-embed-code">
-          <div className="section section--padded section--full-height temp-embed-code__instructions">
-            <h1>Instructions</h1>
-            <ol>
-              <li>Copy the embed code displayed below</li>
-              <li>Select a location on any webpage and paste the code.<br />
-              The slider will appear at that exact location.</li>
-            </ol>
+      <div className="temp-embed-code">
+        <div className="section section--padded section--full-height temp-embed-code__instructions">
+          <h1>Instructions</h1>
+          <ol>
+            <li>Copy the embed code displayed below</li>
+            <li>Select a location on any webpage and paste the code.<br />
+            The slider will appear at that exact location.</li>
+          </ol>
 
-            <hr />
+          <hr />
 
-            <h1>Embed Code</h1>
-            <EmbedCode shortCode={this.state.slider.short_code} />
-          </div>
+          <h1>Embed Code</h1>
+          <EmbedCode shortCode={this.state.slider.short_code} />
+        </div>
 
-          <div className="section section--padded section--full-height">
-            <h1>Heads up!</h1>
-            <p>
-              In order to make changes to this slider and create new ones,<br />
-              signup so you can access the registered user section 👊
-            </p>
-            <AuthenticationForm
-              onSubmit={this.authenticate}
-              loading={this.state.authenticationLoading}
-              hideAuthType={true}
-              errorMessage={this.state.authenticationError} />
-          </div>
+        <div className="section section--padded section--full-height">
+          <h1>Heads up!</h1>
+          <p>
+            In order to make changes to this slider and create new ones,<br />
+            signup so you can access the registered user section 👊
+          </p>
+          <AuthenticationForm
+            onSubmit={this.authenticate}
+            loading={this.state.authenticationLoading}
+            hideAuthType={true}
+            errorMessage={this.state.authenticationError} />
         </div>
       </div>
     )

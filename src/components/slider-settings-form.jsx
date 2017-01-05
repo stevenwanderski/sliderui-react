@@ -128,7 +128,7 @@ class SliderSettingsForm extends React.Component {
             <button disabled={!this.state.canSubmit || this.props.loading} className="button button--secondary button--full-width">{submitText}</button>
           </div>
 
-          <div className="scrollable__body setting-groups">
+          <div className="scrollable__body">
             {groupOutput}
           </div>
         </div>
