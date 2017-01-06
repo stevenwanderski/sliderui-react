@@ -54,8 +54,8 @@ class SliderSettingsContainer extends React.Component {
     const settingsClassName = classNames('section__tab-link', 'section__tab-link--settings', { active: this.isActive('settings') });
 
     return (
-      <div className="slider-settings flex-container">
-        <div className="section section--full-height-no-scroll scrollable slider-settings__slides">
+      <div className="slider-settings">
+        <div className="section slider-settings__slides scrollable">
           <div className="scrollable__header">
             <nav>
               <a href="" onClick={this.setSidebar.bind(null, 'slides')} className={slidesClassName}>Slides</a>

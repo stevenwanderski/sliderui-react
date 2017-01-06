@@ -1,6 +1,7 @@
 .slider-settings {
   height: 100%;
   width: 100%;
+  display: flex;
 
   &__slides {
     flex: 0 0 300px;
