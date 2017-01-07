@@ -70,7 +70,8 @@ class SlidesContainer extends React.Component {
     const slides = this.state.slides.filter((slide) => slide.id != id);
     this.setState({ slides: slides, sliderPreviewLoading: true });
 
-    ajax.delete(`/slides/${id}`);
+    ajax.delete(`/slides/${id}`)
+      .then(this.props.onSortEnd);
   }
 
   saveSlideImage(id, file) {
@@ -84,12 +85,13 @@ class SlidesContainer extends React.Component {
     this.setState({ slides: slides, sliderPreviewLoading: true });
 
     ajax.put(`/slides/${id}`, formData)
-    .then((response) => {
-      slides[slideIndex].image_url = response.data.image_url;
-      slides[slideIndex].editing = false;
-      slides[slideIndex].loading = false;
-      this.setState({ slides: slides });
-    });
+      .then((response) => {
+        slides[slideIndex].image_url = response.data.image_url;
+        slides[slideIndex].editing = false;
+        slides[slideIndex].loading = false;
+        this.setState({ slides: slides });
+      })
+      .then(this.props.onSortEnd);
   }
 
   sortSlides(oldIndex, newIndex) {
@@ -100,7 +102,8 @@ class SlidesContainer extends React.Component {
       return { id: slide.id, weight: index };
     });
 
-    ajax.put(`/slides/collection`, { slides: data });
+    ajax.put(`/slides/collection`, { slides: data })
+      .then(this.props.onSortEnd);
   }
 
   render() {
@@ -120,7 +123,10 @@ class SlidesContainer extends React.Component {
 }
 
 SlidesContainer.propTypes = {
-  slider: PropTypes.object
+  slider: PropTypes.object,
+  onSortEnd: PropTypes.func,
+  onImageChange: PropTypes.func,
+  onDeleteSlide: PropTypes.func
 }
 
 export default SlidesContainer;
