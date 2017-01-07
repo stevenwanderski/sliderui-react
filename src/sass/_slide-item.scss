@@ -22,13 +22,13 @@
     background: url('../svg/icon-gear.svg') no-repeat;
     background-size: contain;
     display: block;
-    margin-right: 3px;
+    margin-right: 10px;
   }
 
   &__control--move {
     width: 18px;
     height: 18px;
-    background: url('../svg/icon-three-dots.svg') no-repeat;
+    background: url('../svg/icon-drag.svg') no-repeat;
     background-size: contain;
     display: block;
   }
@@ -40,7 +40,10 @@
   }
 
   &__handle {
-    cursor: move;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
   }
 
   &__edit-image {

@@ -47,6 +47,7 @@ class SlidesContainer extends React.Component {
       slide.editing = true;
       slides.push(slide);
       this.setState({ slides: slides, slidesAddLoading: false });
+      document.querySelector('.scrollable__body--button').scrollTop = 99999;
     });
   }
 
