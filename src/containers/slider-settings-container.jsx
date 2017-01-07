@@ -70,7 +70,7 @@ class SliderSettingsContainer extends React.Component {
           </div>
         </div>
 
-        <div className="section section--full-height flex-child--full-width">
+        <div className="section flex-child--full-width">
           <h3>Preview</h3>
           {preview}
         </div>

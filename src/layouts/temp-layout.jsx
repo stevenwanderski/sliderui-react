@@ -14,7 +14,7 @@ const TempLayout = (props) => {
         <ProgressBar activeStep={getStepFromPath(props.location.pathname)} />
       </header>
 
-      <div className="container__body">
+      <div className="container__body container__body--temp">
         {props.children && React.cloneElement(props.children, {
           layout: 'temp',
           showTour: true

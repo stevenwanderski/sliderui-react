@@ -17,9 +17,8 @@
 
     &--temp {
       display: flex;
-      justify-content: space-between;;
-      padding-left: 40px;
-      padding-right: 40px;
+      justify-content: space-between;
+      padding: 16px 40px;
       border-bottom: solid $gray-light 1px;
       margin-bottom: 20px;
 
@@ -51,6 +50,10 @@
     left: 0;
     right: 0;
     padding: 20px 40px;
+
+    &--temp {
+      top: $header-temp-height;
+    }
   }
 
   &__child--main {

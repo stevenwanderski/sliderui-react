@@ -25,7 +25,7 @@ class SliderListContainer extends React.Component {
     }
 
     return (
-      <div className="section section--full-height">
+      <div className="section">
         <SliderList sliders={this.state.sliders} />
       </div>
     )

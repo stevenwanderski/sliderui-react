@@ -45,12 +45,10 @@ class TempSliderNewContainer extends React.Component {
 
   render() {
     return (
-      <div className="container__body">
-        <div className="slider-new slider-new--center">
-          <SliderForm
-            loading={this.state.loading}
-            onSubmit={this.saveSlider} />
-        </div>
+      <div className="slider-new slider-new--center">
+        <SliderForm
+          loading={this.state.loading}
+          onSubmit={this.saveSlider} />
       </div>
     )
   }

@@ -3,19 +3,15 @@
   padding: 15px 20px;
   border: solid 1px $gray-light;
   border-radius: 2px;
+  overflow-y: scroll;
+  // Use max-height instead of height so
+  // the panel will not fill vertical space
+  // if its not needed. This would result
+  // in empty white space.
+  max-height: 100%;
 
   &--padded {
     padding: 30px;
-  }
-
-  &--full-height {
-    max-height: 100%;
-    overflow-y: scroll;
-  }
-
-  &--full-height-no-scroll {
-    max-height: 100%;
-    overflow-y: hidden;
   }
 
   &__tab-link {
