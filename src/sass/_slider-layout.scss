@@ -1,8 +1,6 @@
 .slider-layout {
+  position: relative;
   height: 100%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
 
   &__title {
     font-size: 14px;
@@ -12,15 +10,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
     width: 100%;
-    flex-shrink: 0;
   }
 
   &__body {
-    height: 100%;
-    width: 100%;
-    display: flex;
+    position: absolute;
+    top: $sub-header-height;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
   }
 
   &__tab-link {

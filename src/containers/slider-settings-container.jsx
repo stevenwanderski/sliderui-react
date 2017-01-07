@@ -55,16 +55,18 @@ class SliderSettingsContainer extends React.Component {
 
     return (
       <div className="slider-settings">
-        <div className="section slider-settings__slides scrollable">
-          <div className="scrollable__header">
-            <nav>
-              <a href="" onClick={this.setSidebar.bind(null, 'slides')} className={slidesClassName}>Slides</a>
-              <a href="" onClick={this.setSidebar.bind(null, 'settings')} className={settingsClassName}>Settings</a>
-            </nav>
-          </div>
+        <div className="section slider-settings__slides">
+          <div className="scrollable">
+            <div className="scrollable__header">
+              <nav>
+                <a href="" onClick={this.setSidebar.bind(null, 'slides')} className={slidesClassName}>Slides</a>
+                <a href="" onClick={this.setSidebar.bind(null, 'settings')} className={settingsClassName}>Settings</a>
+              </nav>
+            </div>
 
-          <div className="scrollable__body">
-            {sidebar}
+            <div className="scrollable__body">
+              {sidebar}
+            </div>
           </div>
         </div>
 

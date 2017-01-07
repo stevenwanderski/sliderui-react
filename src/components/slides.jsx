@@ -51,11 +51,18 @@ class Slides extends React.Component {
 
     return (
       <div className="slides">
-        {slideDisplay}
-        <button
-          className="button button--secondary button--add-slide"
-          onClick={this.props.onClickAddSlide}
-          disabled={this.props.addLoading}>{buttonText}</button>
+        <div className="scrollable">
+          <div className="scrollable__header">
+            <button
+              className="button button--secondary button--full-width button--add-slide"
+              onClick={this.props.onClickAddSlide}
+              disabled={this.props.addLoading}>{buttonText}</button>
+          </div>
+
+          <div className="scrollable__body scrollable__body--button">
+            {slideDisplay}
+          </div>
+        </div>
       </div>
     )
   }
