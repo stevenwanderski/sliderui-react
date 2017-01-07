@@ -3,7 +3,7 @@
   padding: 15px 20px;
   border: solid 1px $gray-light;
   border-radius: 2px;
-  overflow-y: scroll;
+  overflow-y: auto;
   // Use max-height instead of height so
   // the panel will not fill vertical space
   // if its not needed. This would result
