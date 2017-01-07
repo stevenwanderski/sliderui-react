@@ -39,7 +39,8 @@ class Slides extends React.Component {
 
     let slideDisplay;
     if (this.props.slides.length > 0) {
-      slideDisplay = <SortableList items={slides}
+      slideDisplay = <SortableList
+                        items={slides}
                         onSortEnd={this.onSortEnd.bind(this)}
                         lockAxis='y'
                         lockToContainerEdges={true}
