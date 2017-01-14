@@ -18,11 +18,11 @@ class ImageUploader extends React.Component {
   }
 
   validFileSize(file) {
-    const maxFileSize = 1000000 // 1MB
+    const maxFileSize = 2000000 // 1MB
     const fileSize = file.size;
 
     if (fileSize > maxFileSize) {
-      alert('Image cannot be greater than 1MB.');
+      alert('Image cannot be greater than 2MB.');
       return false;
     }
 
