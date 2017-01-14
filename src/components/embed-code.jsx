@@ -15,7 +15,7 @@ class EmbedCode extends React.Component {
 
   render() {
     let code = `<div data-slider-id="${this.props.shortCode}"></div>\n`;
-    code += `<script type="text/javascript" src="${process.env.API_URL}/sliders/${this.props.shortCode}"></script>`;
+    code += `<script type="text/javascript" src="${process.env.API_URL}/sliders/${this.props.shortCode}.js"></script>`;
 
     let successFlash;
     if (this.state.flashMessage) {
