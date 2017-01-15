@@ -38,7 +38,8 @@ class SliderSettingsContainer extends React.Component {
                   slider={this.props.slider}
                   onImageChange={this.updatePreview}
                   onSortEnd={this.updatePreview}
-                  onDeleteSlide={this.updatePreview} />
+                  onDeleteSlide={this.updatePreview}
+                  onNewSlide={this.updatePreview} />
     } else {
       sidebar = (
         <SliderSettingsFormContainer

@@ -6,6 +6,7 @@
   border-width: $primary-border-width;
   font-size: 14px;
   display: inline-block;
+  text-align: center;
 
   &[disabled] {
     border-color: $gray-light;

@@ -14,10 +14,9 @@ class SlidesContainer extends React.Component {
       slidesAddLoading: false
     };
 
+    this.imageChanged = this.imageChanged.bind(this);
     this.addSlide = this.addSlide.bind(this);
-    this.editSlide = this.editSlide.bind(this);
     this.deleteSlide = this.deleteSlide.bind(this);
-    this.cancelSlide = this.cancelSlide.bind(this);
     this.saveSlideImage = this.saveSlideImage.bind(this);
     this.sortSlides = this.sortSlides.bind(this);
   }
@@ -32,39 +31,24 @@ class SlidesContainer extends React.Component {
       });
   }
 
-  addSlide() {
-    this.setState({ slidesAddLoading: true });
-
-    // Add the slide to state only once we
-    // have the ID back from the server.
-    ajax.post(`/slides`, {
-      slider_id: this.props.slider.id,
-      weight: this.state.slides.length
-    })
-    .then((response) => {
-      let slides = this.state.slides;
-      let slide = response.data;
-      slide.editing = true;
-      slides.push(slide);
-      this.setState({ slides: slides, slidesAddLoading: false });
-      document.querySelector('.scrollable__body--button').scrollTop = 99999;
-    });
+  imageChanged(file, slideId) {
+    return this.saveSlideImage(slideId, file);
   }
 
-  editSlide(id) {
-    let slides = this.state.slides;
-    const slide = _.find(slides, ((slide) => slide.id === id));
-    const slideIndex = slides.indexOf(slide);
-    slides[slideIndex].editing = true
-    this.setState({ slides: slides });
-  }
+  addSlide(file) {
+    const formData = new FormData();
+    formData.append('slide[slider_id]', this.props.slider.id);
+    formData.append('slide[weight]', this.state.slides.length);
+    formData.append('slide[image]', file);
 
-  cancelSlide(id) {
-    let slides = this.state.slides;
-    const slide = _.find(slides, ((slide) => slide.id === id));
-    const slideIndex = slides.indexOf(slide);
-    slides[slideIndex].editing = false
-    this.setState({ slides: slides });
+    return ajax.post(`/slides`, formData)
+      .then((response) => {
+        let slides = this.state.slides;
+        let slide = response.data;
+        slides.push(slide);
+        this.setState({ slides: slides });
+        this.props.onNewSlide();
+      });
   }
 
   deleteSlide(id) {
@@ -85,7 +69,7 @@ class SlidesContainer extends React.Component {
     slides[slideIndex].loading = true;
     this.setState({ slides: slides, sliderPreviewLoading: true });
 
-    ajax.put(`/slides/${id}`, formData)
+    return ajax.put(`/slides/${id}`, formData)
       .then((response) => {
         slides[slideIndex].image_url = response.data.image_url;
         slides[slideIndex].editing = false;
@@ -112,12 +96,9 @@ class SlidesContainer extends React.Component {
       <Slides
         slides={this.state.slides}
         loading={this.state.slidesLoading}
-        addLoading={this.state.slidesAddLoading}
-        onClickAddSlide={this.addSlide}
-        onClickEditSlide={this.editSlide}
+        onNewSlide={this.addSlide}
         onClickDeleteSlide={this.deleteSlide}
-        onClickCancelSlide={this.cancelSlide}
-        onImageChange={this.saveSlideImage}
+        onImageChange={this.imageChanged}
         onSortEnd={this.sortSlides} />
     )
   }
@@ -127,7 +108,8 @@ SlidesContainer.propTypes = {
   slider: PropTypes.object,
   onSortEnd: PropTypes.func,
   onImageChange: PropTypes.func,
-  onDeleteSlide: PropTypes.func
+  onDeleteSlide: PropTypes.func,
+  onNewSlide: PropTypes.func
 }
 
 export default SlidesContainer;

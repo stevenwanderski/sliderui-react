@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Slide from 'components/slide';
+import ImageUploader from 'components/image-uploader';
 import Loader from 'components/loader';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
@@ -16,6 +17,22 @@ const SortableList = SortableContainer(({items}) => {
 });
 
 class Slides extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      imageUploading: false
+    }
+
+    this.imageChanged = this.imageChanged.bind(this);
+  }
+
+  imageChanged(file) {
+    this.setState({ imageUploading: true });
+    this.props.onNewSlide(file)
+      .then(() => this.setState({ imageUploading: false }));
+  }
+
   onSortEnd({ oldIndex, newIndex }) {
     this.props.onSortEnd(oldIndex, newIndex);
   }
@@ -25,15 +42,11 @@ class Slides extends React.Component {
       return <Loader />;
     }
 
-    let buttonText = this.props.addLoading ? 'Loading' : 'Add Slide';
-
     const slides = this.props.slides.map((slide, index) => {
       return <Slide
                 slide={slide}
                 key={index}
-                onClickEditSlide={this.props.onClickEditSlide}
                 onClickDeleteSlide={this.props.onClickDeleteSlide}
-                onClickCancelSlide={this.props.onClickCancelSlide}
                 onImageChange={this.props.onImageChange} />;
     });
 
@@ -50,14 +63,24 @@ class Slides extends React.Component {
       slideDisplay = <div className="slides__empty">Add at least one slide to make a proper slider 🎈</div>;
     }
 
+    let buttonDisplay;
+    if (this.state.imageUploading) {
+      buttonDisplay = 'Uploading...';
+    } else {
+      buttonDisplay = (
+        <ImageUploader
+          labelText="Add Slide"
+          onImageChange={this.imageChanged}
+          fileInputId="slide-image-new"
+          className="button button--secondary button--full-width button--add-slide" />
+      )
+    }
+
     return (
       <div className="slides">
         <div className="scrollable">
           <div className="scrollable__header">
-            <button
-              className="button button--secondary button--full-width button--add-slide"
-              onClick={this.props.onClickAddSlide}
-              disabled={this.props.addLoading}>{buttonText}</button>
+            {buttonDisplay}
           </div>
 
           <div className="scrollable__body scrollable__body--button">
@@ -73,12 +96,9 @@ Slides.propTypes = {
   slides: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   onSortEnd: PropTypes.func.isRequired,
-  onClickAddSlide: PropTypes.func.isRequired,
-  onClickEditSlide: PropTypes.func.isRequired,
+  onNewSlide: PropTypes.func.isRequired,
   onClickDeleteSlide: PropTypes.func.isRequired,
-  onClickCancelSlide: PropTypes.func.isRequired,
-  onImageChange: PropTypes.func.isRequired,
-  addLoading: PropTypes.bool.isRequired
+  onImageChange: PropTypes.func.isRequired
 }
 
 export default Slides;

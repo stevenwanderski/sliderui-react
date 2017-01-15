@@ -14,7 +14,7 @@ class ImageUploader extends React.Component {
       return;
     }
 
-    this.props.onImageChange(this.props.slideId, file);
+    this.props.onImageChange(file);
   }
 
   validFileSize(file) {
@@ -46,27 +46,26 @@ class ImageUploader extends React.Component {
   }
 
   render() {
-    const fileInputId = `slide-image-${this.props.slideId}`;
-
     return (
       <div className="image-uploader">
         <input
           type="file"
-          id={fileInputId}
+          id={this.props.fileInputId}
           ref="image"
           accept="image/jpeg, image/png, image/gif"
           onChange={this.onChange}
           className="image-uploader__file" />
-        <label htmlFor={fileInputId} className="image-uploader__label">{this.props.labelText}</label>
+        <label htmlFor={this.props.fileInputId} className={`image-uploader__label ${this.props.className}`}>{this.props.labelText}</label>
       </div>
     )
   }
 }
 
 ImageUploader.propTypes = {
-  slideId: PropTypes.string.isRequired,
+  fileInputId: PropTypes.string.isRequired,
   onImageChange: PropTypes.func.isRequired,
-  labelText: PropTypes.string.isRequired
+  labelText: PropTypes.string.isRequired,
+  className: PropTypes.string
 }
 
 export default ImageUploader;
