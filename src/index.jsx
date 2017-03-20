@@ -3,12 +3,6 @@
 import es6Promise from 'es6-promise';
 es6Promise.polyfill();
 
-import Raven from 'raven-js';
-
-if (process.env.NODE_ENV === 'production') {
-  Raven.config(process.env.SENTRY_KEY).install();
-}
-
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-36499930-13');
 
